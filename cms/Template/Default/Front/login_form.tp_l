@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Вход и регистрация</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="/public/loginform/css/style.css" media="screen" type="text/css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="/public/js/tooltip/jquery.tooltip.css">
+  <script src="/public/js/tooltip/jquery.tooltip.js" type="text/javascript"></script>
+</head>
+
+<body>
+<center>
+<p style="color: #F00;">{if $login_error}{$login_error}{/if}<a href="#" class="tooltip" title="Содержимое tooltip">Текст ссылки</a></p>
+</center>
+<div class="box">
+  <nav id="tabs" class="tabs">
+    <a id="tabLogin" class="iconLogin active blueBox" title="Войти"></a>
+    <a id="tabRegister" class="iconRegister greenBox" title="Регистрация"></a>
+    <a id="tabForgot" class="iconForgot redBox" title="Забыл пароль?"></a>
+  </nav>
+
+  <div class="containerWrapper">
+
+    <!-- login container -->
+    <div id="containerLogin" class="tabContainer active">
+      <form action="/login/check/{if $smarty.get.url}?url={$smarty.get.url}{/if}" method="POST">
+      {if $request_uri}<input type="hidden" name="request_uri" value="{$request_uri}" />{/if}
+      <h2 class="loginTitle">Авторизация</h2>
+      <div class="loginContent">
+        <div class="inputWrapper">
+          <input type="text" placeholder="Логин" name="login" {if $login_email}value="{$login_email}"{/if} />
+        </div>
+        <div class="inputWrapper">
+          <input type="password" placeholder="Пароль" name="pass" />
+        </div>
+      </div>
+      <button class="blueBox"><span class="iconLogin"></span> ВОЙТИ</button>
+      <div class="clear"></div>
+    </form>
+    </div>
+
+    <!-- register container -->
+    <div id="containerRegister" class="tabContainer">
+      <form action="/login/register/" method="POST">
+      {if $request_uri}<input type="hidden" name="request_uri" value="{$request_uri}" />{/if}
+        <h2 class="loginTitle">Регистрация</h2>
+        <div class="registerContent">
+          <div class="inputWrapper">
+            <input type="text" placeholder="Ваше имя" name="name" />
+          </div>
+          <div class="inputWrapper">
+            <input type="text" placeholder="Ваш email" name="email"/>
+          </div>
+          <div class="inputWrapper">
+            <input type="password" placeholder="Пароль" name="pass"/>
+          </div>
+        </div>
+        <button class="greenBox"><span class="iconRegister"></span> Зарегистрироваться</button>
+        <div class="clear"></div>
+      </form>
+    </div>
+    <div class="clear"></div>
+
+    <!-- forgot container -->
+    <div id="containerForgot" class="tabContainer">
+      <form action="/login/passrecover/" method="POST">
+        <h2 class="loginTitle">Восстановления пароля</h2>
+        <div class="loginContent">
+          <div class="inputWrapper">
+            <input type="text" placeholder="Ваш email" name="pass" />
+          </div>
+          <div class="placeholder"></div>
+        </div>
+        <button class="redBox"><span class="iconForgot"></span> Восстановить</button>
+        <div class="clear"></div>
+      </form>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
+  
+  <script src="/public/loginform/js/index.js"></script>
+  <script type="text/javascript">
+    $(function() {
+        $("a.tooltip").tooltip();
+    });
+  </script>
+</body>
+</html>

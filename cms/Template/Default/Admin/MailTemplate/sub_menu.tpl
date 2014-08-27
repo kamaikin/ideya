@@ -1,0 +1,1 @@
+<a href="/admin/mailTemplate/add/">Добавить новый шаблон</a>

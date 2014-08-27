@@ -1,0 +1,64 @@
+// **Global
+
+// To enable SVG gradient support in Opera and IE9
+$experimental-support-for-svg: true;
+// Determines if you want to include magic selectors in your sprites
+$disable-magic-sprite-selectors:true;
+
+// Resolution
+$FHD: 1920px;
+$WXGA-plus: 1680px;
+$HD: 1366px;
+$WXGA: 1280px;
+$XGALandscape: 1024px;
+$XGAPortrait: 768px;
+$VGA: 640px;
+$HVGA: 480px;
+$QVGA: 320px;
+// Vendor Extension Prefixes Placeholders
+$prefixPlaceholders: ":-moz-placeholder", "::-moz-placeholder", "::-webkit-input-placeholder", ":-ms-input-placeholder", ".text-placeholder";
+
+// **Fonts
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic);
+$openSans: 'Open Sans', sans-serif;
+
+// **Sprite
+
+$icons-spacing: 10px;
+@import "icons/*.png";
+
+// --icons sprite--
+$icons: ok_green, money_orange, clip_green, clip_grey, heart_white_big;
+// $blocks: name;
+// $befores: name;
+// $afters: name;
+// $buttons: name;
+
+// **Brief
+
+$baseFontFamily: $openSans;
+$baseFontSize: $base-font-size;
+$baseFontColor: #000;
+$baseLinkColor: #4cd9c0;
+
+$size: 1170px;
+$grid: $size;
+
+$Max: $size;
+$standard: $size;
+$Min: $QVGA;
+
+// --footer--
+$footerMainHeight: 72px;
+$footerHeight: 40px;
+
+// **Formstyle
+
+// --fields--
+// Height
+$fieldHeight: 39px;
+// typography
+$fieldPlaceholderColor: #9a9a9a;
+
+$popupperFormFieldboxHeight: 47px;

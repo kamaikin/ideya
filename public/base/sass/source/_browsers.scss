@@ -1,0 +1,94 @@
+// /* ---------->>> ALL IE <<<-----------*/
+
+.ie{
+    // clear the password reveal button and the clear button in IE10
+    // .hidden_input{
+    //     &::-ms-clear,
+    //     &::-ms-reveal{
+    //         display: none;
+    //     }
+    // }
+}
+
+// /* ---------->>> IE11 <<<-----------*/
+
+.ie11{}
+
+// /* ---------->>> IE10 <<<-----------*/
+
+.ie10{}
+
+// /* ---------->>> IE9 <<<-----------*/
+
+.ie9{}
+
+/* ---------->>> IE8 <<<-----------*/
+
+.ie8{
+    &.home-first,
+    &.home-second,
+    &.home-third,
+    &.home-four{
+        .container-wrap{
+            behavior: url(css/backgroundsize.min.htc);
+        }
+    }
+    .aut-field{
+        line-height: 70px;
+    }
+    .search-field{
+        line-height: $searchHeight;
+    }
+    .field{
+        line-height: $fieldHeight;
+    }
+    .points-line,
+    .points-clolor-line,
+    .profile-ava,
+    .profile-ava-img,
+    .pagenavi,
+    .pagenavi-current,
+    .pagenavi-link,
+    .post-tag-link,
+    .tags-widget-link,
+    .profile-avatar,
+    .profile-image,
+    .post-author-ava,
+    .post-author-pic,
+    .post-sponsors-item,
+    .post-sponsors-item img,
+    .post-addcomment-ava,
+    .post-addcomment-img,
+    .post-comment-bl-ava,
+    .post-comment-bl-img,
+    .post-comment-bl-delete-cloud,
+    .popupper-add-tag-link,
+    .popupper-add-tag-add,
+    .popupper-add-filebox-add-link,
+    .popupper-add-anonim-trigger,
+    .popupper-add-anonim-trigger-pic{
+        behavior: url(css/PIE.htc);
+    }
+    .popupper-add-field{
+        line-height: $popupperFormFieldboxHeight;
+    }
+    .popup-overlay{
+        background: url(../images/required/bg-ie8-dark-opacity-50.png);
+    }
+}
+
+// /* ---------->>> Firefox <<<-----------*/
+
+.ff{}
+
+/* ---------->>> Opera <<<-----------*/
+
+.opera{}
+
+// /* ---------->>> Safari <<<-----------*/
+
+.safari{}
+
+// /* ---------->>> Chrome <<<-----------*/
+
+.chrome{}

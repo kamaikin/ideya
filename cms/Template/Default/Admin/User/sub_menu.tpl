@@ -1,0 +1,1 @@
+<a href="/admin/user/new/">Добавить пользователя</a> <a href="/admin/user/import/">Импортировать пользователей</a> <a href="/admin/user/progressuser/">Достижения пользователей</a> <a href="/admin/user/progressidea/">Достижения идей</a>
