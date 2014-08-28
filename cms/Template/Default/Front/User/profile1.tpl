@@ -28,23 +28,23 @@
                 <div class="profile-info-cell cell"><i class="icon like-icon"></i> {$user_info.summ_post_like}</div>
                 <div class="profile-info-cell cell"><i class="icon comment-icon"></i> {$user_info.comment_count}</div>
             </div>
-            
+
         </div>
-        <div class="profilebox-content">
-            <div class="profile-form-row">
+        <div class="profilebox-content profilebox-content-user">
+            <div class="profile-form-row wrapper">
                 <div class="profile-form-labelbox left">
                     <label for="name" class="profile-form-label">Имя</label>
                 </div>
                 <div class="profile-form-fieldbox">{$user_info.name}</div>
             </div>
-            <div class="profile-form-row">
+            <div class="profile-form-row wrapper">
                 <div class="profile-form-labelbox left">
                     <label for="surname" class="profile-form-label">Фамилия</label>
                 </div>
                 <div class="profile-form-fieldbox">{$user_info.surname}
                 </div>
             </div>
-            <div class="profile-form-row">
+            <div class="profile-form-row wrapper">
                 <div class="profile-form-labelbox left">
                     <label for="email" class="profile-form-label"></label>
                 </div>
@@ -94,7 +94,7 @@
             </article>
             {/foreach}
         </div>
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         	{*Мне нравяться*}
         	{foreach from=$my_lacke_concept item="value"}
             <article class="post">
@@ -125,7 +125,7 @@
         {*$index_acl->isAllowed($user_info.user_role, $index_acl_resourse, 'sponsor')*}
         {if $user_info.user_role == 'sponsor'}
         {*Я спонсирую*}
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         {foreach from=$ya_sponsor_concept item="value"}
         	<article class="post">
                 <div class="post-thumbnail left">
@@ -159,7 +159,7 @@
         	{/foreach}
         </div>
         {/if}
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         {*Меня спонсируют*}
         	{foreach from=$my_sponsor_concept item="value"}
         	<article class="post">

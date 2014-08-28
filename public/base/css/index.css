@@ -2238,12 +2238,16 @@ span.btn:hover {
   margin: 0 34.93333% 0 24%;
 }
 
+.profilebox-content-user .profile-form-fieldbox {
+  line-height: 39px;
+}
+
 .profile-form-row {
   margin-bottom: 21px;
 }
 
 .profile-form-labelbox {
-  width: 26.94805%;
+  width: 83px;
   line-height: 39px;
   font-size: 0.8125em;
   color: #818181;
@@ -2252,7 +2256,7 @@ span.btn:hover {
 }
 
 .profile-form-fieldbox {
-  margin-left: 26.94805%;
+  margin-left: 83px;
 }
 
 .prifile-tab {

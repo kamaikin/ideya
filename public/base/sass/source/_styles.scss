@@ -782,11 +782,16 @@ $profileInfoCell: 100%;
 .profilebox-content{
     margin: 0 rwd-width-val(262px, 750px) 0 rwd-width-val(180px, 750px);
 }
+.profilebox-content-user{
+    .profile-form-fieldbox{
+        line-height: 39px;
+    }
+}
 .profile-form{}
 .profile-form-row{
     margin-bottom: 21px;
 }
-$profileFormWidth: rwd-width-val(83px, 308px);
+$profileFormWidth: 83px;
 .profile-form-labelbox{
     width: $profileFormWidth;
     line-height: $fieldHeight;

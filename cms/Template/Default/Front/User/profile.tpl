@@ -37,10 +37,10 @@
                 <div class="profile-info-cell cell"><i class="icon like-icon"></i> {$user_info.summ_post_like}</div>
                 <div class="profile-info-cell cell"><i class="icon comment-icon"></i> {$user_info.comment_count}</div>
             </div>
-            
+
         </div>
         <div class="profilebox-content">
-            <div class="profile-form-row">
+            <div class="profile-form-row wrapper">
                 <div class="profile-form-labelbox left">
                     <label for="name" class="profile-form-label">Имя</label>
                 </div>
@@ -48,7 +48,7 @@
                     <input type="text" name="name" id="name" class="field" autocomplete="off" tabindex="1" value="{$user_info.name}">
                 </div>
             </div>
-            <div class="profile-form-row">
+            <div class="profile-form-row wrapper">
                 <div class="profile-form-labelbox left">
                     <label for="surname" class="profile-form-label">Фамилия</label>
                 </div>
@@ -56,7 +56,7 @@
                     <input type="text" name="surname" id="surname" class="field" autocomplete="off" tabindex="2" value="{$user_info.surname}">
                 </div>
             </div>
-            <div class="profile-form-row">
+            <div class="profile-form-row wrapper">
                 <div class="profile-form-labelbox left">
                     <label for="email" class="profile-form-label">e-mail</label>
                 </div>
@@ -64,7 +64,7 @@
                     <input type="email" name="email" id="email" class="field" autocomplete="off" tabindex="1" value="{$user_info.email}">
                 </div>
             </div>
-            <div class="profile-form-row">
+            <div class="profile-form-row wrapper">
             	<div class="profile-form-labelbox left"></div>
                 <div class="profile-form-fieldbox">
             		<button class="btn popupper-add-f-btn right">Сохранить</button>
@@ -113,7 +113,7 @@
             </article>
             {/foreach}
         </div>
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         	{*Мне нравяться*}
         	{foreach from=$my_lacke_concept item="value"}
             <article class="post">
@@ -144,7 +144,7 @@
         {*$index_acl->isAllowed($user_info.user_role, $index_acl_resourse, 'sponsor')*}
         {if $user_info.user_role == 'sponsor'}
         {*Я спонсирую*}
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         {foreach from=$ya_sponsor_concept item="value"}
         	<article class="post">
                 <div class="post-thumbnail left">
@@ -178,7 +178,7 @@
         	{/foreach}
         </div>
         {/if}
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         {*Меня спонсируют*}
         	{foreach from=$my_sponsor_concept item="value"}
         	<article class="post">
@@ -212,7 +212,7 @@
             </article>
         	{/foreach}
         </div>
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         {*Мои комментарии*}
         {foreach from=$user_comment item="value"}
         <article class="post">
@@ -242,7 +242,7 @@
 					FileUploader({
 						session_id: '{/literal}{$index_md5_key}{literal}',
 						md5: rand_1,
-						message_error: 'Ошибка при загрузке файла', 
+						message_error: 'Ошибка при загрузке файла',
 						uploadid: '123456789',
 						uploadscript: '/ajax/file/upload/',
 						progres_barr_id: 'avatar_progress_barr',
