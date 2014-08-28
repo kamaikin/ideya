@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <a href="/" class="logo left"><img src="/public/base/images/logo.png" alt=""></a>
-                <form action="#" class="searchbox h-searchbox left">
+                <form action="/search/" class="searchbox h-searchbox left" method="GET">
                     <button class="search-btn left"><i class="icon search_white-icon"></i></button>
                     <div class="search-field-box">
                         <input type="search" name="search" id="search" class="search-field" autocomplete="off" tabindex="1" placeholder="Поиск">
