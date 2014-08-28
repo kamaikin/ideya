@@ -6,7 +6,8 @@
   <title>{$IndexTitle}</title> 
 </head>
 <body>
-	<a href="/">Главная Сайта</a> <a href="/admin/">Админка</a> <a href="/admin/user/">Пользователи</a> <a href="/admin/acl/">Права доступа</a> <a href="/admin/acl/pages/">Страницы доступа</a> <a href="/admin/concept/">Идеи</a> <a href="/admin/mailTemplate/">Шаблоны писем</a>
+	<a href="/">Главная Сайта</a> <a href="/admin/">Админка</a> 
+	{if $index_user_role == 'admin'} <a href="/admin/user/">Пользователи</a>{/if} {if $index_user_role == 'admin'}<a href="/admin/acl/">Права доступа</a>{/if} <a href="/admin/concept/">Идеи</a> {if $index_user_role == 'admin'}<a href="/admin/mailTemplate/">Шаблоны писем</a>{/if}
   <div class="container">
     <div class="info">
       {include file=$includeFileName}

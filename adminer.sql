@@ -17,11 +17,11 @@ INSERT INTO `acl_resourse` (`id`, `resourse`, `group`) VALUES
 (1, 'Front_login_index_index',  'guest'),
 (2, 'Front_login_check_index',  'guest'),
 (3, 'Front_index_index_index',  'user'),
-(4, 'Admin_index_index_index',  'admin'),
+(4, 'admin_index_index_index',  'moderator'),
 (5, 'Front_login_logout_index', 'guest'),
 (13,  'Front_login_register_index', 'guest'),
 (12,  'Front_user_profile_index', 'user'),
-(14,  'admin_index_index_index',  'admin'),
+(50,  'admin_concept_comment_new',  'moderator'),
 (15,  'admin_user_index_index', 'admin'),
 (16,  'admin_user_index_one', 'admin'),
 (17,  'Front_concept_index_index',  'user'),
@@ -33,13 +33,13 @@ INSERT INTO `acl_resourse` (`id`, `resourse`, `group`) VALUES
 (23,  'ajax_file_upload_index', 'guest'),
 (24,  'ajax_file_imageViever_index',  'guest'),
 (25,  'ajax_file_fileDowloader_index',  'guest'),
-(26,  'admin_concept_index_index',  'admin'),
-(27,  'admin_concept_index_one',  'admin'),
-(28,  'admin_concept_concept_moderating_index', 'admin'),
-(29,  'admin_concept_concept_delete_index', 'admin'),
-(30,  'admin_concept_comment_index',  'admin'),
-(31,  'admin_concept_comment_one',  'admin'),
-(32,  'admin_concept_comment_moderating_index', 'admin'),
+(26,  'admin_concept_index_index',  'moderator'),
+(27,  'admin_concept_index_one',  'moderator'),
+(28,  'admin_concept_concept_moderating_index', 'moderator'),
+(29,  'admin_concept_concept_delete_index', 'moderator'),
+(30,  'admin_concept_comment_index',  'moderator'),
+(31,  'admin_concept_comment_one',  'moderator'),
+(32,  'admin_concept_comment_moderating_index', 'moderator'),
 (33,  'admin_concept_comment_delete_index', 'admin'),
 (34,  'admin_mailTemplate_index_index', 'admin'),
 (35,  'admin_mailTemplate_edit_index',  'admin'),
@@ -51,9 +51,11 @@ INSERT INTO `acl_resourse` (`id`, `resourse`, `group`) VALUES
 (41,  'Front_concept_selectvid_index',  'user'),
 (42,  'Front_text_index_one', 'user'),
 (43,  'ajax_concept_likeadd_index', 'user'),
-(44,  'ajax_concept_sponsoradd_index',  'user'),
+(44,  'ajax_concept_sponsoradd_index',  'sponsor'),
 (45,  'Front_tags_index_one', 'user'),
-(46,  'Front_concept_deletecomment_index',  'user');
+(46,  'Front_concept_deletecomment_index',  'user'),
+(47,  'Front_user_index_one', 'user'),
+(48,  'Front_search_index_index', 'user');
 
 DROP TABLE IF EXISTS `concept`;
 CREATE TABLE `concept` (
@@ -88,13 +90,13 @@ INSERT INTO `concept` (`id`, `user_id`, `anonimus`, `name`, `problem`, `solution
 (4, 1,  'n',  'gggg', 'hhhhhhhhhhh',  'jjjjjjjjj',  'kkkkkkkkkkkkk',  '58618108b1ab678426458a45df3bd37c.jpg', 1406724001, 1,  'y',  1407140127, 1,  '', '', '', '', '', '', 5,  10, 'n'),
 (5, 1,  'n',  'Проверка идеи',  'Проверка идеи',  'Проверка идеи',  'Проверка идеи',  '16e79c395dcd7a53d1482c8d843c7bdb.jpg', 1406791189, 4,  'y',  1407140660, 1,  'Это файл PDF', 'fc2061e4fdc468fae0f462e786a44171.pdf', '', '', '', '', 0,  1,  'n'),
 (6, 1,  'n',  '1111111111111111', '22222222222222', '333333333333', '4444444444444',  'c45aea4079bd5aee6e9dddb4e3367018.jpg', 1406813575, 3,  'y',  1407140661, 1,  '13-sbornik-22-luchshix-form-vxoda.zip',  'dd8e49d091a808e987af9d4228350882.zip', '22-sbornik-22-luchshix-form-vxoda.zip',  'ad4ad39b26ed505994f8ae472d6c6813.zip', '22-sbornik-22-luchshix-form-vxoda.zip',  'ad4ad39b26ed505994f8ae472d6c6813.zip', 4,  2,  'n'),
-(7, 159,  'n',  'йййй йййй',  'йййй йййй',  'йййй йййй',  'йййй йййй',  '7bea1cacedd1cbc672f3797ce9cedd36.jpg', 1409133853, 0,  'n',  0,  0,  'кладовая идей.pdf',  'fc2061e4fdc468fae0f462e786a44171.pdf', '', '', '', '', 0,  0,  'n'),
-(8, 159,  'y',  '222 222',  '222222222',  '2222222222', '2222222222222',  'c3e18c4f49e61793659e1e06cfd9803f.jpg', 1409134715, 0,  'n',  0,  0,  'FGCS_medtronic_ideas_tz_v1.pdf', 'bd57efcada70d57bd2021db9d1a0de61.pdf', '', '', '', '', 0,  0,  'n'),
-(9, 159,  'n',  '3333333333333',  '333333333333', '3333333333333',  '3333333333', 'd9ccb2491393f97bd281b5d0c043aa86.jpg', 1409135278, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n'),
-(10,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135500, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n'),
-(11,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135545, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n'),
-(12,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135603, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n'),
-(13,  159,  'y',  '55555555555',  '55555555555',  '555555555',  '55555555555555', '6128efe24df823a088e8ec168bac480d.jpg', 1409136028, 0,  'n',  0,  0,  '13-sbornik-22-luchshix-form-vxoda.zip',  'dd8e49d091a808e987af9d4228350882.zip', '', '', '', '', 8,  0,  'n');
+(7, 159,  'n',  'йййй йййй',  'йййй йййй',  'йййй йййй',  'йййй йййй',  '7bea1cacedd1cbc672f3797ce9cedd36.jpg', 1409133853, 0,  'y',  1409224534, 161,  'кладовая идей.pdf',  'fc2061e4fdc468fae0f462e786a44171.pdf', '', '', '', '', 0,  0,  'n'),
+(8, 159,  'y',  '222 222',  '222222222',  '2222222222', '2222222222222',  'c3e18c4f49e61793659e1e06cfd9803f.jpg', 1409134715, 0,  'y',  1409224533, 161,  'FGCS_medtronic_ideas_tz_v1.pdf', 'bd57efcada70d57bd2021db9d1a0de61.pdf', '', '', '', '', 0,  0,  'n'),
+(9, 159,  'n',  '3333333333333',  '333333333333', '3333333333333',  '3333333333', 'd9ccb2491393f97bd281b5d0c043aa86.jpg', 1409135278, 0,  'y',  1409224532, 161,  '', '', '', '', '', '', 0,  0,  'n'),
+(10,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135500, 0,  'y',  1409224531, 161,  '', '', '', '', '', '', 0,  0,  'n'),
+(11,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135545, 0,  'y',  1409224530, 161,  '', '', '', '', '', '', 0,  0,  'n'),
+(12,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135603, 0,  'y',  1409224459, 161,  '', '', '', '', '', '', 0,  0,  'n'),
+(13,  159,  'y',  '55555555555',  '55555555555',  '555555555',  '55555555555555', '6128efe24df823a088e8ec168bac480d.jpg', 1409136028, 0,  'y',  1409224457, 161,  '13-sbornik-22-luchshix-form-vxoda.zip',  'dd8e49d091a808e987af9d4228350882.zip', '', '', '', '', 8,  0,  'n');
 
 DROP TABLE IF EXISTS `concept_comment`;
 CREATE TABLE `concept_comment` (
@@ -120,11 +122,11 @@ INSERT INTO `concept_comment` (`id`, `concept_id`, `user_id`, `user_avatar`, `ti
 (5, 1,  1,  '', '', 'А теперь со счетчиком!!!!!!! А теперь со счетчиком!!!!!!! А теперь со счетчиком!!!!!!! А теперь со счетчиком!!!!!!! А теперь со счетчиком!!!!!!! А теперь со счетчиком!!!!!!! А теперь со счетчиком!!!!!', 1406794330, 0,  'y',  1407150091, 1),
 (6, 4,  1,  '', '', ' c.id as id, c.name as name, c.comment_count as comment_count, c.foto as foto, c.anonimus as anonimus  c.id as id, c.name as name, c.comment_count as comment_count, c.foto as foto, c.anonimus as anoni', 1406794397, 0,  'y',  1407150094, 1),
 (7, 3,  1,  '', '', ' c.id as id, c.name as name, c.comment_count as comment_count, c.foto as foto, c.anonimus as anonimus  c.id as id, c.name as name, c.comment_count as comment_count, c.foto as foto, c.anonimus as anoni', 1406794413, 0,  'y',  1407150096, 1),
-(8, 6,  1,  '', '', 'Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий До', 1409048588, 0,  'n',  0,  0),
-(9, 5,  159,  '', '', 'Проверка комментария от пользователя! простого пользователя с правами User.',  1409120452, 0,  'n',  0,  0),
-(19,  1,  159,  '', '', 'уууууууууууууууууууууууууууу', 1409127530, 0,  'n',  0,  0),
-(18,  6,  159,  '', '', 'Еще один комментарий юзера', 1409123416, 0,  'n',  0,  0),
-(17,  6,  159,  '', '', 'Это юзер комментировал))))', 1409123167, 0,  'n',  0,  0);
+(8, 6,  1,  '', '', 'Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий Добавляем комментарий До', 1409048588, 0,  'y',  1409224516, 161),
+(9, 5,  159,  '', '', 'Проверка комментария от пользователя! простого пользователя с правами User.',  1409120452, 0,  'y',  1409224515, 161),
+(19,  1,  159,  '', '', 'уууууууууууууууууууууууууууу', 1409127530, 0,  'y',  1409224505, 161),
+(18,  6,  159,  '', '', 'Еще один комментарий юзера', 1409123416, 0,  'y',  1409224510, 161),
+(17,  6,  159,  '', '', 'Это юзер комментировал))))', 1409123167, 0,  'y',  1409224514, 161);
 
 DROP TABLE IF EXISTS `concept_events`;
 CREATE TABLE `concept_events` (
@@ -260,7 +262,7 @@ CREATE TABLE `temp` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `temp` (`id`, `key`, `value`, `datetime`) VALUES
-(1, 'tags_cloud', '<li class=\"tags-widget-item\"><a href=\"/tags/1111111111.html\" class=\"tags-widget-link\">1111111111</a></li><li class=\"tags-widget-item\"><a href=\"/tags/222222222222.html\" class=\"tags-widget-link\">222222222222</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test.html\" class=\"tags-widget-link\">проверка</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test1.html\" class=\"tags-widget-link\">Проверка1</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_eshe_teg.html\" class=\"tags-widget-link\">Это еще тег</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_teg.html\" class=\"tags-widget-link\">Это тег</a></li>',  1409143828);
+(1, 'tags_cloud', '<li class=\"tags-widget-item\"><a href=\"/tags/1111111111.html\" class=\"tags-widget-link\">1111111111</a></li><li class=\"tags-widget-item\"><a href=\"/tags/222222222222.html\" class=\"tags-widget-link\">222222222222</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test.html\" class=\"tags-widget-link\">проверка</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test1.html\" class=\"tags-widget-link\">Проверка1</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_eshe_teg.html\" class=\"tags-widget-link\">Это еще тег</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_teg.html\" class=\"tags-widget-link\">Это тег</a></li>',  1409227575);
 
 DROP TABLE IF EXISTS `users_events`;
 CREATE TABLE `users_events` (
@@ -318,9 +320,9 @@ CREATE TABLE `user_data` (
 
 INSERT INTO `user_data` (`id`, `user_id`, `nick_name`, `name`, `surname`, `patronymic`, `avatar`, `email`, `register_date`, `last_visit_date`, `user_role`, `points`) VALUES
 (1, 1,  'Владимир', 'Владимир', 'Камайкин', 'Анатольевич',  'a02d0017e5e9fcd2707c9f4427d0b9c9.jpg', 'kamaikin@gmail.com', 1405598414, 1409053525, 'admin',  56),
-(159, 159,  'user', 'user', 'userovich',  '', 'bb691b057b9ff88319877be24b9cf8fa.jpg', 'user@user.ru', 0,  1409119757, 'user', 93),
-(160, 160,  'sponsor',  'sponsor',  'sponsor',  '', '', 'sponsor@sponsor.ru', 0,  1409053860, 'sponsor',  0),
-(161, 161,  'moderator',  'moderator',  'moderator',  '', '981a13f0820b03ebc97522eb2fffcd31.jpg', 'moderator@moderator.ru', 0,  1409056079, 'moderator',  0),
+(159, 159,  'user', 'user', 'userovich',  '', 'bb691b057b9ff88319877be24b9cf8fa.jpg', 'user@user.ru', 0,  1409207597, 'user', 93),
+(160, 160,  'sponsor',  'sponsor',  'sponsor',  '', '', 'sponsor@sponsor.ru', 0,  1409220223, 'sponsor',  0),
+(161, 161,  'moderator',  'moderator',  'moderator',  '', '981a13f0820b03ebc97522eb2fffcd31.jpg', 'moderator@moderator.ru', 0,  1409224010, 'moderator',  0),
 (162, 162,  'admin',  'admin',  'admin',  '', '', 'admin@admin.ru', 0,  1409055146, 'admin',  0);
 
--- 2014-08-27 12:19:47
+-- 2014-08-28 11:17:32
