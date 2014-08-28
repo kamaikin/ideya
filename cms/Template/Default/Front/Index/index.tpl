@@ -35,6 +35,10 @@
                 <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
             </div>
         </article>
+        {foreachelse}
+        <article class="post">
+        Ничего не найдено.
+        </article>
         {/foreach}
     </div>
     {/if}
@@ -68,6 +72,10 @@
                     <li class="info-list-item post-comment">{$value.comment_count}</li>
                 </ul>
             </div>
+        </article>
+        {foreachelse}
+        <article class="post">
+        Ничего не найдено.
         </article>
         {/foreach}
     </div>
