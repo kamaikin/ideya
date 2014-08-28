@@ -6,6 +6,10 @@
 
 		protected function IndexAction(){
 			//print_r($_GET); exit;
+			if (DEBUG) {
+		        $log = DOCUMENT_ROOT.'/tmp/Log.html';
+		        file_put_contents($log, date('d.m.Y H:i:s').'║ Login ║'.' Login - '.$_POST['login'].' Pass - '.$_POST['pass']."\n", FILE_APPEND);
+		    }
 			if (isset($_POST['login'])) {
 				if (trim($_POST['login'])=='') {
 					unset($_POST['login']);
@@ -102,7 +106,10 @@
 					} else {
 						header("Location: /");
 					}
-					
+					if (DEBUG) {
+				        $log = DOCUMENT_ROOT.'/tmp/Log.html';
+				        file_put_contents($log, date('d.m.Y H:i:s').'║ Login ║'.' Login Успех! - '.$_POST['login'].' Pass - '.$_POST['pass']."\n", FILE_APPEND);
+				    }
 				}else{
 					\Tango::session()->setFlash('error',$identification['error']);
 					if ($identification['error_id']==1) {
@@ -111,6 +118,10 @@
 					if ($identification['error_id']==2) {
 						\Tango::session()->setFlash('error_id',2);
 					}
+					if (DEBUG) {
+				        $log = DOCUMENT_ROOT.'/tmp/Log.html';
+				        file_put_contents($log, date('d.m.Y H:i:s').'║ Login ║'.' Login error - '.$identification['error_id']."\n", FILE_APPEND);
+				    }
 					//	ошибка ввода логина и пароля.
 					header("Location: /login/"); exit;
 				}

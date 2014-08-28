@@ -15,6 +15,20 @@
 				$this->_view['index_user_id']=$user_info['user_id'];
 				$this->_view['index_md5_key']=md5(time());
 				$this->_view['index_user_role']=$user_info['user_role'];
+				//	Посчитать  процент заполнения....
+				$start=round($user_info['points']/100)*100;
+				$stop = $start + 200;
+				for ($i=$start; $i < $stop;) { 
+					if ($user_info['points'] < $i) {
+						$this->_view['index_points'] = $user_info['points'];
+						$this->_view['index_points_max'] = $i;
+						$p = $i / 100;
+						$p = round($user_info['points']/$p);
+						$this->_view['index_points_procent'] = $p;
+						break;
+					}
+					$i = $i + 50;
+				}
 			}else{
 				$role=\Tango::config()->get('Acl.role.default'); 
 				$this->_view['index_autorize']=FALSE;
@@ -33,7 +47,7 @@
 		    		\Tango::session()->setFlash('error','Не достаточно прав пользователя');
 					\Tango::session()->setFlash('error_id',3);
 		    	}
-		    	//print_r($acl_resourse);
+		    	//print_r($acl_resourse); exit;
 		    	header("Location: /login"); exit;
 		    }
 			if (method_exists($this, $action)) {

@@ -12,9 +12,9 @@
         {if $Concept_data.foto==''}<img src="/public/img/nophoto.jpg" alt="" class="post-thumbnail-img">{else}<img src="/i/126/{$Concept_data.foto}" alt="" class="post-thumbnail-img">{/if}
         <div class="post-author tac">
             <div class="post-author-pic">
-                <img src="{if $Concept_data.anonimus == 'y'}/public/img/nophoto.jpg{else}{if $Concept_data.user_avatar!=''}/i/41/{$Concept_data.user_avatar}{else}/public/img/nophoto.jpg{/if}{/if}" alt="" class="post-author-ava">
+                {if $Concept_data.anonimus == 'n'}<a href="/user/profile/{$Concept_data.user_id}.html">{/if}<img src="{if $Concept_data.anonimus == 'y'}/public/img/nophoto.jpg{else}{if $Concept_data.user_avatar!=''}/i/41/{$Concept_data.user_avatar}{else}/public/img/nophoto.jpg{/if}{/if}" alt="" class="post-author-ava">{if $Concept_data.anonimus == 'n'}</a>{/if}
             </div>
-            <a href="#" class="post-author-link">{if $Concept_data.anonimus == 'n'}{$Concept_data.surname} {$Concept_data.name}{else}Аноним{/if}</a>
+            {if $Concept_data.anonimus == 'n'}<a href="/user/profile/{$Concept_data.user_id}.html" class="post-author-link">{/if}{if $Concept_data.anonimus == 'n'}{$Concept_data.surname} {$Concept_data.name}{else}Аноним{/if}{if $Concept_data.anonimus == 'n'}</a>{/if}
         </div>
     </div>
     <div class="post-info right">
@@ -45,7 +45,7 @@
             <li class="dib post-sponsors-title">Спонсоры:</li>
             {foreach from=$Concept_data.sponsors item="value"}
             <li class="dib post-sponsors-item">
-                <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" class="sponsors-tip-js" data-tip_message="{$value.name} {$value.surname}" data-tip_class="sponsors-tip">
+                <a href="/user/profile/{$value.user_id}.html"><img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" class="sponsors-tip-js" data-tip_message="{$value.name} {$value.surname}" data-tip_class="sponsors-tip"></a>
             </li>
             {/foreach}
         </ul>

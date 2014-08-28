@@ -38,16 +38,16 @@
                 </form>
                 <span class="add h-add left popup-link popup-link-js" data-popup="add">Предложить идею</span>
                 <div class="profile h-profile right">
-                    <div class="profile-ava loading left"><img src="{if $index_user_avatar!=''}/i/41/{$index_user_avatar}{else}/public/img/nophoto.jpg{/if}" alt="" class="profile-ava-img"></div>
+                    <div class="profile-ava loading left"><a href="/user/profile/"><img src="{if $index_user_avatar!=''}/i/41/{$index_user_avatar}{else}/public/img/nophoto.jpg{/if}" alt="" class="profile-ava-img"></a></div>
                     <div class="profile-content ellipsis">
                         {$index_user_login}
                     </div>
                 </div>
                 <div class="points h-points right">
-                    <div class="points-min left">135</div>
-                    <div class="points-max right">200</div>
+                    <div class="points-min left">{$index_points}</div>
+                    <div class="points-max right">{$index_points_max}</div>
                     <div class="points-line">
-                        <div class="points-clolor-line" style="width: 60%"></div>
+                        <div class="points-clolor-line" style="width: {$index_points_procent}%"></div>
                     </div>
                 </div>
             </div>

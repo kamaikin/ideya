@@ -55,11 +55,12 @@
 				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
 				$SQL1=\Tango::sql()->select($query, array($value['id']));
 				if ($SQL1!=array()) {
-					$this->_view['data']['sponsors']='y';
+					$this->_view['data'][$key]['sponsors']='y';
 				} else {
-					$this->_view['data']['sponsors']='n';
+					$this->_view['data'][$key]['sponsors']='n';
 				}
 			}
+			//print_r($this->_view['data']); echo'<hr>';
 			//	Получаем полное количество записей
 			$SQL = \Tango::sql()->select($query_count);
 			$count = $SQL[0]['count'];

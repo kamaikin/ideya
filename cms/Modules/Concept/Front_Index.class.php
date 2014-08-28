@@ -113,7 +113,7 @@
 				//print_r($SQL1);
 				$this->_view['Concept_data']['tags']=$SQL1;
 				//	Получаем спонсоров
-				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
+				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname, ud.user_id as user_id FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
 				$SQL1=\Tango::sql()->select($query, array($SQL[0]['id']));
 				$this->_view['Concept_data']['sponsors']=$SQL1;
 				//	Лайкал этот пользователь эту идею или нет?
