@@ -29,7 +29,7 @@ function recursiveAutoload($dir, $file){
         if($value!='.' && $value!='..'){
           $dir1=$dir.'/'.$value;
           if (is_dir($dir1)) {
-            if ($value!='Template' && $value!='Config' && $value!='Smarty' && $value!='TangoPHP' && $value!='TangoPlugins' && $value!='Modules' && $value!='Controllers') {
+            if ($value!='Template' && $value!='Config' && $value!='Smarty' && $value!='TangoPHP' && $value!='TangoPlugins' && $value!='Modules' && $value!='Controllers' && $value!='FileStorage') {
               AutoloadLog('Ищем - '.$dir1);
               $filepath=$dir1.'/'.$file;
               if (file_exists($filepath)){
