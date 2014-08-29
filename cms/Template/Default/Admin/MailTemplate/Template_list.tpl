@@ -1,35 +1,27 @@
-<hr>{include file="MailTemplate/sub_menu.tpl"}<hr>
-<h1>{$IndexTitle}</h1>
-<table>
-	<tr>
-		<td>id</td>
-		<td width="20px"></td>
-		<td>Название</td>
-		<td width="20px"></td>
-		<td>Ключ</td>
-		<td width="20px"></td>
-		<td>Описание</td>
-		<td width="20px"></td>
-		<td>Тема письма</td>
-		<td width="20px"></td>
-		<td>Действия</td>
-	</tr>
-	{foreach from=$data item="Value"}
-	<tr>
-		<td>{$Value.id}</td>
-		<td width="20px"></td>
-		<td>{$Value.title}</td>
-		<td width="20px"></td>
-		<td>{$Value.name}</td>
-		<td width="20px"></td>
-		<td>{$Value.description}</td>
-		<td width="20px"></td>
-		<td>{$Value.subject}</td>
-		<td width="20px"></td>
-		<td>
-			<a href="/admin/mailTemplate/edit/?id={$Value.id}">Редактировать</a>
-			<a href="/admin/mailTemplate/delete/?id={$Value.id}">Удалить</a>
-		</td>
-	</tr>
-	{/foreach}
+{include file="MailTemplate/sub_menu.tpl"}
+<h1 class="admin-title">{$IndexTitle}</h1>
+<table class="admin-table">
+    <tr>
+        <th>id</th>
+        <th>Название</th>
+        <th>Ключ</th>
+        <th>Описание</th>
+        <th>Тема письма</th>
+        <th colspan="2">Действия</th>
+    </tr>
+    {foreach from=$data item="Value"}
+    <tr>
+        <td>{$Value.id}</td>
+        <td>{$Value.title}</td>
+        <td>{$Value.name}</td>
+        <td>{$Value.description}</td>
+        <td>{$Value.subject}</td>
+        <td>
+            <a href="/admin/mailTemplate/edit/?id={$Value.id}"><i class="fa fa-pencil" title="Редактировать"></i></a>
+        </td>
+        <td>
+            <a href="/admin/mailTemplate/delete/?id={$Value.id}"><i class="fa fa-trash" title="Удалить"></i></a>
+        </td>
+    </tr>
+    {/foreach}
 </table>
