@@ -1,20 +1,16 @@
-<hr>{include file="User/sub_menu.tpl"}<hr>
-<center>
-<h1>Импортировать пользователей</h1>
+{include file="User/sub_menu.tpl"}
+<h1 class="admin-title">Импортировать пользователей</h1>
 {if $formView == 'form'}
 <form enctype="multipart/form-data" action="/admin/user/import/" method="post">
-Выбирите файл с информацией о пользователях: <input name="userfile" type="file">(.xls)<br />
-<table>
+<table class="admin-import-user">
 	<tr>
-		<td></td>
-		<td width="20px"></td>
-		<td></td>
+		<td>Выбирите файл с информацией о пользователях:</td>
+		<td><input name="userfile" type="file">(.xls)</td>
 	</tr>
 	<tr>
 		<td>Права пользователей:</td>
-		<td width="20px"></td>
 		<td>
-			<select>
+			<select class="admin-field">
 				<option value="0">Определены в файле</option>
 				<option value="1">Пользователь</option>
 				<option value="2">Спонсор</option>
@@ -23,19 +19,20 @@
 			</select>
 		</td>
 	</tr>
-</table><br>
-<input type="submit" value="Импортировать список пользователей">
+</table>
+<p class="tac">
+	<input type="submit" class="admin-btn" value="Импортировать список пользователей">
+</p>
 </form>
 {/if}
 
 {if $formView == 'result'}
-<h2>Данные импортированы успешно</h2>
+<h2 class="admin-title">Данные импортированы успешно</h2>
 {foreach from=$data item="value"}
 <p>{$value}</p>
 {/foreach}
 {/if}
 
 {if $formView == 'error'}
-<h2>{$info}</h2>
+<h2 class="admin-title">{$info}</h2>
 {/if}
-</center>

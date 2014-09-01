@@ -1,42 +1,36 @@
-<hr>{include file="User/sub_menu.tpl"}<hr>
-<center>
-<h1>Добавить пользователя</h1>
+{include file="User/sub_menu.tpl"}
+<h1 class="admin-title">Добавить пользователя</h1>
 {if $error}<h2 style="color: #F00;">{$error}</h2>{/if}
 <form enctype="multipart/form-data" action="/admin/user/new/" method="post">
-<table>
+<table class="admin-add-user">
 	<tr>
 		<td>E-mail:</td>
-		<td width="20px"></td>
 		<td>
-			<input type="text" name="email" value="{$smarty.post.email}" />
+			<input type="text" name="email" value="{$smarty.post.email}" class="admin-field">
 		</td>
 	</tr>
 	<tr>
 		<td>Фамилия:</td>
-		<td width="20px"></td>
 		<td>
-			<input type="text" name="surname" value="{$smarty.post.surname}" />
+			<input type="text" name="surname" value="{$smarty.post.surname}" class="admin-field">
 		</td>
 	</tr>
 	<tr>
 		<td>Имя:</td>
-		<td width="20px"></td>
 		<td>
-			<input type="text" name="name" value="{$smarty.post.name}" />
+			<input type="text" name="name" value="{$smarty.post.name}" class="admin-field">
 		</td>
 	</tr>
 	<tr>
 		<td>Отчество:</td>
-		<td width="20px"></td>
 		<td>
-			<input type="text" name="patronymic" value="{$smarty.post.patronymic}" />
+			<input type="text" name="patronymic" value="{$smarty.post.patronymic}" class="admin-field">
 		</td>
 	</tr>
 	<tr>
 		<td>Права пользователя:</td>
-		<td width="20px"></td>
 		<td>
-			<select name="role">
+			<select name="role" class="admin-field">
 				<option value="user" {if $smarty.post.role == 'user'}selected{/if}>Пользователь</option>
 				<option value="sponsor" {if $smarty.post.role == 'sponsor'}selected{/if}>Спонсор</option>
 				<option value="moderator" {if $smarty.post.role == 'moderator'}selected{/if}>Модератор</option>
@@ -45,6 +39,7 @@
 		</td>
 	</tr>
 </table><br>
-<input type="submit" value="Создать">
+<p class="tac">
+	<input type="submit" value="Создать" class="admin-btn">
+</p>
 </form>
-</center>

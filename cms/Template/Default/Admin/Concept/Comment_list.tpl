@@ -1,34 +1,29 @@
-<hr><a href="/admin/concept/comment/">Комментарии к идеям</a> <a href="/admin/concept/comment/new/">Комментарии идей на модерацию</a><hr>
-<h1>{$IndexTitle}</h1>
-<table>
+<ul class="admin-users-nav">
+    <li class="admin-users-nav-item"><a href="/admin/concept/comment/">Комментарии к идеям</a></li>
+    <li class="admin-users-nav-item"> <a href="/admin/concept/comment/new/">Комментарии идей на модерацию</a></li>
+</ul>
+<h1 class="admin-title">{$IndexTitle}</h1>
+<table class="admin-table">
 	<tr>
-		<td>id Комментария</td>
-		<td width="20px"></td>
-		<td>Автор</td>
-		<td width="20px"></td>
-		<td>Текст</td>
-		<td width="20px"></td>
-		<td>Модерировано</td>
-		<td width="20px"></td>
-		<td>Добавлено</td>
-		<td width="20px"></td>
-		<td>Действия</td>
+		<th>id Комментария</th>
+		<th>Автор</th>
+		<th>Текст</th>
+		<th>Модерировано</th>
+		<th>Добавлено</th>
+		<th colspan="2">Действия</th>
 	</tr>
 	{foreach from=$data item="Value"}
 	<tr {if $Value.moderating == 'n'}style="background-color: #F00;"{/if}>
 		<td>{$Value.id}</td>
-		<td width="20px"></td>
 		<td>{$Value.nick_name}</td>
-		<td width="20px"></td>
 		<td>{$Value.body}</td>
-		<td width="20px"></td>
 		<td>{if $Value.moderating == 'n'}Нет{else}Да{/if}</td>
-		<td width="20px"></td>
 		<td>{$Value.date|date_format:"%d-%m-%y %T"}</td>
-		<td width="20px"></td>
 		<td>
-			<a href="/admin/concept/comment_delete/?id={$Value.id}&concept_id={$smarty.get.concept_id}">Удалить</a>
-			{if $Value.moderating == 'n'}<a href="/admin/concept/comment_moderating/?id={$Value.id}&page={$smarty.get.url}&concept_id={$smarty.get.concept_id}">Разрешить</a>{/if}
+			<a href="/admin/concept/comment_delete/?id={$Value.id}&concept_id={$smarty.get.concept_id}"><i class="fa fa-trash" title="Удалить"></i></a>
+		</td>
+		<td>
+			{if $Value.moderating == 'n'}<a href="/admin/concept/comment_moderating/?id={$Value.id}&page={$smarty.get.url}&concept_id={$smarty.get.concept_id}"><i class="fa fa-check-circle" title="Разрешить"></i></a>{/if}
 		</td>
 	</tr>
 	{/foreach}
