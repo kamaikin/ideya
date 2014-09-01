@@ -87,14 +87,16 @@
 			$this->_view['my_lacke_concept']=$SQL;
 			//	Меня спонсируют
 			//	Получить мои идеи и данные спонсоров...
-			$query="SELECT c.foto as foto, 
+			$query="SELECT c.id as id,
+				c.foto as foto, 
 				c.points as points, 
 				c.post_like as post_like, 
 				c.comment_count as comment_count, 
 				c.name as name, c.date as `date`,
 				ud.avatar as user_avatar,
 				ud.name as user_name,
-				ud.surname as user_surname  FROM concept c JOIN concept_sponsor cs ON cs.concept_id = c.id JOIN user_data ud ON ud.user_id = cs.user_id WHERE c.user_id=?";
+				ud.surname as user_surname,
+				ud.user_id as user_id  FROM concept c JOIN concept_sponsor cs ON cs.concept_id = c.id JOIN user_data ud ON ud.user_id = cs.user_id WHERE c.user_id=?";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['my_sponsor_concept']=$SQL;
 			$this->_view['includeFileName']='User/profile.tpl';
