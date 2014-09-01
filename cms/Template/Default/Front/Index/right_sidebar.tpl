@@ -3,7 +3,7 @@
         <h2 class="widgettitle tac">Зал славы</h2>
         <ul class="hall_of_fame-list">
         {foreach from=$RightSidebarIdea item="value" key="key"}
-            <li class="hall_of_fame-item {$RightSidebarIdea_array[$key]}">{$value.name}</li>
+            <li class="hall_of_fame-item {$RightSidebarIdea_array[$key]}"><a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a></li>
         {/foreach}
         </ul>
         <div class="more-ideas tac">
