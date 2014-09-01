@@ -61,15 +61,15 @@
                     <label for="email" class="profile-form-label">e-mail</label>
                 </div>
                 <div class="profile-form-fieldbox">
-                    <input type="email" name="email" id="email" class="field" autocomplete="off" tabindex="1" value="{$user_info.email}">
+                    <input type="email" name="email" id="email" class="field" autocomplete="off" tabindex="1" value="{$user_info.email}" disabled>
                 </div>
             </div>
-            <div class="profile-form-row wrapper">
+            {*<div class="profile-form-row wrapper">
             	<div class="profile-form-labelbox left"></div>
                 <div class="profile-form-fieldbox">
             		<button class="btn popupper-add-f-btn right">Сохранить</button>
             	</div>
-            </div>
+            </div>*}
         </div>
     </div>
     </form>
@@ -230,6 +230,14 @@
 <script type="text/javascript">
 	{literal}
 	$(function() {
+        $("#name").blur(function(){
+          var POST = 'name=' + $("#name").val();
+          $.post('/user/profile/', POST, function(data){})
+        });
+        $("#surname").blur(function(){
+          var POST = 'surname=' + $("#surname").val();
+          $.post('/user/profile/', POST, function(data){})
+        });
 		$("#avatar_upload").click(function(){
 			$("#avatar_upload_input").trigger('click');
 			$("#avatar_upload_input").change(function () {

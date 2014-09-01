@@ -42,6 +42,9 @@
 				\Tango::session()->set('userInfo', $user_info);
 				$this->_view['index_user_login']=$user_info['surname'].' '.$user_info['name'];
 				$this->_view['index_user_avatar']=$avatar_name;
+				if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+					exit;
+				}
 			}
 			//	Количество моих комментариев
 			$this->_view['user_info']=$user_info;

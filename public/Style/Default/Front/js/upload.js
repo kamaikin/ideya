@@ -104,6 +104,8 @@ function Upload(files, position, options, id){
             //alert($("#img_foto").attr("src"));
             $("#img_avatar").attr("src", src);
             $("#avatar_progress").hide();
+            var POST = 'avatar_name=' + myObject.file_name;
+            $.post('/user/profile/', POST, function(data){})
           }
           if (options['param1']=='foto') {
             var src = '/i/150/' + myObject.file_name
