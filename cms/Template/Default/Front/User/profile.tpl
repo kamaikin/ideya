@@ -10,6 +10,7 @@
 				{else}
 					<img src="/i/150/{$user_info.avatar}" alt="" class="profile-image" id="img_avatar">
 				{/if}
+                <div class="profile-change-avatar"><a href="#" class="icon remove-icon"></a></div>
             </div>
             <ul class="profile-pic-bar tac">
                 <li class="profile-pic-bar-item fileload dib">

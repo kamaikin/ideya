@@ -332,10 +332,7 @@ $postTagHeight: 22px;
 .pagenavi {
     position: relative;
 
-    @include rwd-width(570px, 765px);
-    margin: auto;
     border-radius: 8px;
-
     background-color: #dedede;
 
     text-align: center;
@@ -697,6 +694,30 @@ $postTagHeight: 22px;
 .profile-image{
     position: relative;
     border-radius: 50%;
+}
+.profile-avatar{
+    cursor: pointer;
+    &:hover{
+        .profile-change-avatar{
+            display: block;
+        }
+    }
+}
+.profile-change-avatar{
+    position: absolute;
+    top: 0;
+    left: -1%;
+
+    display: none;
+
+    width: 102%;
+    height: 101%;
+
+    background-color: rgba(255,255,255,.7);
+    border-radius: 50%;
+    .icon{
+        @include absCenter;
+    }
 }
 .profile-pic-bar{
     margin-top: 11px;
