@@ -154,9 +154,9 @@
 			//	Найти три идеи с максимальной популярностью
 			$query="SELECT id, name FROM concept c";
 			if (\Tango::config()->get('Moderating.user.posts')=='pre') {
-				$query.=" WHERE c.moderating='y' ORDER BY c.`post_like` DESC LIMIT 0, ".\Tango::config()->get('Concept.right.sidebar');
+				$query.=" WHERE c.moderating='y' ORDER BY c.`points` DESC LIMIT 0, ".\Tango::config()->get('Concept.right.sidebar');
 			}else{
-				$query.=" WHERE 1=1 ORDER BY c.`post_like` DESC LIMIT 0, ".\Tango::config()->get('Concept.right.sidebar');
+				$query.=" WHERE 1=1 ORDER BY c.`points` DESC LIMIT 0, ".\Tango::config()->get('Concept.right.sidebar');
 			}
 			$SQL = \Tango::sql()->select($query);
 			$this->_view['RightSidebarIdea'] = $SQL;
