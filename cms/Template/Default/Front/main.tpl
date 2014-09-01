@@ -33,7 +33,7 @@
                 <form action="/search/" class="searchbox h-searchbox left" method="GET">
                     <button class="search-btn left"><i class="icon search_white-icon"></i></button>
                     <div class="search-field-box">
-                        <input type="search" name="search" id="search" class="search-field" autocomplete="off" tabindex="1" placeholder="Поиск">
+                        <input type="search" name="search" id="search" class="search-field" autocomplete="off" tabindex="1" placeholder="Поиск" {if $smarty.get.search}value="{$smarty.get.search}"{/if}>
                     </div>
                 </form>
                 <span class="add h-add left popup-link popup-link-js" data-popup="add">Предложить идею</span>

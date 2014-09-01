@@ -19,7 +19,7 @@
 			$user_info=\Tango::session()->get('userInfo');
 			$user_id = $user_info['id'];
 			$start=$page*$numberRecords-$numberRecords;
-			$query_count="SELECT count(`id`) as count FROM concept ";
+			$query_count="SELECT count(c.`id`) as count FROM concept AS c JOIN user_data AS ud ON ud.user_id=c.user_id JOIN concept_comment AS cc ON c.id=cc.concept_id";
 			$query="SELECT c.id as id, 
 					c.name as name, 
 					c.comment_count as comment_count, 
@@ -35,13 +35,13 @@
 					c.file_2 as file_2,
 					c.file_3_name as file_3_name,
 					c.file_3 as file_3 
-					FROM concept AS c JOIN user_data AS ud ON ud.user_id=c.user_id ";
+					FROM concept AS c JOIN user_data AS ud ON ud.user_id=c.user_id JOIN concept_comment AS cc ON c.id=cc.concept_id";
 			if (\Tango::config()->get('Moderating.user.posts')=='pre') {
-				$query.=" WHERE c.moderating='y' OR ud.user_id=".$user_id." AND (c.name LIKE '%".$search."%' OR c.problem LIKE '%".$search."%' OR c.solution LIKE '%".$search."%' OR c.result LIKE '%".$search."%') ORDER BY c.`date` DESC LIMIT ".$start.", ".$numberRecords;
-				$query_count.=" WHERE c.moderating='y' OR ud.user_id=".$user_id." AND (name LIKE '%".$search."%' OR problem LIKE '%".$search."%' OR solution LIKE '%".$search."%' OR result LIKE '%".$search."%')";
+				$query.=" WHERE c.moderating='y' OR ud.user_id=".$user_id." AND (c.name LIKE '%".$search."%' OR c.problem LIKE '%".$search."%' OR c.solution LIKE '%".$search."%' OR c.result LIKE '%".$search."%' OR ud.name LIKE '%".$search."%' OR ud.surname LIKE '%".$search."%' OR cc.body LIKE '%".$search."%') ORDER BY c.`date` DESC LIMIT ".$start.", ".$numberRecords;
+				$query_count.=" WHERE c.moderating='y' OR ud.user_id=".$user_id." AND (c.name LIKE '%".$search."%' OR c.problem LIKE '%".$search."%' OR c.solution LIKE '%".$search."%' OR c.result LIKE '%".$search."%' OR ud.name LIKE '%".$search."%' OR ud.surname LIKE '%".$search."%' OR cc.body LIKE '%".$search."%')";
 			}else{
-				$query.=" WHERE (c.name LIKE '%".$search."%' OR c.problem LIKE '%".$search."%' OR c.solution LIKE '%".$search."%' OR c.result LIKE '%".$search."%') ORDER BY c.`date` DESC LIMIT ".$start.", ".$numberRecords;
-				$query_count.=" WHERE (name LIKE '%".$search."%' OR problem LIKE '%".$search."%' OR solution LIKE '%".$search."%' OR result LIKE '%".$search."%')";
+				$query.=" WHERE (c.name LIKE '%".$search."%' OR c.problem LIKE '%".$search."%' OR c.solution LIKE '%".$search."%' OR c.result LIKE '%".$search."%' OR ud.name LIKE '%".$search."%' OR ud.surname LIKE '%".$search."%' OR cc.body LIKE '%".$search."%') ORDER BY c.`date` DESC LIMIT ".$start.", ".$numberRecords;
+				$query_count.=" WHERE (c.name LIKE '%".$search."%' OR c.problem LIKE '%".$search."%' OR c.solution LIKE '%".$search."%' OR c.result LIKE '%".$search."%' OR ud.name LIKE '%".$search."%' OR ud.surname LIKE '%".$search."%' OR cc.body LIKE '%".$search."%')";
 			}
 			$SQL = \Tango::sql()->select($query);
 			$this->_view['data']=$SQL;
