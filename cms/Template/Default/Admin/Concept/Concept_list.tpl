@@ -1,7 +1,4 @@
-<ul class="admin-users-nav">
-    <li class="admin-users-nav-item"><a href="/admin/concept/comment/">Комментарии к идеям</a></li>
-    <li class="admin-users-nav-item"> <a href="/admin/concept/comment/new/">Комментарии идей на модерацию</a></li>
-</ul>
+{include file="Concept/sub_menu.tpl"}
 <h1 class="admin-title">{$IndexTitle}</h1>
 <table class="admin-table">
 	<tr>
