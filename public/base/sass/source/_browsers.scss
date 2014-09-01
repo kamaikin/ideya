@@ -66,7 +66,8 @@
     .popupper-add-tag-add,
     .popupper-add-filebox-add-link,
     .popupper-add-anonim-trigger,
-    .popupper-add-anonim-trigger-pic{
+    .popupper-add-anonim-trigger-pic,
+    .profile-change-avatar{
         behavior: url(css/PIE.htc);
     }
     .popupper-add-field{
@@ -74,6 +75,12 @@
     }
     .popup-overlay{
         background: url(../images/required/bg-ie8-dark-opacity-50.png);
+    }
+    .popupper-add-anonim-trigger{
+        margin-left: 20px;
+    }
+    .profile-change-avatar{
+        background: url(../images/required/bg-ie8-white-opacity-70.png);
     }
 }
 

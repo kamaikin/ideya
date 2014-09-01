@@ -2,10 +2,10 @@
 Author: Sergii.Rudchyk
 */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic);
-.icons-sprite, .ok_green-icon, .money_orange-icon, .clip_green-icon, .clip_grey-icon, .heart_white_big-icon, .search_white-icon, .add:before, .aut-form-row .aut-form-label-email, .aut-form-row .aut-form-label-pass, .aut-form-row.error .aut-form-label-email, .aut-form-row.error .aut-form-label-pass, .aut-form-row.valid .aut-form-label-email, .aut-form-row.valid .aut-form-label-pass, .lists, .lists:hover, .lists.active, .lists-link .lists-icon, .lists-link:hover .lists-icon, .blocks, .blocks:hover, .blocks.active, .post-date:before, .post-sponsor:before, .post-like:before,
+.icons-sprite, .ok_green-icon, .money_orange-icon, .clip_green-icon, .clip_grey-icon, .heart_white_big-icon, .remove-icon, .search_white-icon, .add:before, .aut-form-row .aut-form-label-email, .aut-form-row .aut-form-label-pass, .aut-form-row.error .aut-form-label-email, .aut-form-row.error .aut-form-label-pass, .aut-form-row.valid .aut-form-label-email, .aut-form-row.valid .aut-form-label-pass, .lists, .lists:hover, .lists.active, .lists-link .lists-icon, .lists-link:hover .lists-icon, .blocks, .blocks:hover, .blocks.active, .post-date:before, .post-sponsor:before, .post-like:before,
 .like-icon, .post-comment:before,
 .comment-icon, .post-rating:before, .hall_of_fame-item.first:before, .hall_of_fame-item.second:before, .hall_of_fame-item.third:before, .post.first:before, .post.second:before, .post.third:before, .fileload-icon, .delete-pic-icon, .prifile-tab .tab .like, .prifile-tab .tab .money, .prifile-tab .tab .comment, .prifile-tab .tab .sponsor, .prifile-tab .tab:hover .like, .prifile-tab .tab:hover .money, .prifile-tab .tab:hover .comment, .prifile-tab .tab:hover .sponsor, .prifile-tab .tab.tab-current .like, .prifile-tab .tab.tab-current .money, .prifile-tab .tab.tab-current .comment, .prifile-tab .tab.tab-current .sponsor, .post-comment-bl-delete:before, .post-comment-bl-delete-box-link .wastebasket-icon, .post-comment-bl-delete-box-link:hover .wastebasket-icon, .post-comment-bl-delete-box-link:active .wastebasket-icon, .post-comment-bl-delete-box-link.active .wastebasket-icon, .post-sponsorbox:before, .post-sponsorbox:hover:before, .popupper-close-icon, .popupper-add-picbox-title:before, .popupper-add-btn .download-icon, .popupper-add-btn:hover .download-icon, .popupper-add-btn:active .download-icon, .delete-tag-icon, .add-tag-icon, .add-file-delete-icon, .popupper-add-filebox-add-link .addfile-icon, .popupper-add-filebox-add-link:active .addfile-icon, .mobile-menu-link .plus-menu-icon, .mobile-menu-link:hover .plus-menu-icon {
-  background: url('../images/icons-s24ded854a4.png') no-repeat;
+  background: url('../images/icons-sef65531eee.png') no-repeat;
 }
 
 /* ---------->>> XHTML, HTML4, HTML5 Reset <<<-----------*/
@@ -906,126 +906,132 @@ span.btn:hover {
 /*end buttons style*/
 /* ---------->>> ICONS <<<-----------*/
 .ok_green-icon {
-  background-position: 0 -666px;
+  background-position: 0 -706px;
   height: 16px;
   width: 16px;
 }
 
 .money_orange-icon {
-  background-position: 0 -640px;
+  background-position: 0 -680px;
   height: 16px;
   width: 16px;
 }
 
 .clip_green-icon {
-  background-position: 0 -532px;
+  background-position: 0 -572px;
   height: 16px;
   width: 15px;
 }
 
 .clip_grey-icon {
-  background-position: 0 -558px;
+  background-position: 0 -598px;
   height: 16px;
   width: 15px;
 }
 
 .heart_white_big-icon {
-  background-position: 0 -609px;
+  background-position: 0 -649px;
   height: 21px;
   width: 24px;
 }
 
+.remove-icon {
+  background-position: 0 -482px;
+  height: 30px;
+  width: 30px;
+}
+
 .search_white-icon {
-  background-position: 0 -718px;
+  background-position: 0 -758px;
   height: 17px;
   width: 18px;
 }
 
 .add:before {
-  background-position: 0 -1503px;
+  background-position: 0 -1543px;
   height: 12px;
   width: 13px;
   margin-top: -6px;
 }
 
 .aut-form-row .aut-form-label-email {
-  background-position: 0 -957px;
+  background-position: 0 -997px;
   height: 12px;
   width: 18px;
 }
 .aut-form-row .aut-form-label-pass {
-  background-position: 0 -1170px;
+  background-position: 0 -1210px;
   height: 17px;
   width: 14px;
 }
 .aut-form-row.error .aut-form-label-email {
-  background-position: 0 -1315px;
+  background-position: 0 -1355px;
 }
 .aut-form-row.error .aut-form-label-pass {
-  background-position: 0 -1446px;
+  background-position: 0 -1486px;
 }
 .aut-form-row.valid .aut-form-label-email {
-  background-position: 0 -1293px;
+  background-position: 0 -1333px;
 }
 .aut-form-row.valid .aut-form-label-pass {
-  background-position: 0 -1419px;
+  background-position: 0 -1459px;
 }
 
 .lists {
-  background-position: 0 -1473px;
+  background-position: 0 -1513px;
   height: 20px;
   width: 22px;
 }
 .lists:hover, .lists.active {
-  background-position: 0 -1389px;
+  background-position: 0 -1429px;
 }
 
 .lists-link .lists-icon {
-  background-position: 0 -1473px;
+  background-position: 0 -1513px;
   height: 20px;
   width: 22px;
 }
 .lists-link:hover .lists-icon {
-  background-position: 0 -1389px;
+  background-position: 0 -1429px;
 }
 
 .blocks {
-  background-position: 0 -1009px;
+  background-position: 0 -1049px;
   height: 20px;
   width: 22px;
 }
 .blocks:hover, .blocks.active {
-  background-position: 0 -979px;
+  background-position: 0 -1019px;
 }
 
 .post-date:before {
-  background-position: 0 -820px;
+  background-position: 0 -860px;
   height: 15px;
   width: 15px;
 }
 
 .post-sponsor:before {
-  background-position: 0 -640px;
+  background-position: 0 -680px;
   height: 16px;
   width: 16px;
 }
 
 .post-like:before,
 .like-icon {
-  background-position: 0 -914px;
+  background-position: 0 -954px;
   height: 12px;
   width: 13px;
 }
 
 .post-comment:before,
 .comment-icon {
-  background-position: 0 -1366px;
+  background-position: 0 -1406px;
   height: 13px;
   width: 12px;
 }
 
 .post-rating:before {
-  background-position: 0 -1337px;
+  background-position: 0 -1377px;
   height: 19px;
   width: 17px;
 }
@@ -1063,29 +1069,29 @@ span.btn:hover {
 }
 
 .fileload-icon {
-  background-position: 0 -868px;
+  background-position: 0 -908px;
   height: 14px;
   width: 16px;
 }
 
 .delete-pic-icon {
-  background-position: 0 -1039px;
+  background-position: 0 -1079px;
   height: 11px;
   width: 11px;
 }
 
 .prifile-tab .tab .like {
-  background-position: 0 -914px;
+  background-position: 0 -954px;
   height: 12px;
   width: 13px;
 }
 .prifile-tab .tab .money {
-  background-position: 0 -584px;
+  background-position: 0 -624px;
   height: 15px;
   width: 15px;
 }
 .prifile-tab .tab .comment {
-  background-position: 0 -1366px;
+  background-position: 0 -1406px;
   height: 13px;
   width: 12px;
 }
@@ -1095,46 +1101,46 @@ span.btn:hover {
   width: 18px;
 }
 .prifile-tab .tab:hover .like {
-  background-position: 0 -892px;
+  background-position: 0 -932px;
 }
 .prifile-tab .tab:hover .money {
-  background-position: 0 -482px;
+  background-position: 0 -522px;
 }
 .prifile-tab .tab:hover .comment {
-  background-position: 0 -1270px;
+  background-position: 0 -1310px;
 }
 .prifile-tab .tab:hover .sponsor {
   background-position: 0 -346px;
 }
 .prifile-tab .tab.tab-current .like {
-  background-position: 0 -1083px;
+  background-position: 0 -1123px;
 }
 .prifile-tab .tab.tab-current .money {
-  background-position: 0 -795px;
+  background-position: 0 -835px;
 }
 .prifile-tab .tab.tab-current .comment {
-  background-position: 0 -1545px;
+  background-position: 0 -1585px;
 }
 .prifile-tab .tab.tab-current .sponsor {
-  background-position: 0 -507px;
+  background-position: 0 -547px;
 }
 
 .post-comment-bl-delete:before {
-  background-position: 0 -1105px;
+  background-position: 0 -1145px;
   height: 13px;
   width: 10px;
 }
 
 .post-comment-bl-delete-box-link .wastebasket-icon {
-  background-position: 0 -1060px;
+  background-position: 0 -1100px;
   height: 13px;
   width: 10px;
 }
 .post-comment-bl-delete-box-link:hover .wastebasket-icon {
-  background-position: 0 -1128px;
+  background-position: 0 -1168px;
 }
 .post-comment-bl-delete-box-link:active .wastebasket-icon, .post-comment-bl-delete-box-link.active .wastebasket-icon {
-  background-position: 0 -1105px;
+  background-position: 0 -1145px;
 }
 
 .post-sponsorbox:before {
@@ -1147,63 +1153,63 @@ span.btn:hover {
 }
 
 .popupper-close-icon {
-  background-position: 0 -1197px;
+  background-position: 0 -1237px;
   height: 9px;
   width: 9px;
 }
 
 .popupper-add-picbox-title:before {
-  background-position: 0 -868px;
+  background-position: 0 -908px;
   height: 14px;
   width: 16px;
 }
 
 .popupper-add-btn .download-icon {
-  background-position: 0 -845px;
+  background-position: 0 -885px;
   height: 13px;
   width: 16px;
 }
 .popupper-add-btn:hover .download-icon {
-  background-position: 0 -772px;
+  background-position: 0 -812px;
 }
 .popupper-add-btn:active .download-icon {
-  background-position: 0 -845px;
+  background-position: 0 -885px;
 }
 
 .delete-tag-icon {
-  background-position: 0 -936px;
+  background-position: 0 -976px;
   height: 11px;
   width: 10px;
 }
 
 .add-tag-icon {
-  background-position: 0 -1525px;
+  background-position: 0 -1565px;
   height: 10px;
   width: 10px;
 }
 
 .add-file-delete-icon {
-  background-position: 0 -1151px;
+  background-position: 0 -1191px;
   height: 9px;
   width: 9px;
 }
 
 .popupper-add-filebox-add-link .addfile-icon {
-  background-position: 0 -532px;
+  background-position: 0 -572px;
   height: 16px;
   width: 15px;
 }
 .popupper-add-filebox-add-link:active .addfile-icon {
-  background-position: 0 -692px;
+  background-position: 0 -732px;
 }
 
 .mobile-menu-link .plus-menu-icon {
-  background-position: 0 -1568px;
+  background-position: 0 -1608px;
   height: 12px;
   width: 13px;
 }
 .mobile-menu-link:hover .plus-menu-icon {
-  background-position: 0 -1503px;
+  background-position: 0 -1543px;
 }
 
 .home-first .container-wrap,
@@ -2150,6 +2156,32 @@ span.btn:hover {
 .profile-image {
   position: relative;
   border-radius: 50%;
+}
+
+.profile-avatar {
+  cursor: pointer;
+}
+.profile-avatar:hover .profile-change-avatar {
+  display: block;
+}
+
+.profile-change-avatar {
+  position: absolute;
+  top: 0;
+  left: -1%;
+  display: none;
+  width: 102%;
+  height: 101%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+.profile-change-avatar .icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
 .profile-pic-bar {
@@ -3120,13 +3152,13 @@ span.btn:hover {
   }
 
   .post-like:before {
-    background-position: 0 -745px;
+    background-position: 0 -785px;
     height: 17px;
     width: 19px;
   }
 
   .post-comment:before {
-    background-position: 0 -1216px;
+    background-position: 0 -1256px;
     height: 16px;
     width: 16px;
   }
@@ -3154,7 +3186,7 @@ span.btn:hover {
     vertical-align: middle;
     margin-top: 0;
     margin-right: 15px;
-    background-position: 0 -1242px;
+    background-position: 0 -1282px;
     height: 18px;
     width: 17px;
   }
@@ -3275,7 +3307,8 @@ span.btn:hover {
 .ie8 .popupper-add-tag-add,
 .ie8 .popupper-add-filebox-add-link,
 .ie8 .popupper-add-anonim-trigger,
-.ie8 .popupper-add-anonim-trigger-pic {
+.ie8 .popupper-add-anonim-trigger-pic,
+.ie8 .profile-change-avatar {
   behavior: url(css/PIE.htc);
 }
 .ie8 .popupper-add-field {
@@ -3283,6 +3316,12 @@ span.btn:hover {
 }
 .ie8 .popup-overlay {
   background: url(../images/required/bg-ie8-dark-opacity-50.png);
+}
+.ie8 .popupper-add-anonim-trigger {
+  margin-left: 20px;
+}
+.ie8 .profile-change-avatar {
+  background: url(../images/required/bg-ie8-white-opacity-70.png);
 }
 
 /* ---------->>> Opera <<<-----------*/
