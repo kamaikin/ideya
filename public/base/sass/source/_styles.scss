@@ -332,10 +332,7 @@ $postTagHeight: 22px;
 .pagenavi {
     position: relative;
 
-    @include rwd-width(570px, 765px);
-    margin: auto;
     border-radius: 8px;
-
     background-color: #dedede;
 
     text-align: center;

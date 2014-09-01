@@ -1,18 +1,1 @@
-input[type="submit"],
-html input[type="button"],
-input[type="reset"],
-button {
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
-}
-
-.no_select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-.break {
-  word-wrap: break-word;
-}
+input[type="submit"],html input[type="button"],input[type="reset"],button{-webkit-appearance:button;-moz-appearance:button;appearance:button}.no_select{-webkit-user-select:none;-moz-user-select:none;user-select:none}.break{word-wrap:break-word}
