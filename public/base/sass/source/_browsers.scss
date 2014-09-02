@@ -30,7 +30,7 @@
     &.home-third,
     &.home-four{
         .container-wrap{
-            behavior: url(css/backgroundsize.min.htc);
+            behavior: url(public/base/css/backgroundsize.min.htc);
         }
     }
     .aut-field{
@@ -69,7 +69,7 @@
     .popupper-add-anonim-trigger-pic,
     .profile-change-avatar,
     .notificare{
-        behavior: url(css/PIE.htc);
+        behavior: url(public/base/css/PIE.htc);
     }
     .popupper-add-field{
         line-height: $popupperFormFieldboxHeight;
