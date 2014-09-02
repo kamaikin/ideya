@@ -101,7 +101,8 @@
 				        $log = DOCUMENT_ROOT.'/tmp/Log.html';
 				        file_put_contents($log, date('d.m.Y H:i:s').'║ Login ║'.' Login Успех! - '.$_POST['login'].' Pass - '.$_POST['pass']."\n", FILE_APPEND);
 				    }
-					if (isset($_POST['request_uri'])) {
+				    header("Location: /");
+					/*if (isset($_POST['request_uri'])) {
 						if ($_POST['request_uri']=='/login/logout/') {
 							header("Location: /");
 						}elseif ($_POST['request_uri']=='/logout/') {
@@ -111,7 +112,7 @@
 						}
 					} else {
 						header("Location: /");
-					}
+					}*/
 				}else{
 					\Tango::session()->setFlash('error',$identification['error']);
 					if ($identification['error_id']==1) {
