@@ -14,6 +14,9 @@
 		}
 
 		protected function _getPagesList($search, $page=1){
+			$search=\Tango::sql()->quote($search);
+			$len=strlen($search)-2;
+			$search=substr($search, 1, $len);
 			$this->_getRightSidebar();
 			$numberRecords=\Tango::config()->get('Main.number.records');
 			$user_info=\Tango::session()->get('userInfo');
