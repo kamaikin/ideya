@@ -1471,4 +1471,24 @@ $profileFormWidth: 83px;
 
 
 
-// /* ---------->>> OTHER STYLES <<<-----------
+// /* ---------->>> OTHER STYLES <<<-----------*/
+$notificareSize: 18px;
+
+.notificare{
+    position: relative;
+    top: -10px;
+
+    display: inline-block;
+    vertical-align: top;
+
+    width: $notificareSize;
+    height: $notificareSize;
+
+    background-color: red;
+    border-radius: 50%;
+
+    @include adjust-font-size-to(12px);
+    color: #fff;
+    line-height: $notificareSize;
+    text-align: center;
+}

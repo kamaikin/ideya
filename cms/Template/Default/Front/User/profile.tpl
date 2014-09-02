@@ -78,7 +78,7 @@
     <!--tabs-->
     <div class="tabs-section tabs-section-js prifile-tab">
         <ul class="tabs tabs-js">
-            <li class="tab tab-current">Мои идеи</li>
+            <li class="tab tab-current">Мои идеи <span class="notificare">15</span></li>
             <li class="tab"><i class="icon like"></i> мне нравится</li>
             {if $user_info.user_role == 'sponsor'}
             <li class="tab"><i class="icon sponsor"></i> я спонсирую</li>
