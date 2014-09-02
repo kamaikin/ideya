@@ -253,16 +253,24 @@ $searchHeight: 39px;
         margin: 0 1px;
     }
 }
-.post-title-link{
+.post-title-link,
+.post-title-stat{
+    max-width: 100%;
+
+    display: inline-block;
+
     color: #000;
+    @extend .ellipsis;
+}
+.post-title-link{
     border-bottom: 1px solid transparent;
-    word-wrap: break-word;
     &:hover{
         color: #4cd9c0;
         text-decoration: none;
         border-bottom: 1px solid #4cd9c0;
     }
 }
+.post-title-stat{}
 .ok_green-icon{}
 .money_orange-icon{}
 .clip_green-icon{}
@@ -1299,7 +1307,7 @@ $profileFormWidth: 83px;
 
     border-radius: 2px;
     color: #cdcdcd;
-    font-weight: 300;
+    font-weight: 700;
     line-height: 22px;
     &:hover{
         text-decoration: none;

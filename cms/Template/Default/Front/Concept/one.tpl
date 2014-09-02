@@ -27,7 +27,7 @@
     </div>
     <div class="post-content">
         <div class="post-title">
-            {$Concept_data.concept_name}
+            <span class="post-title-stat" title="{$Concept_data.concept_name}">{$Concept_data.concept_name}</span>
             <a href="#" class="icon ok_green-icon"></a>
             <span class="icon clip_grey-icon"></span>
         </div>
