@@ -125,7 +125,7 @@
                 <div class="popupper-add-anonim left">
                     <span id="is_anonimus_data"></span>
                     <div class="popupper-add-anonim-title">Опубликовать анонимно?</div>
-                    <div class="popupper-add-anonim-trigger" id="is_anonimus"><span class="popupper-add-anonim-trigger-text">вкл</span><span class="popupper-add-anonim-trigger-pic"></span></div>
+                    <div class="popupper-add-anonim-trigger off" id="is_anonimus"><span class="popupper-add-anonim-trigger-text">вкл</span><span class="popupper-add-anonim-trigger-pic"></span></div>
                 </div>
                 <button class="btn popupper-add-f-btn right">Опубликовать</button>
             </div>
@@ -141,12 +141,28 @@
                 var max_count = $(this).attr('max_count');
                 var new_id = '#count_' + id;
                 var count = $(this).val().length;
-                var result = (max_count - count)-1;
+                var result = (max_count - count)+1;
                 if (result<1) {
-                    result = '<span style="color: #F00;">' + result + '</span>'
+                    var text = $(this).val().substr(0, max_count)
+                    $(this).val(text);
                 };
                 $(new_id).html(result);
             })
+            $(".count_count").onblur(function(){
+                var id = $(this).attr('id');
+                var max_count = $(this).attr('max_count');
+                var new_id = '#count_' + id;
+                var count = $(this).val().length;
+                var result = (max_count - count)+1;
+                if (result<1) {
+                    var text = $(this).val().substr(0, max_count)
+                    $(this).val(text);
+                };
+                $(new_id).html(result);
+            })
+            /*$(".count_count").bind('paste', function(e) {
+                console.log(e);
+            });*/
             //  Теги
             $(".popupper-add-tag-add-link").click(function(){
                 var test = prompt("Тест", '');
@@ -177,6 +193,27 @@
             })
             //  Отправка формы
             $("#popupper-form-concept-add").submit(function(){
+                var nosubmit = false;
+                //  Проверка на заполненность полей
+                if($("#addname").val()==''){
+                    $("#addname").attr('placeholder','Не заполнено! Введите название');
+                    nosubmit = true;
+                }
+                if($("#addname1").val()==''){
+                    $("#addname1").attr('placeholder','Не заполнено! Опишите проблему');
+                    nosubmit = true;
+                }
+                if($("#addname2").val()==''){
+                    $("#addname2").attr('placeholder','Не заполнено! Опишите решение');
+                    nosubmit = true;
+                }
+                if($("#addresult").val()==''){
+                    $("#addresult").attr('placeholder','Не заполнено! Опишите результат');
+                    nosubmit = true;
+                }
+                if (nosubmit) {
+                    return false;
+                };
                 //  Если есть класс то публикуем Как обычно
                 if(!$("#is_anonimus").hasClass("off")){
                     var text = '<input type="hidden" name="concept_anonimus" value="1" />';
