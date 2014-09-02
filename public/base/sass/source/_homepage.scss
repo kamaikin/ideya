@@ -66,18 +66,19 @@
     @include adjust-font-size-to(26px);
     text-align: center;
 }
-.aut-form-row{
+.aut-form-row-box{
     position: relative;
-
+    &.first{
+        border-bottom: 1px solid #e2e2e2;
+    }
+}
+.aut-form-row{
     @include box-sizing(border-box);
     height: 69px;
     padding-left: 64px;
 
     background-color: #fff;
     @include transition(all .2s ease);
-    &.first{
-        border-bottom: 1px solid #e2e2e2;
-    }
     &.focus,
     &.error,
     &.valid{
