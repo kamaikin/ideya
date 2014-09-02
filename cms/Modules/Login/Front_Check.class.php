@@ -97,8 +97,14 @@
 					$user_info = \Tango::plugins('user')->userId($identification['user_id'])->userInfoAll();
 					\Tango::session()->set('userInfo', $user_info);
 					//	Перенаправить на исходную страницу..
+					if (DEBUG) {
+				        $log = DOCUMENT_ROOT.'/tmp/Log.html';
+				        file_put_contents($log, date('d.m.Y H:i:s').'║ Login ║'.' Login Успех! - '.$_POST['login'].' Pass - '.$_POST['pass']."\n", FILE_APPEND);
+				    }
 					if (isset($_POST['request_uri'])) {
 						if ($_POST['request_uri']=='/login/logout/') {
+							header("Location: /");
+						}elseif ($_POST['request_uri']=='/logout/') {
 							header("Location: /");
 						} else {
 							header("Location: ".$_POST['request_uri']);
@@ -106,10 +112,6 @@
 					} else {
 						header("Location: /");
 					}
-					if (DEBUG) {
-				        $log = DOCUMENT_ROOT.'/tmp/Log.html';
-				        file_put_contents($log, date('d.m.Y H:i:s').'║ Login ║'.' Login Успех! - '.$_POST['login'].' Pass - '.$_POST['pass']."\n", FILE_APPEND);
-				    }
 				}else{
 					\Tango::session()->setFlash('error',$identification['error']);
 					if ($identification['error_id']==1) {

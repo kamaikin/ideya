@@ -40,7 +40,7 @@
                 <div class="profile h-profile right">
                     <div class="profile-ava loading left"><a href="/user/profile/"><img src="{if $index_user_avatar!=''}/i/41/{$index_user_avatar}{else}/public/img/nophoto.jpg{/if}" alt="" class="profile-ava-img"></a></div>
                     <div class="profile-content ellipsis">
-                        {$index_user_login}
+                        <a href="/user/profile/">{$index_user_login}</a>
                     </div>
                 </div>
                 <div class="points h-points right">
