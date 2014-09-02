@@ -78,13 +78,13 @@
     <!--tabs-->
     <div class="tabs-section tabs-section-js prifile-tab">
         <ul class="tabs tabs-js">
-            <li class="tab tab-current">Мои идеи <span class="notificare">15</span></li>
-            <li class="tab"><i class="icon like"></i> мне нравится</li>
+            <li class="tab tab-current">Мои идеи <span class="notificare">{$user_concept|@count}</span></li>
+            <li class="tab"><i class="icon like"></i> мне нравится <span class="notificare">{$my_lacke_concept|@count}</span></li>
             {if $user_info.user_role == 'sponsor'}
-            <li class="tab"><i class="icon sponsor"></i> я спонсирую</li>
+            <li class="tab"><i class="icon sponsor"></i> я спонсирую <span class="notificare">{$ya_sponsor_concept|@count}</span></li>
             {/if}
-            <li class="tab"><i class="icon money"></i> Меня спонсируют</li>
-            <li class="tab"><i class="icon comment"></i> Мои комментарии</li>
+            <li class="tab"><i class="icon money"></i> Меня спонсируют <span class="notificare">{$my_sponsor_concept|@count}</span></li>
+            <li class="tab"><i class="icon comment"></i> Мои комментарии <span class="notificare">{$user_comment|@count}</span></li>
         </ul>
         <div class="tab-content posts-lists tab-content-js tab-content-visible">
         	{*Мои идеи*}
