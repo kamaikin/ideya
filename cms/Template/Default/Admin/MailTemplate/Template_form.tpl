@@ -1,4 +1,4 @@
-<form method="POST" action="/admin/mailTemplate/edit/?id={$data.id}">
+<form method="POST" action="/admin/mailTemplate/edit/{if $data.id}?id={$data.id}{/if}">
 <table class="admin-mail-template">
 	<tr>
 		<td>Название шаблона</td>

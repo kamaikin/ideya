@@ -12,6 +12,20 @@
 			exit;
 		}
 
+		protected function NewAction(){
+			$this->_view['IndexTitle']='Список комментариев на модерацию';
+			$query="SELECT c.id as id, 
+					c.body as body,
+					ud.nick_name as nick_name,
+					c.moderating as moderating,
+					c.`date` as `date`
+					FROM concept_comment AS c JOIN user_data AS ud ON ud.user_id=c.user_id WHERE c.moderating='n' ORDER BY c.date DESC 
+					LIMIT 0, 20";
+			$SQL=\Tango::sql()->select($query);
+			$this->_view['includeFileName']='Concept/Comment_list.tpl';
+			$this->_view['data']=$SQL;
+		}
+
 		protected function OneAction(){
 			if(!isset($_GET['concept_id'])){$concept_id=0;}else{
 				$concept_id=(int)$_GET['concept_id'];

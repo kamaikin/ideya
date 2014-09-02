@@ -15,12 +15,12 @@
             <td class="tac"><input type="text" value="{$Value.Credits}" name="data[{$Value.id}]" class="admin-field admin-credits"></td>
         </tr>
         {/foreach}
-        <tr>
+        {*<tr>
             <td></td>
             <td><input type="text" value="" name="key" class="admin-field" ></td>
             <td><input type="text" value="" name="name" class="admin-field" ></td>
             <td class="tac"><input type="text" value="" name="credits" class="admin-field admin-credits"></td>
-        </tr>
+        </tr>*}
         <tr>
             <td colspan="7" class="tar"><input type="submit" class="admin-btn" value="Сохранить"></td>
         </tr>

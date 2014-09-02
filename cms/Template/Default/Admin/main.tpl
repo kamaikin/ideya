@@ -14,9 +14,9 @@
     {if $index_user_role == 'admin'}
     <li class="admin-nav-item"><a href="/admin/user/" class="admin-nav-link">Пользователи</a></li>
     {/if}
-    {if $index_user_role == 'admin'}
+    {*if $index_user_role == 'admin'}
     <li class="admin-nav-item"><a href="/admin/acl/" class="admin-nav-link">Права доступа</a></li>
-    {/if}
+    {/if*}
     <li class="admin-nav-item"><a href="/admin/concept/" class="admin-nav-link">Идеи</a></li>
     {if $index_user_role == 'admin'}
     <li class="admin-nav-item"><a href="/admin/mailTemplate/" class="admin-nav-link">Шаблоны писем</a></li>
