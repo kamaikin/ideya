@@ -13,20 +13,20 @@
 			if (isset($_POST['login'])) {
 				if (trim($_POST['login'])=='') {
 					unset($_POST['login']);
-					\Tango::session()->setFlash('error','Не введен адрес электронной почты1');
+					\Tango::session()->setFlash('error','Не введен адрес электронной почты');
 					\Tango::session()->setFlash('error_id',1);
 				}
 			}else{
-				\Tango::session()->setFlash('error','Не введен адрес электронной почты2');
+				\Tango::session()->setFlash('error','Не введен адрес электронной почты');
 				\Tango::session()->setFlash('error_id',1);
 			}
 			if (isset($_POST['pass'])) {
 				if (trim($_POST['pass'])=='') {unset($_POST['pass']);
-					\Tango::session()->setFlash('error','Не введен пароль1');
+					\Tango::session()->setFlash('error','Не введен пароль');
 					\Tango::session()->setFlash('error_id',2);
 				}
 			}else{
-				\Tango::session()->setFlash('error','Не введен пароль2');
+				\Tango::session()->setFlash('error','Не введен пароль');
 				\Tango::session()->setFlash('error_id',2);
 			}
 			//print_r($_SESSION); echo'<hr>';
