@@ -10,7 +10,7 @@
 				{else}
 					<img src="/i/150/{$user_info.avatar}" alt="" class="profile-image" id="img_avatar">
 				{/if}
-                <div class="profile-change-avatar"><a href="#" class="icon remove-icon"></a></div>
+                <div class="profile-change-avatar"><a href="#" id="remove_click" class="icon remove-icon"></a></div>
             </div>
             <ul class="profile-pic-bar tac">
                 <li class="profile-pic-bar-item fileload dib">
@@ -231,6 +231,13 @@
 <script type="text/javascript">
 	{literal}
 	$(function() {
+        $("#remove_click").click(function(){
+            var POST = 'avatar_name_null=null';
+            $.post('/user/profile/', POST, function(data){})
+            $("#main_user_avatar").attr("src", '/public/img/nophoto.jpg')
+            $("#img_avatar").attr("src", '/public/img/nophoto.jpg')
+            return false;
+        })
         $("#name").blur(function(){
           var POST = 'name=' + $("#name").val();
           $.post('/user/profile/', POST, function(data){})

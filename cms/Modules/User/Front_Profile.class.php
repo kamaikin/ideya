@@ -27,6 +27,7 @@
 				if ($avatar_name!='') {$array['avatar']=$avatar_name;}
 				if ($name!='') {$array['nick_name']=$name;	$array['name']=$name;}
 				if ($surname!='') {$array['surname']=$surname;}
+				if (isset($_POST['avatar_name_null'])){$array['avatar']='';}
 				if ($email!='') {$array['email']=$email;}
 				if ($array!=array()) {
 					\Tango::sql()->update('user_data', $array, 'user_id='.$user_info['user_id']);
