@@ -24,12 +24,12 @@
             {if $request_uri}<input type="hidden" name="request_uri" value="{$request_uri}" />{/if}
                 <a href="/" class="tac main-logo"><img src="/public/base/images/main_logo2.png" alt="logo"></a>
                 <div class="aut-form-title">Добро пожаловать!</div>
-                <div class="aut-form-row first {if $login_error_id==1}error{else}valid{/if}">
+                <div class="aut-form-row first {if $login_error_id==1}error{else}{/if}">
                     <label for="aut_email" class="aut-form-label aut-form-label-email"></label>
                     <input type="email" name="login" id="aut_email" class="aut-field" autocomplete="off" tabindex="1" placeholder="Введите Ваш email" {if $login_email}value="{$login_email}"{/if}>
                     {if $login_error_id==1}<div class="validation-tooltip">{$login_error}</div>{/if}
                 </div>
-                <div class="aut-form-row {if $login_error_id==2}error{else}valid{/if}">
+                <div class="aut-form-row {if $login_error_id==2}error{else}{/if}">
                     <label for="aut_password" class="aut-form-label aut-form-label-pass"></label>
                     <input type="password" name="pass" id="aut_password" class="aut-field" autocomplete="off" tabindex="2" placeholder="Введите Ваш пароль">
                     {if $login_error_id==2}<div class="validation-tooltip">{$login_error}</div>{/if}
