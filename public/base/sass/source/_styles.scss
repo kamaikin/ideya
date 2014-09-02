@@ -248,9 +248,9 @@ $searchHeight: 39px;
     @include adjust-font-size-to(18px);
     font-weight: 300;
     line-height: 1.2;
-    word-wrap: break-word;
     .icon{
         margin: 0 1px;
+        vertical-align: top;
     }
 }
 .post-title-link,
