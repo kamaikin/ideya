@@ -20,7 +20,7 @@
             </div>
             <div class="post-content">
                 <div class="post-title">
-                    <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
+                    <a href="/concept/{$value.id}.html" class="post-title-link" title="{$value.name}">{$value.name|truncate:30:""}</a>
                     {if $value.implemented == "y"}<a href="#" class="icon ok_green-icon"></a>{/if}
                     {if $value.sponsors=='y'}
                     <a href="#" class="icon money_orange-icon"></a>
