@@ -141,9 +141,22 @@
                 var max_count = $(this).attr('max_count');
                 var new_id = '#count_' + id;
                 var count = $(this).val().length;
-                var result = (max_count - count);
+                var result = (max_count - count)+1;
                 if (result<1) {
-                    result = '<span style="color: #F00;">' + result + '</span>'
+                    var text = $(this).val().substr(0, max_count)
+                    $(this).val(text);
+                };
+                $(new_id).html(result);
+            })
+            $(".count_count").onblur(function(){
+                var id = $(this).attr('id');
+                var max_count = $(this).attr('max_count');
+                var new_id = '#count_' + id;
+                var count = $(this).val().length;
+                var result = (max_count - count)+1;
+                if (result<1) {
+                    var text = $(this).val().substr(0, max_count)
+                    $(this).val(text);
                 };
                 $(new_id).html(result);
             })
