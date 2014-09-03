@@ -28,8 +28,11 @@
     <div class="post-content">
         <div class="post-title">
             <span class="post-title-stat" title="{$Concept_data.concept_name}">{$Concept_data.concept_name}</span>
-            <a href="#" class="icon ok_green-icon"></a>
-            <span class="icon clip_grey-icon"></span>
+            {*<a href="#" class="icon ok_green-icon"></a>*}
+            {*<span class="icon clip_grey-icon"></span>*}
+            {if $Concept_data.implemented == "y"}<a href="#" class="icon ok_green-icon"></a>{/if}
+            {if $Concept_data.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+            {if $Concept_data.file_1}<a href="/d/{$Concept_data.file_1}" class="icon clip_green-icon tip-js" data-tip_message="{if $Concept_data.file_1}<a herf='/d/{$Concept_data.file_1}'>{$Concept_data.file_1_name}</a><br>{/if}{if $Concept_data.file_2}<a herf='/d/{$Concept_data.file_2}'>{$Concept_data.file_2_name}</a><br>{/if}{if $Concept_data.file_3}<a herf='/d/{$Concept_data.file_3}'>{$Concept_data.file_3_name}</a><br>{/if}" data-tip_class="tip"></a>{/if}
         </div>
         <ul class="post-text-list">
             <li class="post-text-item"><strong>Проблема:</strong> {$Concept_data.concept_problem}</li>
