@@ -61,13 +61,13 @@
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
         </div>
         <div class="post-comment-bl-body">
-            <h2 class="post-comment-bl-name"><a href="#" class="post-comment-bl-name-link">{$value.surname} {$value.name}</a></h2>
-            <div class="post-comment-bl-content">
-                {$value.body}
+            <h2 class="post-comment-bl-name"><a href="#" class="post-comment-bl-name-link" id="name_{$value.id}">{$value.surname} {$value.name}</a></h2>
+            <div class="post-comment-bl-content" id="body_{$value.id}">
+                {$value.body|nl2br}
             </div>
             <div class="post-comment-bl-footer">
                 <span class="post-comment-bl-time">{$value.date|date_format:"%d-%m-%y %T"}</span>
-                <a href="#comment" class="post-comment-bl-retweet">Ответить</a>
+                <a href="#comment" class="post-comment-bl-retweet" data="{$value.id}">Ответить</a>
             </div>
         </div>
     </div>
@@ -93,6 +93,14 @@
 <script type="text/javascript">
     {literal}
     $(function() {
+        $(".post-comment-bl-retweet").click(function(){
+            var data = $(this).attr('data');
+            var body = '#body_' + data;
+            var name = '#name_' + data;
+            text = 'Пользователь: ' + $(name).text() + ' Писал: ' + $(body).text() + "\n===========\n";
+            $("#addcomment").val(text);
+
+        })
         $("#add_licke").click(function(){
             //  Передаем лайк
             $.post('/ajax/concept/likeadd/?id={/literal}{$Concept_data.id}{literal}', function(data){
