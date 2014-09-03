@@ -99,6 +99,16 @@
             }
         }
     }
+    .popupper-add-photo{
+        .profile-change-avatar{
+            display: none;
+        }
+        &:hover{
+            .profile-change-avatar{
+                display: block;
+            }
+        }
+    }
 }
 
 // /* ---------->>> Firefox <<<-----------*/

@@ -91,17 +91,17 @@
                 </div>
             </div>
             <div class="popupper-add-picbox tac">
-            <table><tr><td>
-                <div class="profile-avatar">
-                <img src="/public/img/nophoto.jpg" style="width: 150px; height: 120px; display: none;" id="img_foto" />
-                <input type="file" style="display: none;" name="file" id="concept_foto_add_input" />
-                <div class="profile-change-avatar"><a href="#" id="remove_click_add" class="icon remove-icon"></a></div>
-                </div>
-                </td><td>
                 <p id="img_foto_text">
                     <span class="popupper-add-picbox-title">можно добавить фото</span>
                 </p>
-                <span class="popupper-add-btn" id="concept_foto_add"><i class="icon download-icon"></i> Загрузить</span></td></tr></table>
+                <p>
+                    <span class="popupper-add-btn" id="concept_foto_add"><i class="icon download-icon"></i> Загрузить</span>
+                </p>
+                <div class="popupper-add-photo">
+                    <img src="/public/img/nophoto.jpg" style="width: 150px; height: 120px; display: none;" id="img_foto" />
+                    <input type="file" style="display: none;" name="file" id="concept_foto_add_input">
+                    <div class="profile-change-avatar" id="remove_click_add"><i class="icon remove-icon"></i></div>
+                </div>
                 <div id="concept_file_progress" style="display:none;">
                     <progress max="100" value="0" id="concept_file_progress_barr"></progress>
                 </div>
