@@ -207,3 +207,16 @@ $message-indent: 10px;
    z-index: 999;
    -webkit-transform: translateZ(0);
 }
+
+.search-btn,
+.add,
+.post-title-link,
+.tags-widget-link,
+.prifile-tab .tabs .tab,
+.profile-change-avatar,
+.post-likebox,
+.btn,
+.popupper-add-btn,
+.popupper-close{
+    @include transition(all .3s ease);
+}

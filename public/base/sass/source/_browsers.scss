@@ -88,6 +88,17 @@
         word-wrap: break-word;
         height: 22px;
     }
+
+    .profile-avatar{
+        .profile-change-avatar{
+            display: none;
+        }
+        &:hover{
+            .profile-change-avatar{
+                display: block;
+            }
+        }
+    }
 }
 
 // /* ---------->>> Firefox <<<-----------*/

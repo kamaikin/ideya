@@ -714,7 +714,7 @@ $postTagHeight: 22px;
     cursor: pointer;
     &:hover{
         .profile-change-avatar{
-            display: block;
+            @include opacity(1);
         }
     }
 }
@@ -723,7 +723,7 @@ $postTagHeight: 22px;
     top: 0;
     left: -1%;
 
-    display: none;
+    @include opacity(0);
 
     width: 102%;
     height: 101%;
