@@ -54,7 +54,7 @@
 <div class="post-comments">
     {foreach from=$Concept_comment item="value"}
     <div class="post-comment-bl clearfix"><a name="comment{$value.id}" />
-        {if $value.user_id==$index_user_id}<a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete"></a>{/if}
+        {if $value.user_id==$index_user_id}{if $timemetka < $value.date}<a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete"></a>{/if}{/if}
         <div class="post-comment-bl-ava left">
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
         </div>

@@ -101,9 +101,9 @@
 				$this->_view['Concept_data']=$SQL[0];
 				//	Получаем комментарии...
 				if (\Tango::config()->get('Moderating.user.comments')=='pre') {
-					$query="SELECT c.id as id, ud.user_id as user_id, c.body as body, ud.avatar as avatar, ud.name as name, ud.surname as surname FROM concept_comment AS c JOIN user_data AS ud ON ud.user_id=c.user_id WHERE c.moderating='y' AND c.concept_id = ? ORDER BY c.date";
+					$query="SELECT c.id as id, ud.user_id as user_id, c.body as body, ud.avatar as avatar, ud.name as name, ud.surname as surname, c.date as `date` FROM concept_comment AS c JOIN user_data AS ud ON ud.user_id=c.user_id WHERE c.moderating='y' AND c.concept_id = ? ORDER BY c.date";
 				}else{
-					$query="SELECT c.id as id, ud.user_id as user_id, c.body as body, ud.avatar as avatar, ud.name as name, ud.surname as surname FROM concept_comment AS c JOIN user_data AS ud ON ud.user_id=c.user_id WHERE c.concept_id = ? ORDER BY c.date";
+					$query="SELECT c.id as id, ud.user_id as user_id, c.body as body, ud.avatar as avatar, ud.name as name, ud.surname as surname, c.date as `date` FROM concept_comment AS c JOIN user_data AS ud ON ud.user_id=c.user_id WHERE c.concept_id = ? ORDER BY c.date";
 				}
 				$SQL1=\Tango::sql()->select($query, array($id));
 				$this->_view['Concept_comment']=$SQL1;
@@ -133,6 +133,8 @@
 					$this->_view['Concept_data']['add_sponsor']='y';
 				}
 				$this->_view['main_page_class'] = 'idea-page';
+				$timemetka=time() - 600;
+				$this->_view['timemetka'] = $timemetka;
 			} else {
 				header("HTTP/1.0 404 Not Found");
 				header("Location: /error/404"); exit;
