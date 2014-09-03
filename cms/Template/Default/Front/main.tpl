@@ -91,7 +91,7 @@
                     <div class="popupper-form-word_counter" id="count_addresult">70</div>
                 </div>
             </div>
-<!--             <div class="popupper-add-picbox tac">
+            <div class="popupper-add-picbox tac">
                 <img src="/public/img/nophoto.jpg" style="width: 150px; height: 120px; display: none;" id="img_foto" />
                 <input type="file" style="display: none;" name="file" id="concept_foto_add_input" />
                 <p id="img_foto_text">
@@ -101,7 +101,7 @@
                 <div id="concept_file_progress" style="display:none;">
                     <progress max="100" value="0" id="concept_file_progress_barr"></progress>
                 </div>
-            </div> -->
+            </div>
             <ul class="popupper-add-tagsbox">
                 {*<li class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">зима <span class="icon delete-tag-icon"></span></a></li>
                 <li class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">тепло <span class="icon delete-tag-icon"></span></a></li>
