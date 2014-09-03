@@ -148,7 +148,7 @@
                 };
                 $(new_id).html(result);
             })
-            $(".count_count").onblur(function(){
+            /*$(".count_count").onblur(function(){
                 var id = $(this).attr('id');
                 var max_count = $(this).attr('max_count');
                 var new_id = '#count_' + id;
@@ -159,7 +159,7 @@
                     $(this).val(text);
                 };
                 $(new_id).html(result);
-            })
+            })*/
             /*$(".count_count").bind('paste', function(e) {
                 console.log(e);
             });*/
