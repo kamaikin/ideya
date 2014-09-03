@@ -684,6 +684,9 @@ $postTagHeight: 22px;
         position: relative;
         border-radius: 50%;
     }
+    img{
+        max-width: 32px;
+    }
 }
 .messageTip-sponsors-tip{
     font-weight: 300;

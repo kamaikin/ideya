@@ -45,7 +45,7 @@
             <li class="dib post-sponsors-title">Спонсоры:</li>
             {foreach from=$Concept_data.sponsors item="value"}
             <li class="dib post-sponsors-item">
-                <a href="/user/profile/{$value.user_id}.html"><img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" class="sponsors-tip-js" data-tip_message="{$value.name} {$value.surname}" data-tip_class="sponsors-tip"></a>
+                <a href="/user/profile/{$value.user_id}.html"><img width="32" src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" class="sponsors-tip-js" data-tip_message="{$value.name} {$value.surname}" data-tip_class="sponsors-tip"></a>
             </li>
             {/foreach}
         </ul>

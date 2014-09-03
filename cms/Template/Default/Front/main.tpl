@@ -91,7 +91,7 @@
                     <div class="popupper-form-word_counter" id="count_addresult">70</div>
                 </div>
             </div>
-            <div class="popupper-add-picbox tac">
+<!--             <div class="popupper-add-picbox tac">
                 <img src="/public/img/nophoto.jpg" style="width: 150px; height: 120px; display: none;" id="img_foto" />
                 <input type="file" style="display: none;" name="file" id="concept_foto_add_input" />
                 <p id="img_foto_text">
@@ -101,7 +101,7 @@
                 <div id="concept_file_progress" style="display:none;">
                     <progress max="100" value="0" id="concept_file_progress_barr"></progress>
                 </div>
-            </div>
+            </div> -->
             <ul class="popupper-add-tagsbox">
                 {*<li class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">зима <span class="icon delete-tag-icon"></span></a></li>
                 <li class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">тепло <span class="icon delete-tag-icon"></span></a></li>
@@ -179,7 +179,7 @@
                         $(bid).click(function(){return false;})
                         var did = '#d' + id
                         $(did).click(function(){
-                            alert("Удаляем"); 
+                            alert("Удаляем");
                             var id = $(this).attr('aid');
                             var bid = '#b' + id
                             $(bid).remove();
@@ -235,7 +235,7 @@
                             FileUploader({
                             session_id: '{/literal}{$index_md5_key}{literal}',
                             md5: rand_1,
-                            message_error: 'Ошибка при загрузке файла', 
+                            message_error: 'Ошибка при загрузке файла',
                             uploadid: '123456789',
                             uploadscript: '/ajax/file/upload/',
                             progres_barr_id: 'file_upload_progress_barr',
@@ -246,7 +246,7 @@
                 })
                 return false;
             })
-            
+
             $("#concept_foto_add").click(function(){
               $("#concept_foto_add_input").trigger('click');
               $("#concept_foto_add_input").change(function () {
@@ -260,7 +260,7 @@
                   FileUploader({
                       session_id: '{/literal}{$index_md5_key}{literal}',
                       md5: rand_1,
-                      message_error: 'Ошибка при загрузке файла', 
+                      message_error: 'Ошибка при загрузке файла',
                       uploadid: '123456789',
                       uploadscript: '/ajax/file/upload/',
                       progres_barr_id: 'concept_file_progress_barr',
