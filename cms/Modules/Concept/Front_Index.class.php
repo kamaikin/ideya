@@ -44,7 +44,8 @@
 			c.points as points, 
 			c.post_like as post_like, 
 			c.date as `date`,
-			c.name as concept_name, 
+			c.name as concept_name,
+			c.implemented as implemented, 
 			c.problem as concept_problem,
 			c.solution as concept_solution,
 			c.result as concept_result,
@@ -95,6 +96,7 @@
 							\Tango::sql()->update($query);
 							$SQL[0]['points']=$SQL[0]['points']+$SQL1[0]['Credits'];
 						}
+						header("Location: /concept/".$id.".html"); exit;
 					}
 				}
 				//print_r($SQL[0]); exit;
@@ -133,7 +135,7 @@
 					$this->_view['Concept_data']['add_sponsor']='y';
 				}
 				$this->_view['main_page_class'] = 'idea-page';
-				$timemetka=time() - 600;
+				$timemetka=time() - 300;
 				$this->_view['timemetka'] = $timemetka;
 			} else {
 				header("HTTP/1.0 404 Not Found");

@@ -28,8 +28,11 @@
     <div class="post-content">
         <div class="post-title">
             <span class="post-title-stat" title="{$Concept_data.concept_name}">{$Concept_data.concept_name}</span>
-            <a href="#" class="icon ok_green-icon"></a>
-            <span class="icon clip_grey-icon"></span>
+            {*<a href="#" class="icon ok_green-icon"></a>*}
+            {*<span class="icon clip_grey-icon"></span>*}
+            {if $Concept_data.implemented == "y"}<a href="#" class="icon ok_green-icon"></a>{/if}
+            {if $Concept_data.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+            {if $Concept_data.file_1}<a href="/d/{$Concept_data.file_1}" class="icon clip_green-icon tip-js" data-tip_message="{if $Concept_data.file_1}<a herf='/d/{$Concept_data.file_1}'>{$Concept_data.file_1_name}</a><br>{/if}{if $Concept_data.file_2}<a herf='/d/{$Concept_data.file_2}'>{$Concept_data.file_2_name}</a><br>{/if}{if $Concept_data.file_3}<a herf='/d/{$Concept_data.file_3}'>{$Concept_data.file_3_name}</a><br>{/if}" data-tip_class="tip"></a>{/if}
         </div>
         <ul class="post-text-list">
             <li class="post-text-item"><strong>Проблема:</strong> {$Concept_data.concept_problem}</li>
@@ -41,6 +44,7 @@
                 <li class="post-tag"><a href="/tags/{$value.url}.html" class="post-tag-link">{$value.name}</a></li>
             {/foreach}
         </ul>
+        {if $Concept_data.sponsors}
         <ul class="post-sponsors">
             <li class="dib post-sponsors-title">Спонсоры:</li>
             {foreach from=$Concept_data.sponsors item="value"}
@@ -49,6 +53,7 @@
             </li>
             {/foreach}
         </ul>
+        {/if}
     </div>
 </article>
 <div class="post-comments">
@@ -59,13 +64,13 @@
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
         </div>
         <div class="post-comment-bl-body">
-            <h2 class="post-comment-bl-name"><a href="#" class="post-comment-bl-name-link">{$value.surname}{$value.name}</a></h2>
-            <div class="post-comment-bl-content">
-                {$value.body}
+            <h2 class="post-comment-bl-name"><a href="#" class="post-comment-bl-name-link" id="name_{$value.id}">{$value.surname} {$value.name}</a></h2>
+            <div class="post-comment-bl-content" id="body_{$value.id}">
+                {$value.body|nl2br}
             </div>
             <div class="post-comment-bl-footer">
                 <span class="post-comment-bl-time">{$value.date|date_format:"%d-%m-%y %T"}</span>
-                <a href="#comment" class="post-comment-bl-retweet">Ответить</a>
+                <a href="#comment" class="post-comment-bl-retweet" data="{$value.id}">Ответить</a>
             </div>
         </div>
     </div>
@@ -91,6 +96,14 @@
 <script type="text/javascript">
     {literal}
     $(function() {
+        $(".post-comment-bl-retweet").click(function(){
+            var data = $(this).attr('data');
+            var body = '#body_' + data;
+            var name = '#name_' + data;
+            text = 'Пользователь: ' + $(name).text() + ' Писал: ' + $(body).text() + "\n===========\n";
+            $("#addcomment").val(text);
+
+        })
         $("#add_licke").click(function(){
             //  Передаем лайк
             $.post('/ajax/concept/likeadd/?id={/literal}{$Concept_data.id}{literal}', function(data){
