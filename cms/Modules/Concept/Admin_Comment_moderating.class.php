@@ -35,9 +35,17 @@
 			$array['moderating_id']=$user_id;
 			\Tango::sql()->update('concept_comment', $array, 'id='.$id);
 			if ($concept_id) {
-				header("Location: /admin/concept/comment/".$_GET['page'].".html?concept_id=".$concept_id);
+				if (isset($_GET['new'])) {
+					header("Location: /admin/concept/comment/new/");
+				} else {
+					header("Location: /admin/concept/comment/".$_GET['page'].".html?concept_id=".$concept_id);
+				}
 			} else {
-				header("Location: /admin/concept/comment/".$_GET['page'].".html");
+				if (isset($_GET['new'])) {
+					header("Location: /admin/concept/comment/new/");
+				} else {
+					header("Location: /admin/concept/comment/".$_GET['page'].".html");
+				}
 			}
 		}
 	}

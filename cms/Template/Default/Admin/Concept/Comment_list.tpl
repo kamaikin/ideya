@@ -17,10 +17,10 @@
 		<td>{if $Value.moderating == 'n'}Нет{else}Да{/if}</td>
 		<td>{$Value.date|date_format:"%d-%m-%y %T"}</td>
 		<td>
-			<a href="/admin/concept/comment_delete/?id={$Value.id}&concept_id={$smarty.get.concept_id}"><i class="fa fa-trash" title="Удалить"></i></a>
+			<a href="/admin/concept/comment_delete/?id={$Value.id}&concept_id={$smarty.get.concept_id}{if $new}&new=1{/if}"><i class="fa fa-trash" title="Удалить"></i></a>
 		</td>
 		<td>
-			{if $Value.moderating == 'n'}<a href="/admin/concept/comment_moderating/?id={$Value.id}&page={$smarty.get.url}&concept_id={$smarty.get.concept_id}"><i class="fa fa-check-circle" title="Разрешить"></i></a>{/if}
+			{if $Value.moderating == 'n'}<a href="/admin/concept/comment_moderating/?id={$Value.id}&page={$smarty.get.url}&concept_id={$smarty.get.concept_id}{if $new}&new=1{/if}"><i class="fa fa-check-circle" title="Разрешить"></i></a>{/if}
 		</td>
 	</tr>
 	{/foreach}

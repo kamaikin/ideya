@@ -24,6 +24,7 @@
 			$SQL=\Tango::sql()->select($query);
 			$this->_view['includeFileName']='Concept/Comment_list.tpl';
 			$this->_view['data']=$SQL;
+			$this->_view['new']=1;
 		}
 
 		protected function OneAction(){
