@@ -155,6 +155,7 @@
             $("#remove_click_add").click(function(){
                 $("#img_foto").hide();
                 $("#concept_foto").val('');
+                $("#popupper-add-photo").hide();
                 return false;
             })
             /*$(".count_count").onblur(function(){

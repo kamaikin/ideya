@@ -116,6 +116,7 @@ function Upload(files, position, options, id){
             $("#img_foto_text").hide();
             $("#concept_foto_add").show();
             $("#concept_file_progress").hide();
+            $("#popupper-add-photo").show();
           }
           if (options['param1']=='file') {
             $("#file_upload").show();
