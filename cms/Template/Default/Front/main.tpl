@@ -65,7 +65,6 @@
         <form action="/concept/add/" method="POST" class="popupper-form" id="popupper-form-concept-add">
         <input type="hidden" id="concept_foto" name="concept_foto" />
         <input type="hidden" name="request_url" value="{$smarty.server.REQUEST_URI}" />
-        <input type="hidden" name="request_url" value="{$smarty.server.REQUEST_URI}" />
             <h2 class="popupper-add-title">Добавить идею</h2>
             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
@@ -92,12 +91,17 @@
                 </div>
             </div>
             <div class="popupper-add-picbox tac">
+            <table><tr><td>
+                <div class="profile-avatar">
                 <img src="/public/img/nophoto.jpg" style="width: 150px; height: 120px; display: none;" id="img_foto" />
                 <input type="file" style="display: none;" name="file" id="concept_foto_add_input" />
+                <div class="profile-change-avatar"><a href="#" id="remove_click_add" class="icon remove-icon"></a></div>
+                </div>
+                </td><td>
                 <p id="img_foto_text">
                     <span class="popupper-add-picbox-title">можно добавить фото</span>
                 </p>
-                <span class="popupper-add-btn" id="concept_foto_add"><i class="icon download-icon"></i> Загрузить</span>
+                <span class="popupper-add-btn" id="concept_foto_add"><i class="icon download-icon"></i> Загрузить</span></td></tr></table>
                 <div id="concept_file_progress" style="display:none;">
                     <progress max="100" value="0" id="concept_file_progress_barr"></progress>
                 </div>
@@ -147,6 +151,11 @@
                     $(this).val(text);
                 };
                 $(new_id).html(result);
+            })
+            $("#remove_click_add").click(function(){
+                $("#img_foto").hide();
+                $("#concept_foto").val('');
+                return false;
             })
             /*$(".count_count").onblur(function(){
                 var id = $(this).attr('id');
