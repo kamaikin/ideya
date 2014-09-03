@@ -41,6 +41,7 @@
                 <li class="post-tag"><a href="/tags/{$value.url}.html" class="post-tag-link">{$value.name}</a></li>
             {/foreach}
         </ul>
+        {if $Concept_data.sponsors}
         <ul class="post-sponsors">
             <li class="dib post-sponsors-title">Спонсоры:</li>
             {foreach from=$Concept_data.sponsors item="value"}
@@ -49,6 +50,7 @@
             </li>
             {/foreach}
         </ul>
+        {/if}
     </div>
 </article>
 <div class="post-comments">
@@ -59,7 +61,7 @@
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
         </div>
         <div class="post-comment-bl-body">
-            <h2 class="post-comment-bl-name"><a href="#" class="post-comment-bl-name-link">{$value.surname}{$value.name}</a></h2>
+            <h2 class="post-comment-bl-name"><a href="#" class="post-comment-bl-name-link">{$value.surname} {$value.name}</a></h2>
             <div class="post-comment-bl-content">
                 {$value.body}
             </div>
