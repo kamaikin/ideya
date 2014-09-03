@@ -22,7 +22,7 @@
         <div role="main" class="content">
             <form role="form" action="/login/check/{if $smarty.get.url}?url={$smarty.get.url}{/if}" class="aut-form" method="POST">
             {if $request_uri}<input type="hidden" name="request_uri" value="{$request_uri}" />{/if}
-                <a href="/" class="tac main-logo"><img src="/public/base/images/main_logo2.png" alt="logo"></a>
+                <div class="tac main-logo"><img src="/public/base/images/main_logo2.png" alt="logo"></div>
                 <div class="aut-form-title">Добро пожаловать!</div>
                 <div class="aut-form-row-box first">
                     <div class="aut-form-row {if $login_error_id==1}error{else}{/if}">

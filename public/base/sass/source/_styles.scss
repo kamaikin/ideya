@@ -10,6 +10,9 @@ $logoWidth: image-width("images/logo.png");
     display: block;
     @include rwd-width($logoWidth);
     margin: 8px 0 0 rwd-width-val(25px);
+    &:hover{
+        @include opacity(.5);
+    }
 }
 .h-searchbox{
     margin: 2px 0 0 rwd-width-val(70px);
