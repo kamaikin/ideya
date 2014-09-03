@@ -476,6 +476,7 @@ $postTagHeight: 22px;
     text-align: center;
 }
 .hall_of_fame-widget{
+    padding-right: 22px;
     .widgettitle{
         margin-bottom: 21px;
     }
@@ -612,7 +613,10 @@ $postTagHeight: 22px;
     }
 }
 .post-author{
-    margin-top: 15px;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    width: 122px;
 }
 .post-author-link{
     @include adjust-font-size-to(12px);
@@ -625,7 +629,7 @@ $postTagHeight: 22px;
 }
 .post-author-pic{
     max-width: 50px;
-    margin: auto;
+    margin: 5px auto;
     overflow: hidden;
     &,
     .post-author-ava{

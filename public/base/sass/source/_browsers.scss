@@ -37,7 +37,7 @@
         line-height: 70px;
     }
     .search-field{
-        line-height: $searchHeight;
+        line-height: $searchHeight - 4;
     }
     .field{
         line-height: $fieldHeight;
@@ -85,7 +85,8 @@
     }
     .post-title-link,
     .post-title-stat{
-        height: 21px;
+        word-wrap: break-word;
+        height: 22px;
     }
 }
 
