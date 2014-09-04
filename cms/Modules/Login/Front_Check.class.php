@@ -47,37 +47,7 @@
 						$array['pass']=$pass;
 						\Tango::sql()->update('users_login', $array, 'id='.$user_id);
 						//	Нужно отправить пользователю письмо с доступом к сайту.
-						//	Получаем текст письма
-						$query="SELECT * FROM mail_templates WHERE name=?";
-						$Tmail=\Tango::sql()->select($query, array('access_information'));
-						$query="SELECT * FROM mail_template_values WHERE template_id=?";
-						$SQL=\Tango::sql()->select($query, array($Tmail[0]['id']));
-						$arr_key=array();
-						$arr_value=array();
-						foreach ($SQL as $key => $value) {
-							$arr_key[]='{'.$value['key'].'}';
-							$arr_value[]=$value['value'];
-						}
-						//	Сформировать и отправить письмо...
-						$Body = $Tmail[0]['body'];
-						$Subject = $Tmail[0]['subject'];
-						$array1=array();
-						$array2=array();
-						$array1=$arr_key;
-						$array2=$arr_value;
-						$array1[]='{Login}';
-						$array2[]=$_POST['login'];
-						$array1[]='{Pass}';
-						$array2[]=$_POST['pass'];
-						$Body = str_replace ($array1, $array2, $Body);
-						$Subject = str_replace ($array1, $array2, $Subject);
-						\Tango::plugins('phpmailer')->Subject = $Subject;
-						\Tango::plugins('phpmailer')->Body = $Body;
-						\Tango::plugins('phpmailer')->isHTML(true);
-						\Tango::plugins('phpmailer')->AddAddress($_POST['login']);
-						\Tango::plugins('phpmailer')->Send();
-						\Tango::plugins('phpmailer')->ClearAddresses();
-						\Tango::plugins('phpmailer')->ClearAttachments();
+						$this->_sendEmail('access_information', array('Login'=>$_POST['login'], 'Pass'=>$_POST['pass']), $_POST['login']);
 					}else{
 						//	Что то пошло не так....
 						\Tango::session()->setFlash('error','Ошибочное значение ключа идентификации');

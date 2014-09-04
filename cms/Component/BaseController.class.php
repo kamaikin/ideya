@@ -217,4 +217,38 @@
 			$string=strtr($string, $trans);
 			return $string;
 		}
+
+		protected function _sendEmail($mailKey, $data, $emailAddress, $name=''){
+			//	В переменной $key лежит ключ для запроса письма из базы данных.
+			//	Вот его и запрашиваеем)
+			$arr_key=array();
+			$arr_value=array();
+			foreach ($data as $key => $value) {
+				$arr_key[]='{'.$key.'}';
+				$arr_value[]=$value;
+			}
+			$query="SELECT * FROM mail_templates WHERE name=?";
+			$Tmail=\Tango::sql()->select($query, array($mailKey));
+			if($Tmail!=array()){
+				$query="SELECT * FROM mail_template_values WHERE template_id=?";
+				$SQL=\Tango::sql()->select($query, array($Tmail[0]['id']));
+				foreach ($SQL as $key => $value) {
+					$arr_key[]='{'.$value['key'].'}';
+					$arr_value[]=$value['value'];
+				}
+				$Body = str_replace ($arr_key, $arr_value, $Tmail[0]['body']);
+				$Subject = str_replace ($arr_key, $arr_value, $Tmail[0]['subject']);
+				\Tango::plugins('phpmailer')->Subject = $Subject;
+				\Tango::plugins('phpmailer')->Body = $Body;
+				\Tango::plugins('phpmailer')->isHTML(true);
+				if ($name=='') {
+					\Tango::plugins('phpmailer')->AddAddress($emailAddress);
+				} else {
+					\Tango::plugins('phpmailer')->AddAddress($emailAddress, $name);
+				}
+				\Tango::plugins('phpmailer')->Send();
+				\Tango::plugins('phpmailer')->ClearAddresses();
+				\Tango::plugins('phpmailer')->ClearAttachments();
+			}
+		}
 	}
