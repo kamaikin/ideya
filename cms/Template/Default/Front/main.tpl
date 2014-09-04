@@ -107,13 +107,13 @@
                 </div>
             </div>
             <div class="popupper-add-tagsbox">
-                <input type="text" name="tagsinput" id="tagsinput" class="popupper-add-tags-hidden-input" value="">
-                {*<span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">зима <i class="icon delete-tag-icon"></i></a></span>
+                {*<input type="text" name="tagsinput" id="tagsinput" class="popupper-add-tags-hidden-input" value="">
+                <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">зима <i class="icon delete-tag-icon"></i></a></span>
                 <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">тепло <i class="icon delete-tag-icon"></i></a></span>
                 <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">необычное <i class="icon delete-tag-icon"></i></a></span>*}
                 <span class="dib popupper-add-tag-container">
                     <span class="popupper-add-tag-item popupper-add-tag-add"><a href="#" class="popupper-add-tag-add-link"><i class="icon add-tag-icon"></i> тег</a></span>
-                    <input type="text" id="addtag" class="popupper-add-tag-input">
+                    <input type="text" id="addtag" class="popupper-add-tag-input" style="display: none;">
                 </span>
             </div>
             <div class="popupper-add-filebox">
@@ -162,30 +162,19 @@
                 $("#popupper-add-photo").hide();
                 return false;
             })
-            /*$(".count_count").onblur(function(){
-                var id = $(this).attr('id');
-                var max_count = $(this).attr('max_count');
-                var new_id = '#count_' + id;
-                var count = $(this).val().length;
-                var result = (max_count - count)+1;
-                if (result<1) {
-                    var text = $(this).val().substr(0, max_count)
-                    $(this).val(text);
-                };
-                $(new_id).html(result);
-            })*/
-            /*$(".count_count").bind('paste', function(e) {
-                console.log(e);
-            });*/
             //  Теги
             $(".popupper-add-tag-add-link").click(function(){
-                var test = prompt("Тест", '');
-                if (test) {
-                    if (!popupperAddTag[test]) {
-                        popupperAddTag[test]=test;
+                var css = $("#addtag").css('display');
+                if (css == 'none') {
+                    $("#addtag").show();
+                    $("#addtag").val('');
+                } else{
+                    var tag = $("#addtag").val();
+                    if (!popupperAddTag[tag]) {
                         var id = popupperAddTagNum.length
-                        popupperAddTagNum[popupperAddTagNum.length] = test
-                        var text = '<li class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + test + '" />' + test + ' <span class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></span></a></li>';
+                        popupperAddTag[tag] = 1;
+                        popupperAddTagNum[popupperAddTagNum.length] = tag;
+                        var text = '<li class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + tag + '" />' + tag + ' <span class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></span></a></li>';
                         $(".popupper-add-tag-add-link").before(text);
                         var aid = '#a' + id
                         $(aid).click(function(){return false;})
@@ -193,7 +182,7 @@
                         $(bid).click(function(){return false;})
                         var did = '#d' + id
                         $(did).click(function(){
-                            alert("Удаляем");
+                            //alert("Удаляем");
                             var id = $(this).attr('aid');
                             var bid = '#b' + id
                             $(bid).remove();
@@ -201,7 +190,8 @@
                             delete popupperAddTag[t];
                             return false;
                         })
-                    };
+                    }
+                    $("#addtag").hide();
                 };
                 return false;
             })
