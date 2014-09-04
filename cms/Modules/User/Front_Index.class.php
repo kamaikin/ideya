@@ -5,6 +5,7 @@
 		}
 
 		protected function OneAction(){
+			$my_user_info=\Tango::session()->get('userInfo');
 			//print_r($_GET); exit;
 			if(isset($_GET['url'])){
 				if ((int)$_GET['url']>0) {
@@ -18,6 +19,9 @@
 			$user_info = \Tango::plugins('user')->userId($user_id)->userInfoAll();
 			if(!$user_info){
 				header("location: /");
+			}
+			if($user_info['id']==$my_user_info['id']){
+				header("location: /user/profile/");
 			}
 			//	Количество моих комментариев
 			$this->_view['user_info']=$user_info;

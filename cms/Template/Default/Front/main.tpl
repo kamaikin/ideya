@@ -38,10 +38,17 @@
                 </form>
                 <span class="add h-add left popup-link popup-link-js" data-popup="add">Предложить идею</span>
                 <div class="profile h-profile right">
+                    {if $includeFileName != 'User/profile.tpl'}
                     <div class="profile-ava loading left"><a href="/user/profile/"><img src="{if $index_user_avatar!=''}/i/41/{$index_user_avatar}{else}/public/img/nophoto.jpg{/if}" alt="" class="profile-ava-img" id="main_user_avatar"></a></div>
                     <div class="profile-content ellipsis">
                         <a href="/user/profile/">{$index_user_login}</a>
                     </div>
+                    {else}
+                    <div class="profile-ava loading left"><img src="{if $index_user_avatar!=''}/i/41/{$index_user_avatar}{else}/public/img/nophoto.jpg{/if}" alt="" class="profile-ava-img" id="main_user_avatar"></div>
+                    <div class="profile-content ellipsis">
+                        {$index_user_login}
+                    </div>
+                    {/if}
                 </div>
                 <div class="points h-points right">
                     <div class="points-min left">{$index_points}</div>
