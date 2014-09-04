@@ -34,6 +34,8 @@
 					$array['user_role']=$role;
 					$array['user_id']=$id;
 					\Tango::sql()->insert('user_data', $array);
+					$address = $surname.' '.$name.' '.$patronymic;
+					$this->_sendEmail('invitation', array('url'=>md5($value[1])), $email, $address);
 					//	Получаем текст письма
 					$query="SELECT * FROM mail_templates WHERE name=?";
 					$Tmail=\Tango::sql()->select($query, array('invitation'));

@@ -12,17 +12,6 @@
 				$ext = preg_replace('/(?:.*)(\.{1}[a-zA-Z]{3,4})$/','$1', $_FILES['userfile']['name']);
 				$ext = strtolower(substr($ext, 1));
 				if (in_array($ext, array('txt', 'csv', 'xls'))) {
-					//	Получаем текст письма
-					$query="SELECT * FROM mail_templates WHERE name=?";
-					$Tmail=\Tango::sql()->select($query, array('invitation'));
-					$query="SELECT * FROM mail_template_values WHERE template_id=?";
-					$SQL=\Tango::sql()->select($query, array($Tmail[0]['id']));
-					$arr_key=array();
-					$arr_value=array();
-					foreach ($SQL as $key => $value) {
-						$arr_key[]='{'.$value['key'].'}';
-						$arr_value[]=$value['value'];
-					}
 					//	Копируем файл во временную папку
 					$uploaddir = DOCUMENT_ROOT.'/tmp/upload/'.time().'.'.$ext;
 					if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploaddir)) {
@@ -50,20 +39,8 @@
 								$array['user_id']=$id;
 								\Tango::sql()->insert('user_data', $array);
 								//	Сформировать и отправить письмо...
-								$Body = $Tmail[0]['body'];
-								$Subject = $Tmail[0]['subject'];
-								$array1=array();
-								$array2=array();
-								$array1=$arr_key;
-								$array2=$arr_value;
-								$array1[]='{url}';
-								$array2[]=md5($value[1]);
-								$Body = str_replace ($array1, $array2, $Body);
-								$Subject = str_replace ($array1, $array2, $Subject);
-								\Tango::plugins('phpmailer')->Subject = $Subject;
-								\Tango::plugins('phpmailer')->Body = $Body;
-								\Tango::plugins('phpmailer')->isHTML(true);
-								\Tango::plugins('phpmailer')->AddAddress($value[1], $value[2].' '.$value[3].' '.$value[4]);
+								$name = $value[2].' '.$value[3].' '.$value[4];
+								$this->_sendEmail('invitation', array('url'=>md5($value[1])), $value[1], $name);
 								if(\Tango::plugins('phpmailer')->Send()){
 									$view[]='Электронная почта - '.$value[1].' Пользователь - '.$value[2].' '.$value[3].' '.$value[4].' <b>Письмо с приглашением успешно отправлено.</b>';
 								}else{

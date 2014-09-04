@@ -33,6 +33,8 @@
 						$SQL1=\Tango::sql()->select($query);
 						$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$SQL[0]['user_id'];
 						\Tango::sql()->update($query);
+						$name= $user_info['name'].' '.$user_info['surname'];
+						$this->_sendEmail('ideya_sponsor', array('url_id'=>$_GET['id'], 'user_name'=>$name), $user_info['email'], $name);
 					}
 				}
 			}

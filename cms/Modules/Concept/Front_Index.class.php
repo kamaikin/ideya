@@ -96,6 +96,9 @@
 							\Tango::sql()->update($query);
 							$SQL[0]['points']=$SQL[0]['points']+$SQL1[0]['Credits'];
 						}
+						//	Отправить письмо автору идеи, что его идею прокомментировали
+						$name= $user_info['name'].' '.$user_info['surname'];
+						$this->_sendEmail('ideya_comment', array('url_id'=>$id, 'title'=>$this->_view['title'], 'user_name'=>$name), $user_info['email'], $name);
 						header("Location: /concept/".$id.".html"); exit;
 					}
 				}
