@@ -168,6 +168,7 @@
                 if (css == 'none') {
                     $("#addtag").show();
                     $("#addtag").val('');
+                    $("#addtag").focus();
                 } else{
                     var tag = $("#addtag").val();
                     if (!popupperAddTag[tag]) {
