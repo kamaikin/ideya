@@ -109,6 +109,16 @@
             }
         }
     }
+    .delete-tag-icon{
+        display: none;
+    }
+    .popupper-add-tag-link{
+        &:hover{
+            .delete-tag-icon{
+                display: block;
+            }
+        }
+    }
 }
 
 // /* ---------->>> Firefox <<<-----------*/

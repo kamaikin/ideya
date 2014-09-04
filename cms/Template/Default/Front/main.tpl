@@ -106,12 +106,16 @@
                     <progress max="100" value="0" id="concept_file_progress_barr"></progress>
                 </div>
             </div>
-            <ul class="popupper-add-tagsbox">
-                {*<li class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">зима <span class="icon delete-tag-icon"></span></a></li>
-                <li class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">тепло <span class="icon delete-tag-icon"></span></a></li>
-                <li class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">необычное <span class="icon delete-tag-icon"></span></a></li>*}
-                <li class="popupper-add-tag-item popupper-add-tag-add"><a href="#" class="popupper-add-tag-add-link"><i class="icon add-tag-icon"></i> тег</a></li>
-            </ul>
+            <div class="popupper-add-tagsbox">
+                <input type="text" name="tagsinput" id="tagsinput" class="popupper-add-tags-hidden-input" value="">
+                {*<span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">зима <i class="icon delete-tag-icon"></i></a></span>
+                <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">тепло <i class="icon delete-tag-icon"></i></a></span>
+                <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">необычное <i class="icon delete-tag-icon"></i></a></span>*}
+                <span class="dib popupper-add-tag-container">
+                    <span class="popupper-add-tag-item popupper-add-tag-add"><a href="#" class="popupper-add-tag-add-link"><i class="icon add-tag-icon"></i> тег</a></span>
+                    <input type="text" id="addtag" class="popupper-add-tag-input">
+                </span>
+            </div>
             <div class="popupper-add-filebox">
                 <div class="popupper-add-filebox-title">Прикрепленные файлы:</div>
                 <div class="popupper-add-filebox-list" id="file_list">
