@@ -89,7 +89,7 @@
         <div class="tab-content posts-lists tab-content-js tab-content-visible">
         	{*Мои идеи*}
         	{foreach from=$user_concept item="value"}
-            <article class="post">
+            <article class="post notificare-post">
                 <div class="post-thumbnail left">
                 {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
                 </div>
