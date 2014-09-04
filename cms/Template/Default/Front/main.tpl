@@ -151,6 +151,8 @@
         $(function() {
             var popupperAddTag = new Object()
             var popupperAddTagNum = []
+            var popupperAddFile = new Object()
+            var popupperAddFileNum = []
             $(".count_count").keypress(function(){
                 var id = $(this).attr('id');
                 var max_count = $(this).attr('max_count');
@@ -240,22 +242,26 @@
                 $("#file_upload_input").trigger('click');
                 $("#file_upload_input").change(function () {
                     var t_file_name = $("#file_upload_input").val();
-                        if (t_file_name!='') {
+                    if (t_file_name!='') {
+                        var name = this.files[0].name;
+                        if (!popupperAddFile[name]) {
+                            popupperAddFile[name]=name;
                             files = this.files
                             $("#file_upload").hide();
                             $("#file_upload_progress").show();
                             var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
                             var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
                             FileUploader({
-                            session_id: '{/literal}{$index_md5_key}{literal}',
-                            md5: rand_1,
-                            message_error: 'Ошибка при загрузке файла',
-                            uploadid: '123456789',
-                            uploadscript: '/ajax/file/upload/',
-                            progres_barr_id: 'file_upload_progress_barr',
-                            param1: 'file',
-                            portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
-                        }, files[0]);
+                                session_id: '{/literal}{$index_md5_key}{literal}',
+                                md5: rand_1,
+                                message_error: 'Ошибка при загрузке файла',
+                                uploadid: '123456789',
+                                uploadscript: '/ajax/file/upload/',
+                                progres_barr_id: 'file_upload_progress_barr',
+                                param1: 'file',
+                                portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
+                            }, files[0]);
+                        }
                     }
                 })
                 return false;

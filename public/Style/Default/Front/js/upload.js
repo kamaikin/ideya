@@ -127,9 +127,10 @@ function Upload(files, position, options, id){
             $("#file_upload_progress").hide();
             $("#file_upload_progress_barr").val(0)
             if (!myObject.error) {
+              //console.log(popupperAddFile);
               //  Нужно в "Диве" - file_list разместить информацию, о том, что файл загружен...
               //  Для начала проверяем сколько уже записей в диве
-              if($(".file_line_info").length < 3){
+              if($(".popupper-add-filebox-item").length < 3){
                 var file_div_id = 0
                 if (!$("#file_div_1").length) {file_div_id=1};
                 if(file_div_id==0){
@@ -139,11 +140,6 @@ function Upload(files, position, options, id){
                   if (!$("#file_div_3").length) {file_div_id=3};
                 }
                 if(file_div_id!=0){
-                  //  меньше можно дальше добавлять)))
-                  //var text = '<div id="file_div_' + file_div_id + '" class="file_line_info">'
-                  //text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">'
-                  //text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
-                  //text = text + myObject.file_user_name + '<a href="#" id="delete_file_div_' + file_div_id + '"><img src="/public/img/cancel.png" /></a></div>';
                   var text = '<span id="file_div_' + file_div_id + '" class="popupper-add-filebox-item">';
                   text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">';
                   text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
@@ -153,7 +149,7 @@ function Upload(files, position, options, id){
                   var delete_id = '#delete_file_div_' + file_div_id
                   $(delete_id).click(function(){
                     $(id).remove()
-                    if($(".file_line_info").length > 2){
+                    if($(".popupper-add-filebox-item").length > 2){
                       //  Скрываем ссылку загрузить файл
                       $("#file_upload").hide();
                     }else{
@@ -161,7 +157,7 @@ function Upload(files, position, options, id){
                     }
                     return false;
                   })
-                  if($(".file_line_info").length > 2){
+                  if($(".popupper-add-filebox-item").length > 2){
                     //  Скрываем ссылку загрузить файл
                     $("#file_upload").hide();
                   }
