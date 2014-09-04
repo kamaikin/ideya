@@ -111,7 +111,7 @@
                 <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">зима <i class="icon delete-tag-icon"></i></a></span>
                 <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">тепло <i class="icon delete-tag-icon"></i></a></span>
                 <span class="popupper-add-tag-item"><a href="#" class="popupper-add-tag-link">необычное <i class="icon delete-tag-icon"></i></a></span>*}
-                <span class="dib popupper-add-tag-container">
+                <span class="dib popupper-add-tag-container" id="popupper-add-tag-container">
                     <span class="popupper-add-tag-item popupper-add-tag-add"><a href="#" class="popupper-add-tag-add-link"><i class="icon add-tag-icon"></i> тег</a></span>
                     <input type="text" id="addtag" class="popupper-add-tag-input" style="display: none;">
                 </span>
@@ -177,7 +177,7 @@
                         popupperAddTagNum[popupperAddTagNum.length] = tag;
                         var text ='<span class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + tag + '" />' + tag + ' <i class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></i></a></span>'
                         //var text = '<li class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + tag + '" />' + tag + ' <span class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></span></a></li>';
-                        $(".popupper-add-tag-add-link").before(text);
+                        $("#popupper-add-tag-container").before(text);
                         var aid = '#a' + id
                         $(aid).click(function(){return false;})
                         var bid = '#b' + id
