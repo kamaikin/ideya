@@ -97,73 +97,79 @@ function Upload(files, position, options, id){
         if (xhr.readyState==4){
           //console.log(xhr.responseText)
           var myObject = eval('(' + xhr.responseText + ')');
-          console.log(myObject)
+          //console.log(myObject)
           if (options['param1']=='foto1') {
-            var src = '/i/150/' + myObject.file_name
-            $("#avatar_name").val(myObject.file_name);
-            //alert($("#img_foto").attr("src"));
-            $("#img_avatar").attr("src", src);
-            $("#avatar_progress").hide();
-            var POST = 'avatar_name=' + myObject.file_name;
-            $.post('/user/profile/', POST, function(data){})
+            //if (!myObject.error) {
+              var src = '/i/150/' + myObject.file_name
+              $("#avatar_name").val(myObject.file_name);
+              //alert($("#img_foto").attr("src"));
+              $("#img_avatar").attr("src", src);
+              $("#avatar_progress").hide();
+              var POST = 'avatar_name=' + myObject.file_name;
+              $.post('/user/profile/', POST, function(data){})
+            //}
           }
           if (options['param1']=='foto') {
-            var src = '/i/150/' + myObject.file_name
-            $("#concept_foto").val(myObject.file_name);
-            //alert($("#img_foto").attr("src"));
-            $("#img_foto").attr("src", src);
-            $("#img_foto").show();
-            $("#img_foto_text").hide();
-            $("#concept_foto_add").show();
-            $("#concept_file_progress").hide();
-            $("#popupper-add-photo").show();
+            //if (!myObject.error) {
+              var src = '/i/150/' + myObject.file_name
+              $("#concept_foto").val(myObject.file_name);
+              //alert($("#img_foto").attr("src"));
+              $("#img_foto").attr("src", src);
+              $("#img_foto").show();
+              $("#img_foto_text").hide();
+              $("#concept_foto_add").show();
+              $("#concept_file_progress").hide();
+              $("#popupper-add-photo").show();
+            //}
           }
           if (options['param1']=='file') {
             $("#file_upload").show();
             $("#file_upload_progress").hide();
             $("#file_upload_progress_barr").val(0)
-            //  Нужно в "Диве" - file_list разместить информацию, о том, что файл загружен...
-            //  Для начала проверяем сколько уже записей в диве
-            if($(".file_line_info").length < 3){
-              var file_div_id = 0
-              if (!$("#file_div_1").length) {file_div_id=1};
-              if(file_div_id==0){
-                if (!$("#file_div_2").length) {file_div_id=2};
-              }
-              if(file_div_id==0){
-                if (!$("#file_div_3").length) {file_div_id=3};
-              }
-              if(file_div_id!=0){
-                //  меньше можно дальше добавлять)))
-                //var text = '<div id="file_div_' + file_div_id + '" class="file_line_info">'
-                //text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">'
-                //text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
-                //text = text + myObject.file_user_name + '<a href="#" id="delete_file_div_' + file_div_id + '"><img src="/public/img/cancel.png" /></a></div>';
-                var text = '<span id="file_div_' + file_div_id + '" class="popupper-add-filebox-item">';
-                text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">';
-                text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
-                text = text + myObject.file_user_name + ' <i class="icon add-file-delete-icon" id="delete_file_div_' + file_div_id + '"></i></span>;'
-                $("#file_list").append(text);
-                var id = '#file_div_' + file_div_id
-                var delete_id = '#delete_file_div_' + file_div_id
-                $(delete_id).click(function(){
-                  $(id).remove()
+            if (!myObject.error) {
+              //  Нужно в "Диве" - file_list разместить информацию, о том, что файл загружен...
+              //  Для начала проверяем сколько уже записей в диве
+              if($(".file_line_info").length < 3){
+                var file_div_id = 0
+                if (!$("#file_div_1").length) {file_div_id=1};
+                if(file_div_id==0){
+                  if (!$("#file_div_2").length) {file_div_id=2};
+                }
+                if(file_div_id==0){
+                  if (!$("#file_div_3").length) {file_div_id=3};
+                }
+                if(file_div_id!=0){
+                  //  меньше можно дальше добавлять)))
+                  //var text = '<div id="file_div_' + file_div_id + '" class="file_line_info">'
+                  //text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">'
+                  //text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
+                  //text = text + myObject.file_user_name + '<a href="#" id="delete_file_div_' + file_div_id + '"><img src="/public/img/cancel.png" /></a></div>';
+                  var text = '<span id="file_div_' + file_div_id + '" class="popupper-add-filebox-item">';
+                  text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">';
+                  text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
+                  text = text + myObject.file_user_name + ' <i class="icon add-file-delete-icon" id="delete_file_div_' + file_div_id + '"></i></span>'
+                  $("#file_list").append(text);
+                  var id = '#file_div_' + file_div_id
+                  var delete_id = '#delete_file_div_' + file_div_id
+                  $(delete_id).click(function(){
+                    $(id).remove()
+                    if($(".file_line_info").length > 2){
+                      //  Скрываем ссылку загрузить файл
+                      $("#file_upload").hide();
+                    }else{
+                      $("#file_upload").show();
+                    }
+                    return false;
+                  })
                   if($(".file_line_info").length > 2){
                     //  Скрываем ссылку загрузить файл
                     $("#file_upload").hide();
-                  }else{
-                    $("#file_upload").show();
                   }
-                  return false;
-                })
-                if($(".file_line_info").length > 2){
-                  //  Скрываем ссылку загрузить файл
-                  $("#file_upload").hide();
                 }
+              }else{
+                //  Скрываем ссылку загрузить файл
+                $("#file_upload").hide();
               }
-            }else{
-              //  Скрываем ссылку загрузить файл
-              $("#file_upload").hide();
             }
           }
         }
