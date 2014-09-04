@@ -25,7 +25,16 @@
 			if ((string)$id != (string)$_GET['id']) {
 				header("Location: /admin/concept/");
 			}
-			\Tango::sql()->delete('concept_comment', 'id='.$id);
+			$user_info=\Tango::session()->get('userInfo');
+			//	Проверяем наличие коммента.
+			$query="SELECT `date` FROM concept_comment WHERE concept_id=? AND id=? AND user_id=?";
+			$SQL=\Tango::sql()->select($query, array($concept_id, $id, $user_info['id']));
+			if ($SQL!=array()) {
+				$time = time() - 300;
+				if($SQL[0]['date']>$time){
+					\Tango::sql()->delete('concept_comment', 'id='.$id);
+				}
+			}
 			if ($concept_id) {
 				if (isset($_GET['new'])) {
 					header("Location: /admin/concept/comment/new/");

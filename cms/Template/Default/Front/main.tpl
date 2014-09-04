@@ -178,6 +178,7 @@
                     $("#addtag").focus();
                 } else{
                     var tag = $("#addtag").val();
+                    tag = tag.substr(0, 32)
                     if (!popupperAddTag[tag]) {
                         var id = popupperAddTagNum.length
                         popupperAddTag[tag] = 1;
