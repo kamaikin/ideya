@@ -15,5 +15,8 @@
         <ul class="tags-widget-list">
             {$tags}
         </ul>
+        <div class="more-ideas tac">
+            <a href="/tags/" class="more-idea-link">Еще теги</a>
+        </div>
     </div><!--end tags-widget-->
 </aside><!--end sidebar-->

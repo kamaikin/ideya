@@ -5,13 +5,28 @@
 		}
 
 		protected function IndexAction(){
-			//	Это главная страница сайта.
-			//	Сдесь есть пагинатор, значит если мы здесь, вызываем метод со списком страниц и передаем туда первую страницу.
-			$this->_getPagesList(1);
-			//Tango::plugins('user')->userId(1)->getId(); exit;
-			/*$this->_view['includeFileName']='Index/index.tpl';
-			header("Location: /concept/page01.html");
-			exit;*/
+			//	Выводим все теги, что есть в базе.
+			//	Смотрим, есть ли в базе данных актуальный набор
+			//	Собираем заново 
+			$query="SELECT * 
+				FROM   (SELECT tags.name  AS title, 
+			       tags.url  AS alias, 
+			       COUNT(tags_to_concept.id) AS cnt 
+				FROM   tags 
+			       INNER JOIN tags_to_concept
+			         ON ( tags_to_concept.tags_id = tags.id ) 
+			GROUP  BY tags.id 
+			ORDER  BY cnt DESC 
+			LIMIT  200) AS subq
+			ORDER  BY title";
+			$SQL = \Tango::sql()->select($query);
+			$text='';
+			foreach ($SQL as $key => $value) {
+				$text.='<li class="tags-widget-item"><a href="/tags/'.$value['alias'].'.html" class="tags-widget-link">'.$value['title'].'</a></li>';
+			}
+			$this->_view['tags'] = $text;
+			$this->_view['mainTitle']='Все теги';
+			$this->_view['includeFileName']='Tags/index.tpl';
 		}
 
 		protected function OneAction(){
