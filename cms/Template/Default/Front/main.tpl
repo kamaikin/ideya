@@ -148,11 +148,13 @@
     </div><!-- /Popupper-add -->
     {literal}
     <script type="text/javascript">
+        var popupperAddFile = new Object()
+        var popupperAddFileNum = []
         $(function() {
             var popupperAddTag = new Object()
             var popupperAddTagNum = []
-            var popupperAddFile = new Object()
-            var popupperAddFileNum = []
+            //var popupperAddFile = new Object()
+            //var popupperAddFileNum = []
             $(".count_count").keypress(function(){
                 var id = $(this).attr('id');
                 var max_count = $(this).attr('max_count');

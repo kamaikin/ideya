@@ -143,11 +143,14 @@ function Upload(files, position, options, id){
                   var text = '<span id="file_div_' + file_div_id + '" class="popupper-add-filebox-item">';
                   text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">';
                   text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
-                  text = text + myObject.file_user_name + ' <i class="icon add-file-delete-icon" id="delete_file_div_' + file_div_id + '"></i></span>'
+                  text = text + myObject.file_user_name + ' <i class="icon add-file-delete-icon" id="delete_file_div_' + file_div_id + '" name="' + myObject.file_user_name + '"></i></span>'
                   $("#file_list").append(text);
                   var id = '#file_div_' + file_div_id
                   var delete_id = '#delete_file_div_' + file_div_id
                   $(delete_id).click(function(){
+                    //  Удалить элемент из массива
+                    var name = $(this).attr('name');
+                    delete popupperAddFile[name];
                     $(id).remove()
                     if($(".popupper-add-filebox-item").length > 2){
                       //  Скрываем ссылку загрузить файл
