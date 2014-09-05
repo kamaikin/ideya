@@ -1,6 +1,6 @@
 <section role="section" class="main-section left">
 <article class="post clearfix">
-    {if $index_user_role == 'sponsor' ||  $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
+    {if $index_user_role == 'sponsor' ||  $index_user_role == 'admin'}
         {if $Concept_data.add_sponsor == 'y'}
             <a href="#" class="post-sponsorbox" id="add_sponsor">спонсировать</a>
         {/if}
@@ -64,7 +64,7 @@
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
         </div>
         <div class="post-comment-bl-body">
-            <h2 class="post-comment-bl-name"><a href="#" class="post-comment-bl-name-link" id="name_{$value.id}">{$value.surname} {$value.name}</a></h2>
+            <h2 class="post-comment-bl-name"><a href="/user/profile/{$value.user_id}.html" class="post-comment-bl-name-link" id="name_{$value.id}">{$value.surname} {$value.name}</a></h2>
             <div class="post-comment-bl-content" id="body_{$value.id}">
                 {$value.body|nl2br}
             </div>
@@ -75,7 +75,7 @@
         </div>
     </div>
     {/foreach}
-    <a name="comment" />
+    <a name="comment" ></a>
     <div class="post-addcomment">
         <div class="post-addcomment-title">Ваш комментарий:</div>
         <form action="" class="post-addcomment-body clearfix" method="POST">
@@ -121,7 +121,7 @@
     {/literal}
 </script>
 {/if}
-{if $index_user_role == 'sponsor' ||  $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
+{if $index_user_role == 'sponsor' ||  $index_user_role == 'admin'}
 {if $Concept_data.add_sponsor == 'y'}
 <script type="text/javascript">
     {literal}

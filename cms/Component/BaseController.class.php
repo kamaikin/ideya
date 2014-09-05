@@ -7,6 +7,8 @@
 			$action=Tango::registry('actionName').'Action';
 			//	Получаем роль пользователя
 			$user_info=\Tango::session()->get('userInfo');
+			$user_info = \Tango::plugins('user')->userId($user_info['user_id'])->userInfoAll();
+			\Tango::session()->set('userInfo', $user_info);
 			if ($user_info){
 				$role=$user_info['user_role']; 
 				$this->_view['index_autorize']=TRUE;
