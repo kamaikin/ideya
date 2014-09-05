@@ -857,6 +857,7 @@ $profileFormWidth: 83px;
 .profile-form-label{}
 .profile-form-fieldbox{
     margin-left: $profileFormWidth;
+    @extend .ellipsis;
 }
 
 .prifile-tab{
