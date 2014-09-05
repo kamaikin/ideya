@@ -78,13 +78,13 @@
     <!--tabs-->
     <div class="tabs-section tabs-section-js prifile-tab">
         <ul class="tabs tabs-js">
-            <li class="tab tab-current">Мои идеи <span class="notificare">{$user_concept|@count}</span></li>
-            <li class="tab"><i class="icon like"></i> мне нравится <span class="notificare">{$my_lacke_concept|@count}</span></li>
+            <li class="tab tab-current">Мои идеи {if $count_user_concept>0}<span class="notificare">{$count_user_concept}</span>{/if}</li>
+            <li class="tab"><i class="icon like"></i> мне нравится {if $count_my_lacke_concept>0}<span class="notificare">{$count_my_lacke_concept}</span>{/if}</li>
             {if $user_info.user_role == 'sponsor'}
-            <li class="tab"><i class="icon sponsor"></i> я спонсирую <span class="notificare">{$ya_sponsor_concept|@count}</span></li>
+            <li class="tab"><i class="icon sponsor"></i> я спонсирую {if $count_ya_sponsor_concept>0}<span class="notificare">{$count_ya_sponsor_concept}</span>{/if}</li>
             {/if}
-            <li class="tab"><i class="icon money"></i> Меня спонсируют <span class="notificare">{$my_sponsor_concept|@count}</span></li>
-            <li class="tab"><i class="icon comment"></i> Мои комментарии <span class="notificare">{$user_comment|@count}</span></li>
+            <li class="tab"><i class="icon money"></i> Меня спонсируют {if $count_my_sponsor_concept>0}<span class="notificare">{$count_my_sponsor_concept}</span>{/if}</li>
+            <li class="tab"><i class="icon comment"></i> Мои комментарии {if $count_user_comment>0}<span class="notificare">{$count_user_comment}</span>{/if}</li>
         </ul>
         <div class="tab-content posts-lists tab-content-js tab-content-visible">
         	{*Мои идеи*}

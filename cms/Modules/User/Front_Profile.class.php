@@ -101,6 +101,41 @@
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['my_sponsor_concept']=$SQL;
 			$this->_view['includeFileName']='User/profile.tpl';
+			//	Определяем, что изменилось с нашего последнего захода в профиль
+			$query="SELECT time FROM user_profile_views WHERE profile_id=? AND user_id=? ORDER BY time DESC LIMIT 1";
+			$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $user_info['user_id']));
+			if ($SQL!=array()) {
+				$time=$SQL[0]['time'];
+			}else{
+				$time=0;
+			}
+			//	Теперь отмечаем вход пользователя
+			$array=array();
+			$array['user_id']=$user_info['user_id'];
+			$array['profile_id']=$user_info['user_id'];
+			$array['time']=time();
+			\Tango::sql()->insert('user_profile_views', $array);
+			//	Мне нравяться
+			$query="SELECT count(c.id) as count FROM concept c JOIN concept_licke cl ON cl.concept_id = c.id WHERE cl.user_id = ? AND cl.datetime>?";
+			$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $time));
+			$this->_view['count_my_lacke_concept']=$SQL[0]['count'];
+			//	Меня спонсируют
+			$query="SELECT count(c.id) as count  FROM concept c JOIN concept_sponsor cs ON cs.concept_id = c.id JOIN user_data ud ON ud.user_id = cs.user_id WHERE c.user_id=? AND c.date>?";
+			$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $time));
+			$this->_view['count_my_sponsor_concept']=$SQL[0]['count'];
+			if ($user_info['user_role']=='sponsor') {
+				//	Я спонсирую
+				$query="SELECT count(c.id) as count  FROM concept c JOIN concept_sponsor cs ON cs.concept_id = c.id JOIN user_data ud ON ud.user_id = c.user_id WHERE cs.user_id=? AND cs.datetime=?";
+				$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $time));
+				$this->_view['count_ya_sponsor_concept']=$SQL[0]['count'];
+			}
+			//	Получить все мои комментарии
+			$query = "SELECT count(id) as count FROM concept_comment WHERE user_id = ?  AND `date`>?";
+			$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $time));
+			$this->_view['count_user_comment']=$SQL[0]['count'];
+			$query = "SELECT count(`id`) as count FROM concept WHERE user_id = ? AND `date`>?";
+			$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $time));
+			$this->_view['count_user_concept']=$SQL[0]['count'];
 			$this->_getRightSidebar();
 		}
 	}
