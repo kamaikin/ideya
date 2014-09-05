@@ -88,7 +88,11 @@
         word-wrap: break-word;
         height: 22px;
     }
-
+    .profile-content,
+    .profile-form-fieldbox{
+        -ms-text-overflow: clip;
+        text-overflow: clip;
+    }
     .profile-avatar{
         .profile-change-avatar{
             display: none;
