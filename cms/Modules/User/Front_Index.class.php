@@ -50,7 +50,7 @@
 					c.name as name, c.date as `date`,
 					ud.avatar as user_avatar,
 					ud.name as user_name,
-					ud.surname as user_surname  FROM concept c JOIN concept_sponsor cs ON cs.concept_id = c.id JOIN user_data ud ON ud.user_id = c.user_id WHERE cs.user_id=?";
+					ud.surname as user_surname, cs.datetime as datetime  FROM concept c JOIN concept_sponsor cs ON cs.concept_id = c.id JOIN user_data ud ON ud.user_id = c.user_id WHERE cs.user_id=?";
 				$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 				$this->_view['ya_sponsor_concept']=$SQL;
 			}
@@ -59,7 +59,7 @@
 				c.points as points, 
 				c.post_like as post_like, 
 				c.comment_count as comment_count, 
-				c.name as name, c.date as `date` FROM concept c JOIN concept_licke cl ON cl.concept_id = c.id WHERE cl.user_id = ? ORDER BY c.`date` DESC";
+				c.name as name, c.date as `date`, cl.datetime as datetime FROM concept c JOIN concept_licke cl ON cl.concept_id = c.id WHERE cl.user_id = ? ORDER BY c.`date` DESC";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['my_lacke_concept']=$SQL;
 			//	Меня спонсируют
@@ -83,6 +83,7 @@
 			}else{
 				$time=0;
 			}
+			$this->_view['notificare_time']=$time;
 			//	Теперь отмечаем вход пользователя
 			$array=array();
 			$array['user_id']=$user_info['user_id'];

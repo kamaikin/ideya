@@ -69,7 +69,7 @@
         <div class="tab-content posts-lists tab-content-js tab-content-visible">
         	{*Мои идеи*}
         	{foreach from=$user_concept item="value"}
-            <article class="post">
+            <article class="post{if $value.date > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail left">
                 {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
                 </div>
@@ -97,7 +97,7 @@
         <div class="tab-content posts-lists tab-content-js">
         	{*Мне нравяться*}
         	{foreach from=$my_lacke_concept item="value"}
-            <article class="post">
+            <article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail left">
                 {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
                 </div>
@@ -127,7 +127,7 @@
         {*Я спонсирую*}
         <div class="tab-content posts-lists tab-content-js">
         {foreach from=$ya_sponsor_concept item="value"}
-        	<article class="post">
+        	<article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail left">
 	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
 	                <div class="post-author tac">
@@ -162,7 +162,7 @@
         <div class="tab-content posts-lists tab-content-js">
         {*Меня спонсируют*}
         	{foreach from=$my_sponsor_concept item="value"}
-        	<article class="post">
+        	<article class="post{if $value.date > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail left">
 	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
 	                <div class="post-author tac">
@@ -196,7 +196,7 @@
         <div class="tab-content tab-content-js">
         {*Мои комментарии*}
         {foreach from=$user_comment item="value"}
-        <article class="post">
+        <article class="post{if $value.date > $notificare_time} notificare-post{/if}">
         	<div class="post-content">
 	            <div class="post-title">
 	                <a href="/concept/{$value.concept_id}.html#comment{$value.id}" class="post-title-link">{$value.body}</a>
