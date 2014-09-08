@@ -131,18 +131,21 @@ $searchHeight: 39px;
 }
 .profile-ava{
     width: 41px;
-    height: 41px;
-    overflow: hidden;
     border: 3px solid #eee;
     &,
     .profile-ava-img{
         position: relative;
         border-radius: 50%;
     }
+    &:hover{
+        .profile-logout{
+            display: block;
+        }
+    }
 }
 .profile-ava-img{
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
 }
 .profile-content{
     margin-left: 53px;
@@ -152,6 +155,31 @@ $searchHeight: 39px;
     line-height: 47px;
     @include adjust-font-size-to(14px);
     text-transform: uppercase;
+}
+.profile-logout{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-left: -34px;
+
+    display: none;
+
+    padding-top: 5px;
+}
+$profileTooltipBg: #eee;
+.profile-tooltip{
+    position: relative;
+
+    padding: 10px;
+    background-color: $profileTooltipBg;
+    &:before{
+        @include arrow(bottom, 10px, 5px, $profileTooltipBg, true, true);
+    }
+    .btn{
+        height: 35px;
+        line-height: 35px;
+        padding: 0 20px;
+    }
 }
 
 /* ---------->>> CONTENT <<<-----------*/
