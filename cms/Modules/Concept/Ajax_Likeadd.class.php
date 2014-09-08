@@ -37,8 +37,11 @@
 							$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$user_info['user_id'];
 							\Tango::sql()->update($query);
 						}
-						$name= $user_info['name'].' '.$user_info['surname'];
-						$this->_sendEmail('ideya_like', array('url_id'=>$_GET['id'], 'user_name'=>$name), $user_info['email'], $name);
+						//	И начислить баллы идее
+						$query="SELECT Credits FROM concept_events WHERE `key`='ocenka_drugimi_polsovatelyami'";
+						$SQL=\Tango::sql()->select($query);
+						$query="UPDATE concept SET points = points + ".$SQL[0]['Credits']." WHERE id = ".(int)$_GET['id'];
+						\Tango::sql()->update($query);
 					}
 				}
 			}

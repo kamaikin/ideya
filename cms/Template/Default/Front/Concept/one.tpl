@@ -108,7 +108,12 @@
             //  Передаем лайк
             $.post('/ajax/concept/likeadd/?id={/literal}{$Concept_data.id}{literal}', function(data){
                 //console.log(data)
+
             })
+            // ***
+            var points = Number($(".post-rating").text());
+            points = points +10;
+            $(".post-rating").text(points);
             //  Добавляем в счетчик
             var like = Number($("#post_like").text());
             like = like +1;
