@@ -1587,3 +1587,41 @@ $notificareSize: 17px;
     background: transparent;
     width: 50px;
 }
+.sortbar{
+    padding: 8px;
+    margin-bottom: 15px;
+
+    background-color: #FFF;
+
+    color: #818181;
+    text-align: right;
+}
+.sortbar-item{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+.sortbar-title{
+    font-weight: 700;
+}
+.sort-link{
+    text-decoration: none;
+    font-weight: 300;
+    &:hover{
+        color: #58f3d7;
+        text-decoration: none;
+    }
+    &.up{
+        .icon{
+            @include arrowBorder(bottom, 10px, #fdb646);
+        }
+    }
+    &.down{
+        .icon{
+            @include arrowBorder(top, 10px, #fdb646);
+        }
+    }
+}
+.sort-icon{
+    border: 5px solid transparent;
+}

@@ -20,7 +20,7 @@
 <body>
     <div class="container-wrap">
         <header role="banner" class="main-header">
-            <h1 class="main-title">Место где воплощаются идеи</h1>
+            <h1 class="main-title">Место, где воплощаются идеи</h1>
         </header>
         <div role="main" class="content">
             <form role="form" action="/login/check/{if $smarty.get.url}?url={$smarty.get.url}{/if}" class="aut-form" method="POST">
