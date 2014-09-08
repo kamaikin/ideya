@@ -66,9 +66,9 @@
                 </a>
                 <form action="#" class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
                     <h2 class="post-comment-bl-delete-cloud-title">Причина удаления</h2>
-                    <textarea name="deleteArea" id="deleteArea" class="post-comment-bl-delete-cloud-area" placeholder="Напишите причину удаления"></textarea>
+                    <textarea name="deleteArea" id="deleteArea_{$value.id}" class="post-comment-bl-delete-cloud-area" placeholder="Напишите причину удаления"></textarea>
                     <div class="post-comment-bl-delete-cloud-button">
-                        <button class="btn">Отправить</button>
+                        <button class="btn moderator_delete" delete="{$value.id}">Отправить</button>
                     </div>
                 </form>
             </div>
@@ -106,6 +106,13 @@
     </div>
 </div>
 </section>
+<script type="text/javascript">
+    {literal}
+    $(function() {
+        
+    })
+    {/literal}
+</script>
 {if $Concept_data.add_licke == 'y'}
 <script type="text/javascript">
     {literal}
@@ -134,6 +141,25 @@
             $("#post_like").text(like);
             //  Скрываем иконку
             $("#add_licke").hide();
+            return false;
+        })
+    })
+    {/literal}
+</script>
+{/if}
+{if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
+<script type="text/javascript">
+    {literal}
+    $(function() {
+        $(".moderator_delete").click(function(){
+            var id = $(this).attr("delete");
+            var text_id = "#deleteArea_" + id;
+            var text = $(text_id).val();
+            var url = '/ajax/concept/deletecomment/?id={/literal}{$Concept_data.id}{literal}&comment_id=' + id;
+            var post = 'text=' + text;
+            $.post(url, post, function(data){
+                location.href=location.href;
+            })
             return false;
         })
     })
