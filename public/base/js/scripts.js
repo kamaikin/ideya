@@ -2,7 +2,14 @@ $(document).ready(function(){
 
     $('.post-comment-bl-delete-box-link').click(function(e) {
         e.preventDefault();
-        var $deleteCloud = $('.post-comment-bl-delete-cloud');
+        var $El = $(this),
+            $cloud = '.post-comment-bl-delete-cloud',
+            $link = '.post-comment-bl-delete-box-link',
+            $deleteCloud = $El.parent().find($cloud);
+
+        $($cloud).hide();
+        $($link).removeClass('active');
+
         if ($deleteCloud.is(':hidden')) {
             $(this).addClass('active');
             $deleteCloud.show();

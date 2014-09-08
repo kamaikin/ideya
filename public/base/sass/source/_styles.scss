@@ -1072,6 +1072,7 @@ $profileFormWidth: 83px;
     text-align: center;
     font-weight: 700;
 }
+
 .post-comment-bl-delete-cloud-area{
     @include box-sizing(border-box);
     width: 100%;
@@ -1087,6 +1088,9 @@ $profileFormWidth: 83px;
     @each $prefixPlaceholder in $prefixPlaceholders {
         @include placeholder($prefixPlaceholder, #818181);
     }
+}
+.post-comment-bl-delete-cloud-button{
+    margin-top: 10px;
 }
 .post-sponsorbox{
     position: absolute;

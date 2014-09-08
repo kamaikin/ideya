@@ -64,10 +64,13 @@
                 <a href="#" class="post-comment-bl-delete-box-link" kid="{$value.id}">
                     Удалить <i class="icon wastebasket-icon"></i>
                 </a>
-                <div class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
+                <form action="#" class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
                     <h2 class="post-comment-bl-delete-cloud-title">Причина удаления</h2>
                     <textarea name="deleteArea" id="deleteArea" class="post-comment-bl-delete-cloud-area" placeholder="Напишите причину удаления"></textarea>
-                </div>
+                    <div class="post-comment-bl-delete-cloud-button">
+                        <button class="btn">Отправить</button>
+                    </div>
+                </form>
             </div>
         {/if}
         {if $value.user_id==$index_user_id}{if $timemetka < $value.date}<a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete"></a>{/if}{/if}
