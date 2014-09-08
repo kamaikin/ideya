@@ -217,10 +217,17 @@
         {*Мои комментарии*}
         {foreach from=$user_comment item="value"}
         <article class="post">
-        	<div class="post-content">
-	            <div class="post-title">
-	                <a href="/concept/{$value.concept_id}.html#comment{$value.id}" class="post-title-link">{$value.body}</a>
-	            </div>
+            <div class="post-thumbnail left">
+            {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+            </div>
+            <div class="post-content">
+                <div class="post-title">
+                    <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
+                </div>
+                <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
+                <div class="post-comment-body break">
+                    {$value.body}
+                </div>
             </div>
         </article>
         {/foreach}
