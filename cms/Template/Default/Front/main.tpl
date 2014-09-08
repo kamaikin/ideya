@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/public/base/css/index.css?v=2">
     <!-- CSS for developers -->
     <!-- <link rel="stylesheet" href="/public/base/css/dev.css?v=1" media="screen"> -->
+    <!--favicon-->
+    <link rel="icon" href="/public/base/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/public/base/favicon.png" type="image/x-icon">
     <!-- Scripts -->
     <script src="/public/base/js/jquery.min.js"></script>
     <script data-headjs-load="/public/base/js/init.js" src="/public/base/js/head.min.js"></script>
