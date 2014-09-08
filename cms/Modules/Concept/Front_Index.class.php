@@ -83,18 +83,22 @@
 						$array['comment_count']=$SQL1[0]['count'];
 						$SQL[0]['comment_count']=$SQL1[0]['count'];
 						\Tango::sql()->update('concept', $array, 'id='.$id);
-						if ($SQL[0]['user_id']!=$user_id) {
-							//	Поставить пользователю который добавил идею в рейтинг
-							$query="SELECT Credits FROM users_events WHERE `key`='comments'";
-							$SQL1=\Tango::sql()->select($query);
-							$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$user_id;
-							\Tango::sql()->update($query);
-							//	Добавить рейтинг идее
-							$query="SELECT Credits FROM concept_events WHERE `key`='comments'";
-							$SQL1=\Tango::sql()->select($query);
-							$query="UPDATE concept SET points = points + ".$SQL1[0]['Credits']." WHERE id = ".$id;
-							\Tango::sql()->update($query);
-							$SQL[0]['points']=$SQL[0]['points']+$SQL1[0]['Credits'];
+						$query="SELECT count(id) as count FROM concept_comment WHERE concept_id=? AND user_id!=?";
+						$SQL1=\Tango::sql()->select($query, array($id, $user_id));
+						if ($SQL1[0]['count']==1) {
+							if ($SQL[0]['user_id']!=$user_id) {
+								//	Поставить пользователю который добавил идею в рейтинг
+								$query="SELECT Credits FROM users_events WHERE `key`='comments'";
+								$SQL1=\Tango::sql()->select($query);
+								$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$user_id;
+								\Tango::sql()->update($query);
+								//	Добавить рейтинг идее
+								$query="SELECT Credits FROM concept_events WHERE `key`='comments'";
+								$SQL1=\Tango::sql()->select($query);
+								$query="UPDATE concept SET points = points + ".$SQL1[0]['Credits']." WHERE id = ".$id;
+								\Tango::sql()->update($query);
+								$SQL[0]['points']=$SQL[0]['points']+$SQL1[0]['Credits'];
+							}
 						}
 						//	Отправить письмо автору идеи, что его идею прокомментировали
 						$name= $user_info['name'].' '.$user_info['surname'];
