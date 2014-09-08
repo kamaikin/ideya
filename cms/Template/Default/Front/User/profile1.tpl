@@ -59,7 +59,7 @@
     <div class="tabs-section tabs-section-js prifile-tab">
         <ul class="tabs tabs-js">
             <li class="tab tab-current">Идеи{if $count_user_concept>0}<span class="notificare">{$count_user_concept}</span>{/if}</li>
-            <li class="tab"><i class="icon like"></i> Нравиться{if $count_my_lacke_concept>0}<span class="notificare">{$count_my_lacke_concept}</span>{/if}</li>
+            <li class="tab"><i class="icon like"></i> Нравится{if $count_my_lacke_concept>0}<span class="notificare">{$count_my_lacke_concept}</span>{/if}</li>
             {if $user_info.user_role == 'sponsor'}
             <li class="tab"><i class="icon sponsor"></i> Спонсоры{if $count_my_sponsor_concept>0}<span class="notificare">{$count_my_sponsor_concept}</span>{/if}</li>
             {/if}
