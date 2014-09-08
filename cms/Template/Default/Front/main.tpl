@@ -140,7 +140,7 @@
                 <div class="popupper-add-anonim left">
                     <span id="is_anonimus_data"></span>
                     <div class="popupper-add-anonim-title">Опубликовать анонимно?</div>
-                    <div class="popupper-add-anonim-trigger off" id="is_anonimus"><span class="popupper-add-anonim-trigger-text">вкл</span><span class="popupper-add-anonim-trigger-pic"></span></div>
+                    <div class="popupper-add-anonim-trigger off" id="is_anonimus"><span class="popupper-add-anonim-trigger-text">выкл</span><span class="popupper-add-anonim-trigger-pic"></span></div>
                 </div>
                 <button class="btn popupper-add-f-btn right">Опубликовать</button>
             </div>
