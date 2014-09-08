@@ -58,7 +58,18 @@
 </article>
 <div class="post-comments">
     {foreach from=$Concept_comment item="value"}
-    <div class="post-comment-bl clearfix"><a name="comment{$value.id}" />
+    <div class="post-comment-bl clearfix"><a name="comment{$value.id}" ></a>
+        {if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
+            <div class="post-comment-bl-delete-box">
+                <a href="#" class="post-comment-bl-delete-box-link" kid="{$value.id}">
+                    Удалить <i class="icon wastebasket-icon"></i>
+                </a>
+                <div class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
+                    <h2 class="post-comment-bl-delete-cloud-title">Причина удаления</h2>
+                    <textarea name="deleteArea" id="deleteArea" class="post-comment-bl-delete-cloud-area" placeholder="Напишите причину удаления"></textarea>
+                </div>
+            </div>
+        {/if}
         {if $value.user_id==$index_user_id}{if $timemetka < $value.date}<a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete"></a>{/if}{/if}
         <div class="post-comment-bl-ava left">
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
@@ -108,7 +119,12 @@
             //  Передаем лайк
             $.post('/ajax/concept/likeadd/?id={/literal}{$Concept_data.id}{literal}', function(data){
                 //console.log(data)
+                location.href = location.href;
             })
+            // ***
+            var points = Number($(".post-rating").text());
+            points = points +10;
+            $(".post-rating").text(points);
             //  Добавляем в счетчик
             var like = Number($("#post_like").text());
             like = like +1;
