@@ -7,6 +7,25 @@
 		protected function IndexAction(){
 			$user_info=\Tango::session()->get('userInfo');
 			if ($_POST!=array()) {
+				if(isset($_POST['form_type'])){
+					$query="SELECT id FROM users_config WHERE user_id=?";
+					$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
+					$array=array();
+					$array['comment']=1;
+					$array['points']=1;
+					$array['sponsors']=1;
+					$array['user_id']=$user_info['user_id'];
+					if($_POST['subscriptions-comment']=='выкл'){$array['comment']=0;}
+					if($_POST['subscriptions-points']=='выкл'){$array['points']=0;}
+					if($_POST['subscriptions-sponsors']=='выкл'){$array['sponsors']=0;}
+					if ($SQL!=array()) {
+						\Tango::sql()->update('users_config', $array, 'id='.$SQL[0]['id']);
+					} else {
+						\Tango::sql()->insert('users_config', $array);
+					}
+					
+					header("Location: /user/profile/");
+				}
 				//	Логика, если нас чем то не устраивает, то рпосто игнарируем параметр)))
 				if (isset($_POST['avatar_name'])) {if (trim($_POST['avatar_name'])=='') {$avatar_name='';}else{$avatar_name=htmlspecialchars($_POST['avatar_name'], ENT_QUOTES);}}else{$avatar_name='';}
 				if (isset($_POST['name'])) {if (trim($_POST['name'])=='') {$name='';}else{$name=htmlspecialchars($_POST['name'], ENT_QUOTES);}}else{$name='';}
@@ -141,6 +160,10 @@
 			$query = "SELECT count(`id`) as count FROM concept WHERE user_id = ? AND `date`>?";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $time));
 			$this->_view['count_user_concept']=$SQL[0]['count'];
+			$query="SELECT * FROM users_config WHERE user_id=?";
+			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
+			$this->_view['users_config']=$SQL[0];
+			//print_r($user_info['user_id']); exit;
 			$this->_getRightSidebar();
 		}
 	}

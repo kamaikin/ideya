@@ -2,28 +2,29 @@
     {if $includeFileName == 'User/profile.tpl'}
     <div class="widget subscriptions-widget">
         <h2 class="widgettitle tac">Управление подписками</h2>
-        <form action="#" class="subscriptions-form">
+        <form action="/user/profile/" class="subscriptions-form" method="POST">
+        <input type="hidden" name="form_type" value="5" />
             <div class="subscriptions-row clearfix">
-                <div class="trigger off subscriptions-trigger left subscriptions-trigger-js">
-                    <span class="trigger-text">выкл</span>
+                <div class="trigger {if $users_config.comment==1}on{else}off{/if} subscriptions-trigger left subscriptions-trigger-js">
+                    <span class="trigger-text">{if $users_config.comment==1}вкл{else}выкл{/if}</span>
                     <span class="trigger-pic"></span>
-                    <input type="hidden" name="subscriptions-comment" value="выкл">
+                    <input type="hidden" name="subscriptions-comment" value="{if $users_config.comment==1}вкл{else}выкл{/if}">
                 </div>
                 <div class="subscriptions-text">получать уведомления о комментариях</div>
             </div>
             <div class="subscriptions-row clearfix">
-                <div class="trigger off subscriptions-trigger left subscriptions-trigger-js">
-                    <span class="trigger-text">выкл</span>
+                <div class="trigger {if $users_config.points==1}on{else}off{/if} subscriptions-trigger left subscriptions-trigger-js">
+                    <span class="trigger-text">{if $users_config.points==1}вкл{else}выкл{/if}</span>
                     <span class="trigger-pic"></span>
-                    <input type="hidden" name="subscriptions-points" value="выкл">
+                    <input type="hidden" name="subscriptions-points" value="{if $users_config.points==1}вкл{else}выкл{/if}">
                 </div>
                 <div class="subscriptions-text">получать уведомления о оценках</div>
             </div>
             <div class="subscriptions-row clearfix">
-                <div class="trigger off subscriptions-trigger left subscriptions-trigger-js">
-                    <span class="trigger-text">выкл</span>
+                <div class="trigger {if $users_config.sponsors==1}on{else}off{/if} subscriptions-trigger left subscriptions-trigger-js">
+                    <span class="trigger-text">{if $users_config.sponsors==1}вкл{else}выкл{/if}</span>
                     <span class="trigger-pic"></span>
-                    <input type="hidden" name="subscriptions-sponsors" value="выкл">
+                    <input type="hidden" name="subscriptions-sponsors" value="{if $users_config.sponsors==1}вкл{else}выкл{/if}">
                 </div>
                 <div class="subscriptions-text">получать уведомления о спонсорах</div>
             </div>
