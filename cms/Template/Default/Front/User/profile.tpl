@@ -93,8 +93,8 @@
         	{*Мои идеи*}
             <ul class="sortbar">
                 <li class="sortbar-item sortbar-title">Сортировать: </li>
-                <li class="sortbar-item"><a href="#" class="sort-link up">по дате <i class="icon sort-icon"></i></a></li>
-                <li class="sortbar-item"><a href="#" class="sort-link down">по рейтингу <i class="icon sort-icon"></i></a></li>
+                <li class="sortbar-item"><a href="/user/profile/?sort=date&order={if $smarty.get.order=='asc'}desc{else}asc{/if}" class="sort-link {if $smarty.get.order=='asc'}up{else}down{/if}">по дате <i class="icon sort-icon"></i></a></li>
+                <li class="sortbar-item"><a href="/user/profile/?sort=raiting&order={if $smarty.get.order=='asc'}desc{else}asc{/if}" class="sort-link {if $smarty.get.order=='asc'}up{else}down{/if}">по рейтингу <i class="icon sort-icon"></i></a></li>
             </ul>
         	{foreach from=$user_concept item="value"}
             <article class="post{if $value.date > $notificare_time} notificare-post{/if}">

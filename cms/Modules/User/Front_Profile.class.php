@@ -62,7 +62,11 @@
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['user_comment']=$SQL;
 			//	Получить все мои идеи
-			$query = "SELECT * FROM concept WHERE user_id = ? ORDER BY `date` DESC LIMIT 0, 99";
+			$sort='date';
+			if(isset($_GET['sort'])){if ($_GET['sort']=='raiting') {$sort='points';}}
+			$order='ASC';
+			if(isset($_GET['order'])){if($_GET['order']=='desc'){$order='DESC';}}
+			$query = "SELECT * FROM concept WHERE user_id = ? ORDER BY ".$sort.' '.$order." LIMIT 0, 99";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['user_concept']=$SQL;
 			if ($user_info['user_role']=='sponsor') {
