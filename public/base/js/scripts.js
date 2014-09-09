@@ -93,4 +93,21 @@ $(document).ready(function(){
             }
     });
 
+    $('.subscriptions-trigger-js').click(function() {
+        var $el = $(this),
+            $elText = $el.find('.trigger-text');
+
+        $el.toggleClass('off');
+
+        if ($el.hasClass('off')) {
+            $elText.text('выкл');
+            $el.find('input').val('выкл');
+        }
+        else{
+            $elText.text('вкл');
+            $el.find('input').val('вкл');
+        }
+
+    });
+
 }); // Ready

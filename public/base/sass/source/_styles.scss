@@ -1580,7 +1580,8 @@ $profileFormWidth: 83px;
 .popupper-add-anonim-title{
     line-height: 28px;
 }
-.popupper-add-anonim-trigger{
+.popupper-add-anonim-trigger,
+.trigger{
     position: relative;
     margin-left: 25px;
     height: 28px;
@@ -1594,12 +1595,14 @@ $profileFormWidth: 83px;
     cursor: pointer;
     &.off{
         color: #afaeae;
-        .popupper-add-anonim-trigger-pic{
+        .popupper-add-anonim-trigger-pic,
+        .trigger-pic{
             background-color: #d2d2d2;
         }
     }
 }
-.popupper-add-anonim-trigger-pic{
+.popupper-add-anonim-trigger-pic,
+.trigger-pic{
     position: absolute;
     top: 3px;
     right: 3px;
@@ -1714,4 +1717,23 @@ $notificareSize: 17px;
 }
 .sort-icon{
     border: 5px solid transparent;
+}
+.subscriptions-widget{}
+.subscriptions-form{
+    padding-top: 20px;
+}
+.subscriptions-row{
+    margin-bottom: 20px;
+}
+.trigger{
+    margin-left: 0;
+}
+.subscriptions-button{
+    margin-top: 20px;
+}
+.subscriptions-text{
+    margin-left: 120px;
+}
+.subscriptions-trigger{
+    margin-top: 2px;
 }
