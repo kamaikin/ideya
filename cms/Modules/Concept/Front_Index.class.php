@@ -126,12 +126,16 @@
 				$SQL1=\Tango::sql()->select($query, array($SQL[0]['id']));
 				$this->_view['Concept_data']['sponsors']=$SQL1;
 				//	Лайкал этот пользователь эту идею или нет?
-				$query="SELECT `id` FROM concept_licke WHERE user_id=? AND concept_id=?";
-				$SQL1=\Tango::sql()->select($query, array($user_info['id'], $SQL[0]['id']));
-				if ($SQL1!=array()) {
-					$this->_view['Concept_data']['add_licke']='n';
+				if ($this->_view['Concept_data']['user_id']!=$user_info['id']) {
+					$query="SELECT `id` FROM concept_licke WHERE user_id=? AND concept_id=?";
+					$SQL1=\Tango::sql()->select($query, array($user_info['id'], $SQL[0]['id']));
+					if ($SQL1!=array()) {
+						$this->_view['Concept_data']['add_licke']='n';
+					}else{
+						$this->_view['Concept_data']['add_licke']='y';
+					}
 				}else{
-					$this->_view['Concept_data']['add_licke']='y';
+					$this->_view['Concept_data']['add_licke']='n';
 				}
 				//	Спонсировал этот пользователь эту идею или нет?
 				$query="SELECT `id` FROM concept_sponsor WHERE user_id=? AND concept_id=?";
