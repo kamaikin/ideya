@@ -8,7 +8,7 @@
 			if (isset($_GET['id'])) {
 				if ((int)$_GET['id'] != 0) {
 					$user_info=\Tango::session()->get('userInfo');
-					$query="SELECT id, user_id FROM concept_sponsor WHERE user_id=? AND concept_id=?";
+					$query="SELECT id, user_id FROM concept_licke WHERE user_id=? AND concept_id=?";
 					$SQL=\Tango::sql()->select($query, array($user_info['id'], (int)$_GET['id']));
 					if($SQL==array()){
 						$array=array();
@@ -42,6 +42,16 @@
 						$SQL=\Tango::sql()->select($query);
 						$query="UPDATE concept SET points = points + ".$SQL[0]['Credits']." WHERE id = ".(int)$_GET['id'];
 						\Tango::sql()->update($query);
+						//	Смотрим на до ли отправлять автору письмо...
+						$query="SELECT comment FROM users_config WHERE user_id=?";
+						$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
+						$send=TRUE;
+						if ($SQL!=array()) {if ($SQL[0]['comment']==0) {$send=FALSE;}}
+						if ($send) {
+							//	Отправить письмо автору идеи, что его идею прокомментировали
+							$name= $user_info['name'].' '.$user_info['surname'];
+							$this->_sendEmail('ideya_like', array('url_id'=>$id, 'title'=>$this->_view['title'], 'user_name'=>$name), $user_info['email'], $name);
+						}
 					}
 				}
 			}
