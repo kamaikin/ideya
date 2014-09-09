@@ -22,6 +22,9 @@
                     <span class="profile-points-num-line"></span>
                     <span class="profile-points-num-val">{$user_info.points}</span>
                 </div>
+                <div class="points-tooltip profile-points-tooltip points-tooltip-top">
+                    Вы сейчас на 1 месте в в рейтинге пользователей
+                </div>
             </div>
             <div class="profile-info table">
                 <div class="profile-info-cell cell">{$user_info.concept_count}</div>

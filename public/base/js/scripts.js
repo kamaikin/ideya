@@ -67,4 +67,30 @@ $(document).ready(function(){
         $('.mobile-menu-list-js').toggle();
     });
 
+    $('.post-comment-bl-content-js').each(function(){
+        var $el = $(this),
+            $elBl = $el.find('.comment-content'),
+            $elBlMore = $el.find('.comment-content-more'),
+            $elHeight = $elBl.height();
+        if ($elHeight > 64) {
+            $elBl.addClass('short-comment-content');
+            $elBlMore.show();
+        };
+    });
+
+    $('.more-comment-link-js').click(function(){
+        var $el = $(this);
+            $el.toggleClass('up');
+            $el.closest('.post-comment-bl-content').find('.comment-content').toggleClass('short-comment-content');
+            if (!$el.hasClass('up')) {
+                $el
+                    .text('Развернуть комментарий')
+                    .parent().prev().text("...");
+            }
+            else{
+                $el.text('Свернуть комментарий')
+                .parent().prev().html("&nbsp;");
+            }
+    });
+
 }); // Ready

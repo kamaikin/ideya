@@ -28,7 +28,7 @@
                     <ul class="mobile-menu-list mobile-menu-list-js">
                         <li class="mobile-menu-item"><a href="/user/profile/" class="mobile-menu-link">Мой профиль</a></li>
                         <li class="mobile-menu-item"><a href="#" class="mobile-menu-link"><i class="icon plus-menu-icon"></i>Предложить идею</a></li>
-                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link">Зал славы</a></li>
+                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link">Рейтинг идей</a></li>
                         <li class="mobile-menu-item"><a href="#" class="mobile-menu-link">теги</a></li>
                     </ul>
                 </div>
@@ -74,6 +74,9 @@
                     <div class="points-max right">{$index_points_max}</div>
                     <div class="points-line">
                         <div class="points-clolor-line" style="width: {$index_points_procent}%"></div>
+                    </div>
+                    <div class="points-tooltip h-points-points-tooltip points-tooltip-bottom">
+                        Вы сейчас на 1 месте в в рейтинге пользователей
                     </div>
                 </div>
             </div>

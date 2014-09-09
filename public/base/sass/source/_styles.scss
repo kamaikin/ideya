@@ -801,8 +801,57 @@ $postTagHeight: 22px;
     background-color: #FFF;
 }
 .profile-points{
+    position: relative;
+
     color: #4cd9c0;
     text-align: center;
+}
+.points-tooltip{
+    position: absolute;
+    left: 50%;
+    z-index: 200;
+
+    display: none;
+
+    @include box-sizing(border-box);
+    width: 200px;
+    padding: 5px;
+    margin-left: -100px;
+
+    background-color: #ecf0f1;
+    border-radius: 5px;
+
+    color: #000;
+    @include adjust-font-size-to(13px);
+    font-weight: 300;
+    line-height: normal;
+    text-align: center;
+}
+.profile-points-tooltip{
+    bottom: 100%;
+    margin-bottom: 10px;
+
+    .profile-points:hover &{
+        display: block;
+    }
+}
+.h-points-points-tooltip{
+    top: 100%;
+    margin-top: 10px;
+
+    .h-points:hover &{
+        display: block;
+    }
+}
+.points-tooltip-top{
+    &:before{
+        @include arrow(top, 10px, 10px, #ecf0f1, true, true);
+    }
+}
+.points-tooltip-bottom{
+    &:before{
+        @include arrow(bottom, 10px, 10px, #ecf0f1, true, true);
+    }
 }
 .profile-points-title{
     padding: 10px 0;
@@ -1002,8 +1051,49 @@ $profileFormWidth: 83px;
     }
 }
 .post-comment-bl-content{
+    position: relative;
+
     margin-bottom: 15px;
+
     font-weight: 300;
+}
+.short-comment-content{
+    overflow: hidden;
+
+    height: 64px;
+}
+.comment-content-more{
+    display: none;
+}
+.more-comment-link{
+    cursor: pointer;
+
+    color: #4cd9c0;
+    font-size: 0.8125em;
+    font-weight: 300;
+    &:after{
+        @include arrow(top, 5px, 6px, #4cd9c0, false, false);
+        display: inline-block;
+        vertical-align: middle;
+        content: '';
+        margin-left: 5px;
+    }
+    &:hover{
+        color: #818181;
+        &:after{
+            border-top-color: #818181;
+        }
+    }
+    &.up{
+        &:after{
+            @include arrow(bottom, 5px, 6px, #4cd9c0, false, false);
+        }
+        &:hover{
+            &:after{
+                border-bottom-color: #818181;
+            }
+        }
+    }
 }
 .post-comment-bl-footer{}
 .post-comment-bl-time{

@@ -79,8 +79,12 @@
         </div>
         <div class="post-comment-bl-body">
             <h2 class="post-comment-bl-name"><a href="/user/profile/{$value.user_id}.html" class="post-comment-bl-name-link" id="name_{$value.id}">{$value.surname} {$value.name}</a></h2>
-            <div class="post-comment-bl-content" id="body_{$value.id}">
-                {$value.body|nl2br}
+            <div class="post-comment-bl-content post-comment-bl-content-js" id="body_{$value.id}">
+                <div class="comment-content">{$value.body|nl2br}</div>
+                <div class="comment-content-more">
+                    <p>...</p>
+                    <p><span class="more-comment-link more-comment-link-js">Развернуть комментарий</span></p>
+                </div>
             </div>
             <div class="post-comment-bl-footer">
                 <span class="post-comment-bl-time">{$value.date|date_format:"%d-%m-%y %T"}</span>
@@ -109,7 +113,7 @@
 <script type="text/javascript">
     {literal}
     $(function() {
-        
+
     })
     {/literal}
 </script>
