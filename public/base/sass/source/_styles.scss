@@ -1114,7 +1114,8 @@ $profileFormWidth: 83px;
     }
 }
 .post-comment-bl-delete-box,
-.post-comment-bl-delete{
+.post-comment-bl-delete,
+.post-comment-bl-edit-box{
     position: absolute;
     top: 0;
     right: 0;
@@ -1136,7 +1137,8 @@ $profileFormWidth: 83px;
         display: block;
     }
 }
-.post-comment-bl-delete-box-link{
+.post-comment-bl-delete-box-link,
+.post-comment-bl-edit-box-link{
     display: inline-block;
     padding: 4px 22px 4px 9px;
 
@@ -1147,16 +1149,35 @@ $profileFormWidth: 83px;
     font-weight: 700;
     &:hover{
         text-decoration: none;
+    }
+    &:active,
+    &.active{
+        color: #fff;
+    }
+    .icon{
+        @include pseudo-style(50%,5px,false,false);
+        margin-top: -7px;
+    }
+}
+.post-comment-bl-delete-box-link{
+    &:hover{
         color: #e56c69;
     }
     &:active,
     &.active{
         background-color: #e56c69;
-        color: #fff;
     }
-    .wastebasket-icon{
-        @include pseudo-style(50%,5px,false,false);
-        margin-top: -7px;
+}
+.post-comment-bl-edit-box{
+    right: 100px;
+}
+.post-comment-bl-edit-box-link{
+    &:hover{
+        color: #4cd9c0;
+    }
+    &:active,
+    &.active{
+        background-color: #4cd9c0;
     }
 }
 .post-comment-bl-delete-cloud{

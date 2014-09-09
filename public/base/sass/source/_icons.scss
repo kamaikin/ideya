@@ -217,6 +217,16 @@
         }
     }
 }
+.post-comment-bl-edit-box-link{
+    .penci-icon{
+        @include icons(pencil_grey);
+    }
+    &:hover{
+        .penci-icon{
+            @include icons-sprite(pencil_green);
+        }
+    }
+}
 .post-sponsorbox{
     &:before{
         @include icons(sponsor_orange);

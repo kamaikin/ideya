@@ -73,6 +73,11 @@
                 </form>
             </div>
         {/if}
+        <div class="post-comment-bl-edit-box">
+            <a href="#" class="post-comment-bl-edit-box-link">
+                Редактировать <i class="icon penci-icon"></i>
+            </a>
+        </div>
         {if $value.user_id==$index_user_id}{if $timemetka < $value.date}<a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete"></a>{/if}{/if}
         <div class="post-comment-bl-ava left">
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
