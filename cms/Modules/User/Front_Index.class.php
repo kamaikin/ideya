@@ -37,6 +37,12 @@
 			$query = "SELECT c.name as name, c.foto as foto, cc.date as date, cc.body as body, c.id as id, cc.id as cid FROM concept_comment cc JOIN concept c ON c.id=cc.concept_id WHERE cc.user_id = ? ORDER BY cc.date DESC";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['user_comment']=$SQL;
+			foreach($this->_view['user_comment'] as $key=>$value){
+				//	Выбираем спонсоров.
+				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname, ud.user_id as user_id FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
+				$SQL1=\Tango::sql()->select($query, array($value['cid']));
+				$this->_view['user_comment'][$key]['sponsors']=$SQL1;
+			}
 			//	Получить все мои идеи
 			$sort='date';
 			if(isset($_GET['sort'])){if ($_GET['sort']=='raiting') {$sort='points';}}
@@ -45,6 +51,12 @@
 			$query = "SELECT * FROM concept WHERE user_id = ? ORDER BY ".$sort.' '.$order." LIMIT 0, 99";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['user_concept']=$SQL;
+			foreach($this->_view['user_concept'] as $key=>$value){
+				//	Выбираем спонсоров.
+				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname, ud.user_id as user_id FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
+				$SQL1=\Tango::sql()->select($query, array($value['id']));
+				$this->_view['user_concept'][$key]['sponsors']=$SQL1;
+			}
 			/*if ($user_info['user_role']=='sponsor') {
 				//	Я спонсирую
 				$query="SELECT c.foto as foto, 

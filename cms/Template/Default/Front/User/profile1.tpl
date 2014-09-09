@@ -22,9 +22,9 @@
                     <span class="profile-points-num-line"></span>
                     <span class="profile-points-num-val">{$user_info.points}</span>
                 </div>
-                <div class="points-tooltip profile-points-tooltip points-tooltip-top">
+                {*<div class="points-tooltip profile-points-tooltip points-tooltip-top">
                     Вы сейчас на 1 месте в в рейтинге пользователей
-                </div>
+                </div>*}
             </div>
             <div class="profile-info table">
                 <div class="profile-info-cell cell">{$user_info.concept_count}</div>
@@ -62,11 +62,6 @@
     <div class="tabs-section tabs-section-js prifile-tab">
         <ul class="tabs tabs-js">
             <li class="tab tab-current">Идеи{if $count_user_concept>0}<span class="notificare">{$count_user_concept}</span>{/if}</li>
-            {*<li class="tab"><i class="icon like"></i> Нравится{if $count_my_lacke_concept>0}<span class="notificare">{$count_my_lacke_concept}</span>{/if}</li>
-            {if $user_info.user_role == 'sponsor'}
-            <li class="tab"><i class="icon sponsor"></i> Спонсоры{if $count_my_sponsor_concept>0}<span class="notificare">{$count_my_sponsor_concept}</span>{/if}</li>
-            {/if}
-            <li class="tab"><i class="icon money"></i> Спонсирует{if $count_ya_sponsor_concept>0}<span class="notificare">{$count_ya_sponsor_concept}</span>{/if}</li>*}
             <li class="tab"><i class="icon comment"></i> Комментарии{if $count_user_comment>0}<span class="notificare">{$count_user_comment}</span>{/if}</li>
         </ul>
         <div class="tab-content posts-lists tab-content-js tab-content-visible">
@@ -91,6 +86,7 @@
                 <div class="post-content">
                     <div class="post-title">
                         <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
+                        {if $value.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
                     </div>
                     <ul class="post-tags">
                         {*<li class="post-tag"><a href="#" class="post-tag-link">зима</a></li>
@@ -98,108 +94,19 @@
                         <li class="post-tag"><a href="#" class="post-tag-link">необычное</a></li>*}
                     </ul>
                     <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
+                    {if $value.sponsors}
+                    <ul class="post-sponsors">
+                        <li class="dib post-sponsors-title">Спонсоры:</li>
+                        {foreach from=$value.sponsors item="value1"}
+                        <li class="dib post-sponsors-item">
+                            <a href="/user/profile/{$value1.user_id}.html"><img width="32" src="{if $value1.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value1.avatar}{/if}" alt="" class="sponsors-tip-js" data-tip_message="{$value1.name} {$value1.surname}" data-tip_class="sponsors-tip"></a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    {/if}
                 </div>
             </article>
             {/foreach}
-        </div>
-        <div class="tab-content posts-lists tab-content-js">
-        	{*Мне нравяться*}
-        	{foreach from=$my_lacke_concept item="value"}
-            <article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail left">
-                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
-                </div>
-                <div class="post-info right">
-                    <div class="post-rating pink">{$value.points}</div>
-                    <ul class="info-list tar">
-                        <li class="info-list-item post-like">{$value.post_like}</li>
-                        <li class="info-list-item post-comment">{$value.comment_count}</li>
-                    </ul>
-                </div>
-                <div class="post-content">
-                    <div class="post-title">
-                        <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
-                    </div>
-                    <ul class="post-tags">
-                        {*<li class="post-tag"><a href="#" class="post-tag-link">зима</a></li>
-                        <li class="post-tag"><a href="#" class="post-tag-link">тепло</a></li>
-                        <li class="post-tag"><a href="#" class="post-tag-link">необычное</a></li>*}
-                    </ul>
-                    <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
-                </div>
-            </article>
-            {/foreach}
-        </div>
-        {*$index_acl->isAllowed($user_info.user_role, $index_acl_resourse, 'sponsor')*}
-        {if $user_info.user_role == 'sponsor'}
-        {*Я спонсирую*}
-        <div class="tab-content posts-lists tab-content-js">
-        {foreach from=$ya_sponsor_concept item="value"}
-        	<article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail left">
-	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
-	                <div class="post-author tac">
-	                    <div class="post-author-pic">
-	                        <img src="{if $value.user_avatar==''}/public/img/nophoto.jpg{else}/i/50/{$value.user_avatar}{/if}" alt="" class="post-author-ava">
-	                    </div>
-	                    <a href="#" class="post-author-link">{$value.user_name} {$value.user_surname}</a>
-	                </div>
-                </div>
-                <div class="post-info right">
-                    <div class="post-rating pink">{$value.points}</div>
-                    <ul class="info-list tar">
-                        <li class="info-list-item post-like">{$value.post_like}</li>
-                        <li class="info-list-item post-comment">{$value.comment_count}</li>
-                    </ul>
-                </div>
-                <div class="post-content">
-                    <div class="post-title">
-                        <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
-                    </div>
-                    <ul class="post-tags">
-                        {*<li class="post-tag"><a href="#" class="post-tag-link">зима</a></li>
-                        <li class="post-tag"><a href="#" class="post-tag-link">тепло</a></li>
-                        <li class="post-tag"><a href="#" class="post-tag-link">необычное</a></li>*}
-                    </ul>
-                    <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
-                </div>
-            </article>
-        	{/foreach}
-        </div>
-        {/if}
-        <div class="tab-content posts-lists tab-content-js">
-        {*Меня спонсируют*}
-        	{foreach from=$my_sponsor_concept item="value"}
-        	<article class="post{if $value.date > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail left">
-	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
-	                <div class="post-author tac">
-	                    <div class="post-author-pic">
-	                        <img src="{if $value.user_avatar==''}/public/img/nophoto.jpg{else}/i/50/{$value.user_avatar}{/if}" alt="" class="post-author-ava">
-	                    </div>
-	                    <a href="#" class="post-author-link">{$value.user_name} {$value.user_surname}</a>
-	                </div>
-                </div>
-                <div class="post-info right">
-                    <div class="post-rating pink">{$value.points}</div>
-                    <ul class="info-list tar">
-                        <li class="info-list-item post-like">{$value.post_like}</li>
-                        <li class="info-list-item post-comment">{$value.comment_count}</li>
-                    </ul>
-                </div>
-                <div class="post-content">
-                    <div class="post-title">
-                        <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
-                    </div>
-                    <ul class="post-tags">
-                        {*<li class="post-tag"><a href="#" class="post-tag-link">зима</a></li>
-                        <li class="post-tag"><a href="#" class="post-tag-link">тепло</a></li>
-                        <li class="post-tag"><a href="#" class="post-tag-link">необычное</a></li>*}
-                    </ul>
-                    <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
-                </div>
-            </article>
-        	{/foreach}
         </div>
         <div class="tab-content tab-content-js">
         {*Мои комментарии*}
@@ -211,8 +118,19 @@
             <div class="post-content">
                 <div class="post-title">
                     <a href="/concept/{$value.id}.html#comment{$value.cid}" class="post-title-link">{$value.name}</a>
+                    {if $value.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
                 </div>
                 <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
+                {if $value.sponsors}
+                <ul class="post-sponsors">
+                    <li class="dib post-sponsors-title">Спонсоры:</li>
+                    {foreach from=$value.sponsors item="value1"}
+                    <li class="dib post-sponsors-item">
+                        <a href="/user/profile/{$value1.user_id}.html"><img width="32" src="{if $value1.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value1.avatar}{/if}" alt="" class="sponsors-tip-js" data-tip_message="{$value1.name} {$value1.surname}" data-tip_class="sponsors-tip"></a>
+                    </li>
+                    {/foreach}
+                </ul>
+                {/if}
                 <div class="post-comment-body break">
                     {$value.body}
                 </div>
