@@ -31,6 +31,12 @@
 					}
 					$i = $i + 50;
 				}
+				//	Определить место в рейтинге пользователей.
+				$query="SELECT count(`id`) as count FROM user_data WHERE points > ?";
+				$SQL=\Tango::sql()->select($query, array($user_info['points']));
+				if ($SQL!=array()) {
+					$this->_view['index_user_raiting_position'] = $SQL[0]['count'] + 1;
+				}
 			}else{
 				$role=\Tango::config()->get('Acl.role.default'); 
 				$this->_view['index_autorize']=FALSE;

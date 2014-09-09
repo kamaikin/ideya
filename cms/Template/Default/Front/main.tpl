@@ -76,7 +76,7 @@
                         <div class="points-clolor-line" style="width: {$index_points_procent}%"></div>
                     </div>
                     <div class="points-tooltip h-points-points-tooltip points-tooltip-bottom">
-                        Вы сейчас на 1 месте в в рейтинге пользователей
+                        Вы сейчас на {$index_user_raiting_position} месте в в рейтинге пользователей
                     </div>
                 </div>
             </div>
