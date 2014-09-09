@@ -44,13 +44,16 @@
 						\Tango::sql()->update($query);
 						//	Смотрим на до ли отправлять автору письмо...
 						$query="SELECT comment FROM users_config WHERE user_id=?";
-						$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
+						$SQL1 = \Tango::sql()->select($query, array($SQL[0]['user_id']));
 						$send=TRUE;
-						if ($SQL!=array()) {if ($SQL[0]['comment']==0) {$send=FALSE;}}
+						if ($SQL1!=array()) {if ($SQL1[0]['comment']==0) {$send=FALSE;}}
 						if ($send) {
+							$query="SELECT * FROM user_data WHERE user_id=?";
+							$SQL = \Tango::sql()->select($query, array($SQL[0]['user_id']));
+							$user_info1=$SQL[0];
 							//	Отправить письмо автору идеи, что его идею прокомментировали
-							$name= $user_info['name'].' '.$user_info['surname'];
-							$this->_sendEmail('ideya_like', array('url_id'=>$id, 'title'=>$this->_view['title'], 'user_name'=>$name), $user_info['email'], $name);
+							$name= $user_info1['name'].' '.$user_info1['surname'];
+							$this->_sendEmail('ideya_like', array('url_id'=>(int)$_GET['id'], 'user_name'=>$name), $user_info1['email'], $name);
 						}
 					}
 				}
