@@ -7,6 +7,25 @@
 		protected function IndexAction(){
 			$user_info=\Tango::session()->get('userInfo');
 			if ($_POST!=array()) {
+				if(isset($_POST['form_type'])){
+					$query="SELECT id FROM users_config WHERE user_id=?";
+					$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
+					$array=array();
+					$array['comment']=1;
+					$array['points']=1;
+					$array['sponsors']=1;
+					$array['user_id']=$user_info['user_id'];
+					if($_POST['subscriptions-comment']=='выкл'){$array['comment']=0;}
+					if($_POST['subscriptions-points']=='выкл'){$array['points']=0;}
+					if($_POST['subscriptions-sponsors']=='выкл'){$array['sponsors']=0;}
+					if ($SQL!=array()) {
+						\Tango::sql()->update('users_config', $array, 'id='.$SQL[0]['id']);
+					} else {
+						\Tango::sql()->insert('users_config', $array);
+					}
+					
+					header("Location: /user/profile/");
+				}
 				//	Логика, если нас чем то не устраивает, то рпосто игнарируем параметр)))
 				if (isset($_POST['avatar_name'])) {if (trim($_POST['avatar_name'])=='') {$avatar_name='';}else{$avatar_name=htmlspecialchars($_POST['avatar_name'], ENT_QUOTES);}}else{$avatar_name='';}
 				if (isset($_POST['name'])) {if (trim($_POST['name'])=='') {$name='';}else{$name=htmlspecialchars($_POST['name'], ENT_QUOTES);}}else{$name='';}
@@ -58,13 +77,29 @@
 			$this->_view['user_info']['concept_count']=$SQL[0]['count'];
 			$this->_view['user_info']['summ_post_like']=$SQL[0]['post_like'];
 			//	Получить все мои комментарии
-			$query = "SELECT * FROM concept_comment WHERE user_id = ? ORDER BY `date` DESC LIMIT 0, 99";
+			$query = "SELECT c.name as name, c.foto as foto, cc.date as date, cc.body as body, c.id as id, cc.id as cid FROM concept_comment cc JOIN concept c ON c.id=cc.concept_id WHERE cc.user_id = ? ORDER BY c.date DESC LIMIT 0, 99";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['user_comment']=$SQL;
-			//	Получить все мои идеи
-			$query = "SELECT * FROM concept WHERE user_id = ? ORDER BY `date` DESC LIMIT 0, 99";
+			foreach($this->_view['user_comment'] as $key=>$value){
+				//	Выбираем спонсоров.
+				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname, ud.user_id as user_id FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
+				$SQL1=\Tango::sql()->select($query, array($value['cid']));
+				$this->_view['user_comment'][$key]['sponsors']=$SQL1;
+			}
+			//	Получить все мои идеи вместе со спонсорами...
+			$sort='date';
+			if(isset($_GET['sort'])){if ($_GET['sort']=='raiting') {$sort='points';}}
+			$order='ASC';
+			if(isset($_GET['order'])){if($_GET['order']=='desc'){$order='DESC';}}
+			$query = "SELECT * FROM concept WHERE user_id = ? ORDER BY ".$sort.' '.$order." LIMIT 0, 99";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['user_concept']=$SQL;
+			foreach($this->_view['user_concept'] as $key=>$value){
+				//	Выбираем спонсоров.
+				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname, ud.user_id as user_id FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
+				$SQL1=\Tango::sql()->select($query, array($value['id']));
+				$this->_view['user_concept'][$key]['sponsors']=$SQL1;
+			}
 			if ($user_info['user_role']=='sponsor') {
 				//	Я спонсирую
 				$query="SELECT c.foto as foto, 
@@ -79,13 +114,19 @@
 				$this->_view['ya_sponsor_concept']=$SQL;
 			}
 			//	Мне нравяться
-			$query="SELECT c.foto as foto, 
+			$query="SELECT c.id as id, c.foto as foto, 
 				c.points as points, 
 				c.post_like as post_like, 
 				c.comment_count as comment_count, 
 				c.name as name, c.date as `date`, cl.datetime as datetime FROM concept c JOIN concept_licke cl ON cl.concept_id = c.id WHERE cl.user_id = ? ORDER BY c.`date` DESC LIMIT 0, 99";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['my_lacke_concept']=$SQL;
+			foreach($this->_view['my_lacke_concept'] as $key=>$value){
+				//	Выбираем спонсоров.
+				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname, ud.user_id as user_id FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
+				$SQL1=\Tango::sql()->select($query, array($value['id']));
+				$this->_view['my_lacke_concept'][$key]['sponsors']=$SQL1;
+			}
 			//	Меня спонсируют
 			//	Получить мои идеи и данные спонсоров...
 			$query="SELECT c.id as id,
@@ -100,6 +141,12 @@
 				ud.user_id as user_id  FROM concept c JOIN concept_sponsor cs ON cs.concept_id = c.id JOIN user_data ud ON ud.user_id = cs.user_id WHERE c.user_id=? LIMIT 0, 99";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['my_sponsor_concept']=$SQL;
+			foreach($this->_view['my_sponsor_concept'] as $key=>$value){
+				//	Выбираем спонсоров.
+				$query="SELECT ud.avatar as avatar, ud.name as name, ud.surname as surname, ud.user_id as user_id FROM concept_sponsor cs JOIN user_data ud ON ud.user_id=cs.user_id WHERE cs.concept_id=?";
+				$SQL1=\Tango::sql()->select($query, array($value['id']));
+				$this->_view['my_sponsor_concept'][$key]['sponsors']=$SQL1;
+			}
 			$this->_view['includeFileName']='User/profile.tpl';
 			//	Определяем, что изменилось с нашего последнего захода в профиль
 			$query="SELECT time FROM user_profile_views WHERE profile_id=? AND user_id=? ORDER BY time DESC LIMIT 1";
@@ -137,6 +184,10 @@
 			$query = "SELECT count(`id`) as count FROM concept WHERE user_id = ? AND `date`>?";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id'], $time));
 			$this->_view['count_user_concept']=$SQL[0]['count'];
+			$query="SELECT * FROM users_config WHERE user_id=?";
+			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
+			$this->_view['users_config']=$SQL[0];
+			//print_r($user_info['user_id']); exit;
 			$this->_getRightSidebar();
 		}
 	}

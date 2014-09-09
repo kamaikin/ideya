@@ -100,9 +100,16 @@
 								$SQL[0]['points']=$SQL[0]['points']+$SQL1[0]['Credits'];
 							}
 						}
-						//	Отправить письмо автору идеи, что его идею прокомментировали
-						$name= $user_info['name'].' '.$user_info['surname'];
-						$this->_sendEmail('ideya_comment', array('url_id'=>$id, 'title'=>$this->_view['title'], 'user_name'=>$name), $user_info['email'], $name);
+						//	Смотрим на до ли отправлять автору письмо...
+						$query="SELECT comment FROM users_config WHERE user_id=?";
+						$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
+						$send=TRUE;
+						if ($SQL!=array()) {if ($SQL[0]['comment']==0) {$send=FALSE;}}
+						if ($send) {
+							//	Отправить письмо автору идеи, что его идею прокомментировали
+							$name= $user_info['name'].' '.$user_info['surname'];
+							$this->_sendEmail('ideya_comment', array('url_id'=>$id, 'title'=>$this->_view['title'], 'user_name'=>$name), $user_info['email'], $name);
+						}
 						header("Location: /concept/".$id.".html"); exit;
 					}
 				}
@@ -126,12 +133,16 @@
 				$SQL1=\Tango::sql()->select($query, array($SQL[0]['id']));
 				$this->_view['Concept_data']['sponsors']=$SQL1;
 				//	Лайкал этот пользователь эту идею или нет?
-				$query="SELECT `id` FROM concept_licke WHERE user_id=? AND concept_id=?";
-				$SQL1=\Tango::sql()->select($query, array($user_info['id'], $SQL[0]['id']));
-				if ($SQL1!=array()) {
-					$this->_view['Concept_data']['add_licke']='n';
+				if ($this->_view['Concept_data']['user_id']!=$user_info['id']) {
+					$query="SELECT `id` FROM concept_licke WHERE user_id=? AND concept_id=?";
+					$SQL1=\Tango::sql()->select($query, array($user_info['id'], $SQL[0]['id']));
+					if ($SQL1!=array()) {
+						$this->_view['Concept_data']['add_licke']='n';
+					}else{
+						$this->_view['Concept_data']['add_licke']='y';
+					}
 				}else{
-					$this->_view['Concept_data']['add_licke']='y';
+					$this->_view['Concept_data']['add_licke']='n';
 				}
 				//	Спонсировал этот пользователь эту идею или нет?
 				$query="SELECT `id` FROM concept_sponsor WHERE user_id=? AND concept_id=?";
