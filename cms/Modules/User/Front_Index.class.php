@@ -34,7 +34,7 @@
 			$this->_view['user_info']['concept_count']=$SQL[0]['count'];
 			$this->_view['user_info']['summ_post_like']=$SQL[0]['post_like'];
 			//	Получить все мои комментарии
-			$query = "SELECT * FROM concept_comment WHERE user_id = ? ORDER BY `date` DESC";
+			$query = "SELECT c.name as name, c.foto as foto, cc.date as date, cc.body as body, c.id as id, cc.id as cid FROM concept_comment cc JOIN concept c ON c.id=cc.concept_id WHERE cc.user_id = ? ORDER BY cc.date DESC";
 			$SQL = \Tango::sql()->select($query, array($user_info['user_id']));
 			$this->_view['user_comment']=$SQL;
 			//	Получить все мои идеи

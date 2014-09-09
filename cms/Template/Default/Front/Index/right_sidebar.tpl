@@ -1,4 +1,5 @@
 <aside role="complementary" class="sidebar right">
+    {if $includeFileName == 'User/profile.tpl'}
     <div class="widget subscriptions-widget">
         <h2 class="widgettitle tac">Управление подписками</h2>
         <form action="#" class="subscriptions-form">
@@ -31,6 +32,7 @@
             </p>
         </form>
     </div><!--end subscriptions-widget-->
+    {/if}
     <div class="widget hall_of_fame-widget">
         <h2 class="widgettitle tac">Рейтинг идей</h2>
         <ul class="hall_of_fame-list">
