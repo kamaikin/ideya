@@ -92,7 +92,7 @@
             <div class="post-comment-bl-content post-comment-bl-content-js" id="body_{$value.id}">
                 <div class="comment-content" id="div_{$value.id}">{$value.body|nl2br}</div>
                 {if $value.user_id==$index_user_id}{if $timemetka < $value.date}
-                <div class="comment-content"><textarea id="textarea_{$value.id}" class="edit_textarea">{$value.body|nl2br}</textarea></div>
+                <div class="comment-content"><textarea id="textarea_{$value.id}" class="edit_textarea field">{$value.body|nl2br}</textarea></div>
                 {/if}{/if}
                 <div class="comment-content-more">
                     <p>...</p>
