@@ -58,6 +58,21 @@
     .profile-sponsor-page .tabs{
         width: 100%;
     }
+    .post-author{
+        display: none;
+    }
+    .subscriptions-row{
+        text-align: center;
+    }
+    .subscriptions-trigger{
+        float: none;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .subscriptions-text{
+        margin-left: 0;
+        padding-top: 10px;
+    }
 }
 
 // /* Phones landscape */
@@ -226,9 +241,37 @@
             margin: 0;
         }
     }
+    .profile-pic{
+        width: 50%;
+        float: none;
+        margin: auto;
+        padding-bottom: 15px;
+    }
+    .profile-infobox{}
+    .profilebox-content{
+        margin-left: 0;
+    }
+    .post-comment-bl{
+        padding-top: 25px;
+    }
 }
 
 /* Small phones */
 // @media only screen and (max-width: $QVGA) {
 
 // }
+
+@media only screen and (max-width: $HVGA) {
+    .profile-infobox{
+        width: 100%;
+        float: none;
+        margin-bottom: 15px;
+    }
+    .profilebox-content{
+        margin-right: 0;
+    }
+    .sortbar-item{
+        width: 100%;
+        padding: 10px 0;
+    }
+}

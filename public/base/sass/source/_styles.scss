@@ -324,6 +324,8 @@ $postTagHeight: 22px;
     position: relative;
     display: inline-block;
 
+    max-width: 120px;
+    @extend .ellipsis;
     height: $postTagHeight;
     padding: 0 10px;
     border: 2px solid #e6e6e6;
@@ -1113,12 +1115,15 @@ $profileFormWidth: 83px;
         border-bottom: none;
     }
 }
-.post-comment-bl-delete-box,
-.post-comment-bl-delete,
-.post-comment-bl-edit-box{
+.post-comment-bl-btn-box,
+.post-comment-bl-delete{
     position: absolute;
     top: 0;
     right: 0;
+}
+.post-comment-bl-delete-box,
+.post-comment-bl-edit-box{
+    position: relative;
 }
 .post-comment-bl-delete{
     width: 20px;
@@ -1167,9 +1172,6 @@ $profileFormWidth: 83px;
     &.active{
         background-color: #e56c69;
     }
-}
-.post-comment-bl-edit-box{
-    right: 100px;
 }
 .post-comment-bl-edit-box-link{
     &:hover{
@@ -1754,6 +1756,7 @@ $notificareSize: 17px;
 }
 .subscriptions-text{
     margin-left: 120px;
+    word-wrap: break-word;
 }
 .subscriptions-trigger{
     margin-top: 2px;
