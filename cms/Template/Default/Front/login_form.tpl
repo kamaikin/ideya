@@ -8,6 +8,7 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
     <!-- CSS style -->
+    <link rel="stylesheet" href="/public/base/css/animate.min.css?v=2">
     <link rel="stylesheet" href="/public/base/css/index.css?v=2">
     <!-- CSS for developers -->
     <!-- <link rel="stylesheet" href="/public/base/css/dev.css?v=1" media="screen"> -->
@@ -23,7 +24,7 @@
             <h1 class="main-title">Место, где воплощаются идеи</h1>
         </header>
         <div role="main" class="content">
-            <form role="form" action="/login/check/{if $smarty.get.url}?url={$smarty.get.url}{/if}" class="aut-form" method="POST">
+            <form role="form" action="/login/check/{if $smarty.get.url}?url={$smarty.get.url}{/if}" class="aut-form animated fadeInDown" method="POST">
             {if $request_uri}<input type="hidden" name="request_uri" value="{$request_uri}" />{/if}
                 <div class="tac main-logo"><img src="/public/base/images/main_logo2.png" alt="logo"></div>
                 <div class="aut-form-title">Добро пожаловать!</div>
