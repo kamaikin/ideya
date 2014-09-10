@@ -137,6 +137,15 @@
 <script type="text/javascript">
     {literal}
     $(function() {
+        $(".post-comment-bl-retweet").click(function(){
+            var data = $(this).attr('data');
+            console.log(data)
+            var body = '#div_' + data;
+            var name = '#name_' + data;
+            text = 'Пользователь: ' + $(name).text() + ' Писал: ' + $(body).text() + "\n===========\n";
+            $("#addcomment").val(text);
+            //return false;
+        })
         $("#avatar_upload3").click(function(){
             $("#avatar_upload3_input").trigger('click');
             $("#avatar_upload3_input").change(function () {
@@ -208,14 +217,6 @@
 <script type="text/javascript">
     {literal}
     $(function() {
-        $(".post-comment-bl-retweet").click(function(){
-            var data = $(this).attr('data');
-            var body = '#body_' + data;
-            var name = '#name_' + data;
-            text = 'Пользователь: ' + $(name).text() + ' Писал: ' + $(body).text() + "\n===========\n";
-            $("#addcomment").val(text);
-
-        })
         $("#add_licke").click(function(){
             //  Передаем лайк
             $.post('/ajax/concept/likeadd/?id={/literal}{$Concept_data.id}{literal}', function(data){
