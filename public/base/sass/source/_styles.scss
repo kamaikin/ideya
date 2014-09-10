@@ -217,7 +217,9 @@ $profileTooltipBg: #eee;
     position: relative;
     margin-top: 8px;
     @include rwd-width(126px, 765px);
-    padding-bottom: 82px;
+}
+.post-thumbnail-admin{
+    padding-bottom: 90px;
 }
 .post-thumbnail-img{}
 .post-thumbnail-change{
@@ -532,6 +534,8 @@ $postTagHeight: 22px;
     position: relative;
     padding-left: 43px;
     margin-bottom: 24px;
+
+
     color: #000;
     @include adjust-font-size-to(15px);
     font-weight: 300;
@@ -540,10 +544,20 @@ $postTagHeight: 22px;
         @include pseudo-style(50%,false,false,0);
         margin-top: -13px;
     }
+    &:hover{
+        &:before{
+            @include animation(spin, 5s infinite linear);
+        }
+    }
     &.first{}
     &.second{}
     &.third{}
 }
+
+@include keyframes(spin){
+    to { @include rotate(-360deg); }
+}
+
 .more-ideas{
     padding-right: 22px;
 }
