@@ -254,6 +254,10 @@
     .post-comment-bl{
         padding-top: 25px;
     }
+    .notificare{
+        top: 0;
+        left: 0;
+    }
 }
 
 /* Small phones */
@@ -273,5 +277,8 @@
     .sortbar-item{
         width: 100%;
         padding: 10px 0;
+    }
+    .prifile-tab .tabs .tab{
+        font-size: 10px;
     }
 }
