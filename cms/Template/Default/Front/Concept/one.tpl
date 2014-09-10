@@ -10,11 +10,20 @@
     {/if}
     <div class="post-thumbnail left">
         {if $Concept_data.foto==''}<img src="/public/img/nophoto.jpg" alt="" class="post-thumbnail-img">{else}<img src="/i/126/{$Concept_data.foto}" alt="" class="post-thumbnail-img">{/if}
+        <div class="post-thumbnail-change tac">
+            <div class="fileload dib">
+                <input type="file" name="file2" value="" class="file-input" id="avatar_upload_input2">
+                <div id="avatar_progress2" style="display:none;">
+                    <progress max="100" value="0" id="avatar_progress_barr2" style="width: 100px;"></progress>
+                </div>
+                <span class="icon fileload-icon fileload-icon-js" id="avatar_upload2"></span>
+            </div>
+        </div>
         <div class="post-author tac">
             <div class="post-author-pic">
                 {if $Concept_data.anonimus == 'n'}<a href="/user/profile/{$Concept_data.user_id}.html">{/if}<img src="{if $Concept_data.anonimus == 'y'}/public/img/nophoto.jpg{else}{if $Concept_data.user_avatar!=''}/i/41/{$Concept_data.user_avatar}{else}/public/img/nophoto.jpg{/if}{/if}" alt="" class="post-author-ava">{if $Concept_data.anonimus == 'n'}</a>{/if}
             </div>
-            {if $Concept_data.anonimus == 'n'}<a href="/user/profile/{$Concept_data.user_id}.html" class="post-author-link">{/if}{if $Concept_data.anonimus == 'n'}{$Concept_data.surname} {$Concept_data.name}{else}Аноним{/if}{if $Concept_data.anonimus == 'n'}</a>{/if}
+            {if $Concept_data.anonimus == 'n'}<a href="/user/profile/{$Concept_data.user_id}.html" class="post-author-link ellipsis">{/if}{if $Concept_data.anonimus == 'n'}{$Concept_data.surname} {$Concept_data.name}{else}Аноним{/if}{if $Concept_data.anonimus == 'n'}</a>{/if}
         </div>
     </div>
     <div class="post-info right">

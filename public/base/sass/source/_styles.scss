@@ -214,10 +214,15 @@ $profileTooltipBg: #eee;
     border-color: #f39c12;
 }
 .post-thumbnail{
+    position: relative;
     margin-top: 8px;
     @include rwd-width(126px, 765px);
+    padding-bottom: 82px;
 }
 .post-thumbnail-img{}
+.post-thumbnail-change{
+    margin-top: 11px;
+}
 .post-info{
     width: 110px;
 }
@@ -656,10 +661,11 @@ $postTagHeight: 22px;
 .post-author{
     position: absolute;
     bottom: 8px;
-    left: 8px;
-    width: 122px;
+    left: 0;
+    width: 100%;
 }
 .post-author-link{
+    display: block;
     @include adjust-font-size-to(12px);
     color: #797979;
     text-decoration: underline;
