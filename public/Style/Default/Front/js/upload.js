@@ -98,6 +98,17 @@ function Upload(files, position, options, id){
           //console.log(xhr.responseText)
           var myObject = eval('(' + xhr.responseText + ')');
           //console.log(myObject)
+          if (options['param1']=='foto3') {
+            //if (!myObject.error) {
+              var src = '/i/150/' + myObject.file_name
+              $("#avatar_name").val(myObject.file_name);
+              //alert($("#img_foto").attr("src"));
+              $("#img_image").attr("src", src);
+              $("#avatar_progress3").hide();
+              var POST = 'avatar_name=' + myObject.file_name + '&ajax=' + $("#avatar_progress3").attr("rid");
+              $.post('/concept/add/', POST, function(data){})
+            //}
+          }
           if (options['param1']=='foto1') {
             //if (!myObject.error) {
               var src = '/i/150/' + myObject.file_name

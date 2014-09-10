@@ -5,6 +5,11 @@
 		}
 
 		protected function IndexAction(){
+			if (isset($_POST['ajax'])) {
+				$array=array();
+				$array['foto']=$_POST['avatar_name'];
+				\Tango::sql()->update('concept', $array, 'id='.(int)$_POST['ajax']);
+			}
 			//Tango::plugins('user')->userId(1)->getId(); exit;
 			//$this->_view['includeFileName']='Concept/index.tpl';
 			if (isset($_POST['concept_name'])) {if (trim($_POST['concept_name'])=='') {unset($_POST['concept_name']);}else{$concept_name=htmlspecialchars($_POST['concept_name'], ENT_QUOTES);}}

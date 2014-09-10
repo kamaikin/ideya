@@ -9,16 +9,18 @@
         <a href="#" class="post-likebox" id="add_licke"><i class="heart_white_big-icon"></i></a>
     {/if}
     <div class="post-thumbnail left">
-        {if $Concept_data.foto==''}<img src="/public/img/nophoto.jpg" alt="" class="post-thumbnail-img">{else}<img src="/i/126/{$Concept_data.foto}" alt="" class="post-thumbnail-img">{/if}
+        {if $Concept_data.foto==''}<img src="/public/img/nophoto.jpg" alt="" class="post-thumbnail-img" id="img_image">{else}<img src="/i/126/{$Concept_data.foto}" alt="" class="post-thumbnail-img" id="img_image">{/if}
+        {if $Concept_data.user_id==$index_user_id}
         <div class="post-thumbnail-change tac">
             <div class="fileload dib">
-                <input type="file" name="file2" value="" class="file-input" id="avatar_upload_input2">
-                <div id="avatar_progress2" style="display:none;">
-                    <progress max="100" value="0" id="avatar_progress_barr2" style="width: 100px;"></progress>
+                <input type="file" name="file3" value="" class="file-input" id="avatar_upload3_input">
+                <div id="avatar_progress3" style="display:none;" rid="{$Concept_data.id}">
+                    <progress max="100" value="0" id="avatar_progress_barr3" style="width: 100px;"></progress>
                 </div>
-                <span class="icon fileload-icon fileload-icon-js" id="avatar_upload2"></span>
+                <span class="icon fileload-icon fileload-icon-js" id="avatar_upload3"></span>
             </div>
         </div>
+        {/if}
         <div class="post-author tac">
             <div class="post-author-pic">
                 {if $Concept_data.anonimus == 'n'}<a href="/user/profile/{$Concept_data.user_id}.html">{/if}<img src="{if $Concept_data.anonimus == 'y'}/public/img/nophoto.jpg{else}{if $Concept_data.user_avatar!=''}/i/41/{$Concept_data.user_avatar}{else}/public/img/nophoto.jpg{/if}{/if}" alt="" class="post-author-ava">{if $Concept_data.anonimus == 'n'}</a>{/if}
@@ -135,6 +137,30 @@
 <script type="text/javascript">
     {literal}
     $(function() {
+        $("#avatar_upload3").click(function(){
+            $("#avatar_upload3_input").trigger('click');
+            $("#avatar_upload3_input").change(function () {
+                var t_file_name = $("#avatar_upload3_input").val();
+                alert(t_file_name);
+                if (t_file_name!='') {
+                    files = this.files
+                    $("#avatar_progress3").show();
+                    var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
+                    var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
+                    FileUploader({
+                        session_id: '{/literal}{$index_md5_key}{literal}',
+                        md5: rand_1,
+                        message_error: 'Ошибка при загрузке файла',
+                        uploadid: '123456789',
+                        uploadscript: '/ajax/file/upload/',
+                        progres_barr_id: 'avatar_progress_barr3',
+                        param1: 'foto3',
+                        portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
+                    }, files[0]);
+                }
+            })
+            return false;
+        })
         $(".edit_textarea").hide();
         $(".post-comment-bl-edit-box-link").click(function(){
             var id = $(this).attr("kid");
