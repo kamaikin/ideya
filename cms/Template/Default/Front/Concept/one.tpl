@@ -30,8 +30,8 @@
             <span class="post-title-stat" title="{$Concept_data.concept_name}">{$Concept_data.concept_name}</span>
             {*<a href="#" class="icon ok_green-icon"></a>*}
             {*<span class="icon clip_grey-icon"></span>*}
-            {if $Concept_data.implemented == "y"}<a href="#" class="icon ok_green-icon"></a>{/if}
-            {if $Concept_data.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+            {if $Concept_data.implemented == "y"}<i class="icon ok_green-icon"></i>{/if}
+            {if $Concept_data.sponsors}<i class="icon money_orange-icon"></i>{/if}
             {if $Concept_data.file_1}<a href="/d/{$Concept_data.file_1}" class="icon clip_green-icon tip-js" data-tip_message="{if $Concept_data.file_1}<a herf='/d/{$Concept_data.file_1}'>{$Concept_data.file_1_name}</a><br>{/if}{if $Concept_data.file_2}<a herf='/d/{$Concept_data.file_2}'>{$Concept_data.file_2_name}</a><br>{/if}{if $Concept_data.file_3}<a herf='/d/{$Concept_data.file_3}'>{$Concept_data.file_3_name}</a><br>{/if}" data-tip_class="tip"></a>{/if}
         </div>
         <ul class="post-text-list">
@@ -60,16 +60,20 @@
     {foreach from=$Concept_comment item="value"}
     <div class="post-comment-bl clearfix"><a name="comment{$value.id}" ></a>
         <div class="post-comment-bl-btn-box">
-            <div class="dib post-comment-bl-edit-box">
-                <a href="#" class="post-comment-bl-edit-box-link">
+            {if $value.user_id==$index_user_id}{if $timemetka < $value.date}
+            <div class="dib post-comment-bl-edit-box" date="{$value.date}">
+                <a href="#" class="post-comment-bl-edit-box-link" kid="{$value.id}">
                     Редактировать <i class="icon penci-icon"></i>
                 </a>
             </div>
-            {if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
-            <div class="dib post-comment-bl-delete-box">
-                <a href="#" class="post-comment-bl-delete-box-link" kid="{$value.id}">
+            <div class="dib post-comment-bl-delete-box" date="{$value.date}">
+                <a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete-box-link" kid="{$value.id}">
                     Удалить <i class="icon wastebasket-icon"></i>
                 </a>
+            </div>
+            {/if}{/if}
+            {if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
+            <div class="dib post-comment-bl-delete-box">
                 <form action="#" class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
                     <h2 class="post-comment-bl-delete-cloud-title">Причина удаления</h2>
                     <textarea name="deleteArea" id="deleteArea_{$value.id}" class="post-comment-bl-delete-cloud-area" placeholder="Напишите причину удаления"></textarea>
@@ -80,14 +84,16 @@
             </div>
             {/if}
         </div>
-        {if $value.user_id==$index_user_id}{if $timemetka < $value.date}<a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete"></a>{/if}{/if}
         <div class="post-comment-bl-ava left">
             <img src="{if $value.avatar==''}/public/img/noavatar.gif{else}/i/50/{$value.avatar}{/if}" alt="" width="50px" class="post-comment-bl-img">
         </div>
         <div class="post-comment-bl-body">
             <h2 class="post-comment-bl-name"><a href="/user/profile/{$value.user_id}.html" class="post-comment-bl-name-link" id="name_{$value.id}">{$value.surname} {$value.name}</a></h2>
             <div class="post-comment-bl-content post-comment-bl-content-js" id="body_{$value.id}">
-                <div class="comment-content">{$value.body|nl2br}</div>
+                <div class="comment-content" id="div_{$value.id}">{$value.body|nl2br}</div>
+                {if $value.user_id==$index_user_id}{if $timemetka < $value.date}
+                <div class="comment-content"><textarea id="textarea_{$value.id}" class="edit_textarea">{$value.body|nl2br}</textarea></div>
+                {/if}{/if}
                 <div class="comment-content-more">
                     <p>...</p>
                     <p><span class="more-comment-link more-comment-link-js">Развернуть комментарий</span></p>
@@ -120,7 +126,46 @@
 <script type="text/javascript">
     {literal}
     $(function() {
-
+        $(".edit_textarea").hide();
+        $(".post-comment-bl-edit-box-link").click(function(){
+            var id = $(this).attr("kid");
+            var t_id = "#textarea_" + id;
+            var d_id = "#div_" + id;
+            $(t_id).show();
+            $(t_id).focus();
+            $(d_id).hide();
+            $(t_id).blur(function(){
+                $(t_id).hide();
+                $(d_id).show();
+                var text = $(t_id).val();
+                var url = '/ajax/concept/editcomment?id=' + id + '&rid={/literal}{$Concept_data.id}{literal}';
+                var post = 'text=' + text;
+                //var post = '{ name: "' + text + '", time: "2pm" }'
+                $.get(url, post, function(data){
+                    //console.log(data);
+                })
+                $(d_id).html(text);
+            })
+            return false;
+        })
+        function sec() {
+            var UNIX_TIMESTAMP = Math.round(new Date().getTime() / 1000);
+            $(".post-comment-bl-edit-box").each(function(indx, element){
+                var date = $(this).attr("date");
+                var timemetka = UNIX_TIMESTAMP - 300;
+                if(timemetka > date){
+                    $(this).hide();
+                }
+            });
+            $(".post-comment-bl-delete-box").each(function(indx, element){
+                var date = $(this).attr("date");
+                var timemetka = UNIX_TIMESTAMP - 300;
+                if(timemetka > date){
+                    $(this).hide();
+                }
+            });
+        }
+        setInterval(sec, 1000)
     })
     {/literal}
 </script>

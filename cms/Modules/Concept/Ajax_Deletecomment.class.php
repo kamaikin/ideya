@@ -9,7 +9,7 @@
 				if ((int)$_GET['comment_id'] != 0) {
 					if(isset($_POST['text'])){
 						$user_info=\Tango::session()->get('userInfo');
-						$info = '<div class="string-reason">Комментарий удалён модератором по причине: '.$_POST['text'].'</div>';
+						$info = '<div style="color: F00;">Модератор удалил комментарий с причиной: '.$_POST['text'].'</div>';
 						$array=array();
 						$array['body']=$info;
 						\Tango::sql()->update('concept_comment', $array, 'id='.(int)$_GET['comment_id']);
