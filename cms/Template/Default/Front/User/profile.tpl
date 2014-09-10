@@ -9,8 +9,8 @@
 					<img src="/public/img/nophoto.jpg" alt="" class="profile-image"  id="img_avatar">
 				{else}
 					<img src="/i/150/{$user_info.avatar}" alt="" class="profile-image" id="img_avatar">
+                    <div class="profile-change-avatar"><a href="#" id="remove_click" class="icon remove-icon"></a></div>
 				{/if}
-                <div class="profile-change-avatar"><a href="#" id="remove_click" class="icon remove-icon"></a></div>
             </div>
             <ul class="profile-pic-bar tac">
                 <li class="profile-pic-bar-item fileload dib">
