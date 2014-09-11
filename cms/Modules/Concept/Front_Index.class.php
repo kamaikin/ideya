@@ -83,7 +83,8 @@
 						$array['comment_count']=$SQL1[0]['count'];
 						$SQL[0]['comment_count']=$SQL1[0]['count'];
 						\Tango::sql()->update('concept', $array, 'id='.$id);
-						$query="SELECT count(id) as count FROM concept_comment WHERE concept_id=? AND user_id!=?";
+						//	Смотрим сколько комментариев данного пользователя и если коммент первый то добавляем и пользователю и идее.
+						$query="SELECT count(id) as count FROM concept_comment WHERE concept_id=? AND user_id=?";
 						$SQL1=\Tango::sql()->select($query, array($id, $user_id));
 						if ($SQL1[0]['count']==1) {
 							if ($SQL[0]['user_id']!=$user_id) {
