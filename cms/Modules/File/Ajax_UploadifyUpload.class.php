@@ -30,7 +30,7 @@
 						//	Файл полностью загружен на сервер.
 						//	Пришедший кусочек был последним))))
 						//	Надо файл оприходовать))))
-						$targetPath = DOCUMENT_ROOT . '/tmp/upload/'.$_POST['session_id'].'.'.$ext;
+						$targetPath = DOCUMENT_ROOT . '/tmp/upload/'.$_POST['md5_key'].'.'.$ext;
 						move_uploaded_file($_FILES['Filedata']['tmp_name'], $targetPath);
 						$file=\Tango::fileStorage()->put($targetPath);
 						$return['error']=0;
