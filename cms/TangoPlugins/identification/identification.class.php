@@ -15,7 +15,7 @@ class Tango_identification{
 			if ($SQL!=array()) {
 				return array('error' =>'','error_id'=>0, 'user_id'=>$SQL[0]['id']);
 			} else {
-				return array('error' =>'Не верный пароль','error_id'=>2, 'user_id'=>0);
+				return array('error' =>'Неверный пароль','error_id'=>2, 'user_id'=>0);
 			}
 			
 		} else {
