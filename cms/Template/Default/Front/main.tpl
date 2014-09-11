@@ -204,28 +204,31 @@
                     $("#addtag").focus();
                 } else{
                     var tag = $("#addtag").val();
-                    tag = tag.substr(0, 32)
-                    if (!popupperAddTag[tag]) {
-                        var id = popupperAddTagNum.length
-                        popupperAddTag[tag] = 1;
-                        popupperAddTagNum[popupperAddTagNum.length] = tag;
-                        var text ='<span class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + tag + '" />' + tag + ' <i class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></i></a></span>'
-                        //var text = '<li class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + tag + '" />' + tag + ' <span class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></span></a></li>';
-                        $("#popupper-add-tag-container").before(text);
-                        var aid = '#a' + id
-                        $(aid).click(function(){return false;})
-                        var bid = '#b' + id
-                        $(bid).click(function(){return false;})
-                        var did = '#d' + id
-                        $(did).click(function(){
-                            //alert("Удаляем");
-                            var id = $(this).attr('aid');
+                    tag = $.trim(tag);
+                    if(tag!=''){
+                        tag = tag.substr(0, 32)
+                        if (!popupperAddTag[tag]) {
+                            var id = popupperAddTagNum.length
+                            popupperAddTag[tag] = 1;
+                            popupperAddTagNum[popupperAddTagNum.length] = tag;
+                            var text ='<span class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + tag + '" />' + tag + ' <i class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></i></a></span>'
+                            //var text = '<li class="popupper-add-tag-item" id="b' + id + '"><a href="#" class="popupper-add-tag-link" id="a' + id + '"><input type="hidden" name="tags[]" value="' + tag + '" />' + tag + ' <span class="icon delete-tag-icon" id="d' + id + '" aid="' + id + '"></span></a></li>';
+                            $("#popupper-add-tag-container").before(text);
+                            var aid = '#a' + id
+                            $(aid).click(function(){return false;})
                             var bid = '#b' + id
-                            $(bid).remove();
-                            var t = popupperAddTagNum[id];
-                            delete popupperAddTag[t];
-                            return false;
-                        })
+                            $(bid).click(function(){return false;})
+                            var did = '#d' + id
+                            $(did).click(function(){
+                                //alert("Удаляем");
+                                var id = $(this).attr('aid');
+                                var bid = '#b' + id
+                                $(bid).remove();
+                                var t = popupperAddTagNum[id];
+                                delete popupperAddTag[t];
+                                return false;
+                            })
+                        }
                     }
                     $("#addtag").hide();
                 };
