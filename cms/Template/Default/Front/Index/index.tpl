@@ -25,7 +25,7 @@
                     {if $value.sponsors=='y'}
                     <a href="#" class="icon money_orange-icon"></a>
                     {/if}
-                    {if $value.file_1}<a href="/d/{$value.file_1}" class="icon clip_green-icon tip-js" data-tip_message="{if $value.file_1}<a herf='/d/{$value.file_1}'>{$value.file_1_name}</a><br>{/if}{if $value.file_2}<a herf='/d/{$value.file_2}'>{$value.file_2_name}</a><br>{/if}{if $value.file_3}<a herf='/d/{$value.file_3}'>{$value.file_3_name}</a><br>{/if}" data-tip_class="tip"></a>{/if}
+                    {if $value.file_1}<a href="/d/{$value.file_1}" class="icon clip_green-icon tip-js" data-tip_message="{if $value.file_1}<a href='/d/{$value.file_1}'>{$value.file_1_name}</a><br>{/if}{if $value.file_2}<a href='/d/{$value.file_2}'>{$value.file_2_name}</a><br>{/if}{if $value.file_3}<a href='/d/{$value.file_3}'>{$value.file_3_name}</a><br>{/if}" data-tip_class="tip"></a>{/if}
                 </div>
                 <ul class="post-tags">
                     {foreach from=$value.tags item="item"}
