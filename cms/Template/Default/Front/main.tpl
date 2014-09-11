@@ -14,10 +14,12 @@
     <!--favicon-->
     <link rel="icon" href="/public/base/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/public/base/favicon.png" type="image/x-icon">
+    <link  href="/public/Style/Default/Front/css/uploadify.css" rel="stylesheet" type="text/css" />
     <!-- Scripts -->
     <script src="/public/base/js/jquery.min.js"></script>
     <script data-headjs-load="/public/base/js/init.js" src="/public/base/js/head.min.js"></script>
     <script src="/public/Style/Default/Front/js/upload.js"></script>
+    <script type="text/javascript" src="/public/Style/Default/Front/js/jquery.uploadify.min.js"></script>
 </head>
 <body>
     <div class="container-wrap">
@@ -128,9 +130,9 @@
                 </p>
                 <div class="popupper-add-photo">
                     <img src="/public/img/nophoto.jpg" style="width: 150px; height: 120px; display: none;" id="img_foto" />
-                    <input type="file" style="display: none;" name="file" id="concept_foto_add_input">
                     <div class="profile-change-avatar" id="remove_click_add"><i class="icon remove-icon"></i></div>
                 </div>
+                <input type="file" style="display: none;" name="file" id="concept_foto_add_input">
                 <div id="concept_file_progress" style="display:none;">
                     <progress max="100" value="0" id="concept_file_progress_barr"></progress>
                 </div>
@@ -269,59 +271,166 @@
                 //return false;
             })
             //  Отправка файлов
-            $("#file_upload").click(function(){
-                $("#file_upload_input").trigger('click');
-                $("#file_upload_input").change(function () {
-                    var t_file_name = $("#file_upload_input").val();
-                    if (t_file_name!='') {
-                        var name = this.files[0].name;
-                        if (!popupperAddFile[name]) {
-                            popupperAddFile[name]=name;
-                            files = this.files
-                            $("#file_upload").hide();
-                            $("#file_upload_progress").show();
-                            var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
-                            var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
-                            FileUploader({
-                                session_id: '{/literal}{$index_md5_key}{literal}',
-                                md5: rand_1,
-                                message_error: 'Ошибка при загрузке файла',
-                                uploadid: '123456789',
-                                uploadscript: '/ajax/file/upload/',
-                                progres_barr_id: 'file_upload_progress_barr',
-                                param1: 'file',
-                                portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
-                            }, files[0]);
-                        }
+            if (window.FormData === undefined) {
+                $("#concept_foto_add").hide();
+                $("#file_upload").hide();
+                $("#file_upload_input").show();
+                //$("#profile-change-avatar").hide();
+                $('#concept_foto_add_input').uploadify({
+                    'swf'           : '/public/Style/Default/Front/uploadify.swf',
+                    'uploader'      : '/ajax/file/uploadifyUpload/',
+                    'buttonText'    : 'Загрузить',
+                    'cancelImage'   : '/public/Style/Default/Front/img/cancel.png',
+                    'multi'         : false,
+                    //'queueID'       : 'queue',
+                    'requeueErrors' : false,
+                    'formData'      : {'session_id':'{/literal}{$index_md5_key}{literal}_1',"other_param" : "foto"},
+                    'onQueueComplete' : function(event,data) { 
+                        //alert('Файлы загружены');
+                        //console.log(data);
+                    },
+                    'onUploadSuccess' : function(event,data) {
+                        console.log(data);
+                        var myObject = eval('(' + data + ')');
+                        if (myObject.error) {
+                            console.log(myObject.error);
+                        } else{
+                            var src = '/i/150/' + myObject.file_name
+                            $("#concept_foto").val(myObject.file_name);
+                            $("#img_foto").attr("src", src);
+                            $("#img_foto").show();
+                            $("#img_foto_text").hide();
+                            $("#concept_foto_add").show();
+                            $("#concept_file_progress").hide();
+                            $("#popupper-add-photo").show();
+                        };
                     }
+                });
+                $('#file_upload_input').uploadify({
+                    'swf'           : '/public/Style/Default/Front/uploadify.swf',
+                    'uploader'      : '/ajax/file/uploadifyUpload/',
+                    'buttonText'    : 'Загрузить',
+                    'cancelImage'   : '/public/Style/Default/Front/img/cancel.png',
+                    'multi'         : false,
+                    //'queueID'       : 'queue',
+                    'requeueErrors' : false,
+                    'formData'      : {'session_id':'{/literal}{$index_md5_key}{literal}_1',"other_param" : "foto"},
+                    'onQueueComplete' : function(event,data) { 
+                        //alert('Файлы загружены');
+                        //console.log(data);
+                    },
+                    'onUploadSuccess' : function(event,data) {
+                        //console.log(data);
+                        var myObject = eval('(' + data + ')');
+                        if (myObject.error) {
+                            //console.log(myObject.error);
+                        } else{
+                            $("#file_upload").show();
+                            $("#file_upload_progress").hide();
+                            $("#file_upload_progress_barr").val(0)
+                            if (!myObject.error) {
+                                popupperAddFile[myObject.file_user_name]=myObject.file_user_name;
+                              //console.log(popupperAddFile);
+                              //  Нужно в "Диве" - file_list разместить информацию, о том, что файл загружен...
+                              //  Для начала проверяем сколько уже записей в диве
+                              if($(".popupper-add-filebox-item").length < 3){
+                                var file_div_id = 0
+                                if (!$("#file_div_1").length) {file_div_id=1};
+                                if(file_div_id==0){
+                                  if (!$("#file_div_2").length) {file_div_id=2};
+                                }
+                                if(file_div_id==0){
+                                  if (!$("#file_div_3").length) {file_div_id=3};
+                                }
+                                if(file_div_id!=0){
+                                  var text = '<span id="file_div_' + file_div_id + '" class="popupper-add-filebox-item">';
+                                  text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">';
+                                  text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
+                                  text = text + myObject.file_user_name + ' <i class="icon add-file-delete-icon" id="delete_file_div_' + file_div_id + '" name="' + myObject.file_user_name + '"></i></span>'
+                                  $("#file_list").append(text);
+                                  var id = '#file_div_' + file_div_id
+                                  var delete_id = '#delete_file_div_' + file_div_id
+                                  $(delete_id).click(function(){
+                                    //  Удалить элемент из массива
+                                    var name = $(this).attr('name');
+                                    delete popupperAddFile[name];
+                                    $(id).remove()
+                                    if($(".popupper-add-filebox-item").length > 2){
+                                      //  Скрываем ссылку загрузить файл
+                                      $("#file_upload_input").hide();
+                                    }else{
+                                      $("#file_upload_input").show();
+                                    }
+                                    return false;
+                                  })
+                                  if($(".popupper-add-filebox-item").length > 2){
+                                    //  Скрываем ссылку загрузить файл
+                                    $("#file_upload_input").hide();
+                                  }
+                                }
+                              }else{
+                                //  Скрываем ссылку загрузить файл
+                                $("#file_upload_input").hide();
+                              }
+                            }
+                        };
+                    }
+                });
+            }else{
+                $("#file_upload").click(function(){
+                    $("#file_upload_input").trigger('click');
+                    $("#file_upload_input").change(function () {
+                        var t_file_name = $("#file_upload_input").val();
+                        if (t_file_name!='') {
+                            var name = this.files[0].name;
+                            if (!popupperAddFile[name]) {
+                                popupperAddFile[name]=name;
+                                files = this.files
+                                $("#file_upload").hide();
+                                $("#file_upload_progress").show();
+                                var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
+                                var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
+                                FileUploader({
+                                    session_id: '{/literal}{$index_md5_key}{literal}',
+                                    md5: rand_1,
+                                    message_error: 'Ошибка при загрузке файла',
+                                    uploadid: '123456789',
+                                    uploadscript: '/ajax/file/upload/',
+                                    progres_barr_id: 'file_upload_progress_barr',
+                                    param1: 'file',
+                                    portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
+                                }, files[0]);
+                            }
+                        }
+                    })
+                    return false;
                 })
-                return false;
-            })
-
-            $("#concept_foto_add").click(function(){
-              $("#concept_foto_add_input").trigger('click');
-              $("#concept_foto_add_input").change(function () {
-                var t_file_name = $("#concept_foto_add_input").val();
-                if (t_file_name!='') {
-                  files = this.files
-                  $("#concept_foto_add").hide();
-                  $("#concept_file_progress").show();
-                  var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
-                  var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
-                  FileUploader({
-                      session_id: '{/literal}{$index_md5_key}{literal}',
-                      md5: rand_1,
-                      message_error: 'Ошибка при загрузке файла',
-                      uploadid: '123456789',
-                      uploadscript: '/ajax/file/upload/',
-                      progres_barr_id: 'concept_file_progress_barr',
-                      param1: 'foto',
-                      portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
-                    }, files[0]);
-                }
-              })
-              return false;
-            })
+                //  Загрузка фото
+                $("#concept_foto_add").click(function(){
+                  $("#concept_foto_add_input").trigger('click');
+                  $("#concept_foto_add_input").change(function () {
+                    var t_file_name = $("#concept_foto_add_input").val();
+                    if (t_file_name!='') {
+                      files = this.files
+                      $("#concept_foto_add").hide();
+                      $("#concept_file_progress").show();
+                      var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
+                      var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
+                      FileUploader({
+                          session_id: '{/literal}{$index_md5_key}{literal}',
+                          md5: rand_1,
+                          message_error: 'Ошибка при загрузке файла',
+                          uploadid: '123456789',
+                          uploadscript: '/ajax/file/upload/',
+                          progres_barr_id: 'concept_file_progress_barr',
+                          param1: 'foto',
+                          portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
+                        }, files[0]);
+                    }
+                  })
+                  return false;
+                })
+            }
         });
     </script>
     {/literal}
