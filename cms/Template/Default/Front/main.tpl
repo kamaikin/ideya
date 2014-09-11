@@ -240,18 +240,22 @@
                 //  Проверка на заполненность полей
                 if($("#addname").val()==''){
                     $("#addname").attr('placeholder','Не заполнено! Введите название');
+                    $("#addname").attr('title','Не заполнено! Введите название');
                     nosubmit = true;
                 }
                 if($("#addname1").val()==''){
                     $("#addname1").attr('placeholder','Не заполнено! Опишите проблему');
+                    $("#addname1").attr('title','Не заполнено! Опишите проблему');
                     nosubmit = true;
                 }
                 if($("#addname2").val()==''){
                     $("#addname2").attr('placeholder','Не заполнено! Опишите решение');
+                    $("#addname2").attr('title','Не заполнено! Опишите решение');
                     nosubmit = true;
                 }
                 if($("#addresult").val()==''){
                     $("#addresult").attr('placeholder','Не заполнено! Опишите результат');
+                    $("#addresult").attr('title','Не заполнено! Опишите результат');
                     nosubmit = true;
                 }
                 if (nosubmit) {
