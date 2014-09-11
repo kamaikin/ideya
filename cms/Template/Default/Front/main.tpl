@@ -132,7 +132,8 @@
                     <img src="/public/img/nophoto.jpg" style="width: 150px; height: 120px; display: none;" id="img_foto" />
                     <div class="profile-change-avatar" id="remove_click_add"><i class="icon remove-icon"></i></div>
                 </div>
-                <input type="file" style="display: none;" name="file" id="concept_foto_add_input">
+                <div id="ie8fotoupload"></div>
+                <input type="file" style="display: none;" name="File" id="concept_foto_add_input">
                 <div id="concept_file_progress" style="display:none;">
                     <progress max="100" value="0" id="concept_file_progress_barr"></progress>
                 </div>
@@ -273,25 +274,54 @@
             //  Отправка файлов
             if (window.FormData === undefined) {
                 $("#concept_foto_add").hide();
-                $("#file_upload").hide();
-                $("#file_upload_input").show();
-                //$("#profile-change-avatar").hide();
-                $('#concept_foto_add_input').uploadify({
-                    'swf'           : '/public/Style/Default/Front/uploadify.swf',
-                    'uploader'      : '/ajax/file/uploadifyUpload/',
-                    'buttonText'    : 'Загрузить',
-                    'cancelImage'   : '/public/Style/Default/Front/img/cancel.png',
-                    'multi'         : false,
-                    //'queueID'       : 'queue',
-                    'requeueErrors' : false,
-                    'formData'      : {'session_id':'{/literal}{$index_md5_key}{literal}_1',"other_param" : "foto"},
-                    'onQueueComplete' : function(event,data) { 
-                        //alert('Файлы загружены');
-                        //console.log(data);
-                    },
-                    'onUploadSuccess' : function(event,data) {
-                        console.log(data);
-                        var myObject = eval('(' + data + ')');
+                //$("#concept_foto_add_input").show();
+                //  сначала создаем форму
+                form = document.createElement('form');
+                form.setAttribute('action', '/ajax/file/uploadifyUpload/');
+                form.setAttribute('method', 'post');
+                form.setAttribute('enctype', 'multipart/form-data');
+                form.setAttribute('target', 'frame_foto');
+                //  Создаем хидден
+                hidden = document.createElement('input');
+                hidden.setAttribute('type', 'hidden');
+                hidden.setAttribute('name', 'md5_key');
+                hidden.setAttribute('value', '{/literal}{$index_md5_key}{literal}_1');
+                form.appendChild(hidden);
+                //  Создаем инпут
+                input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('name', 'Filedata');
+                input.setAttribute('id', 'iframe_foto_upload');
+                // Навешиваем на INPUT обработчик события onChange
+                if (input.addEventListener){
+                  input.addEventListener("change", function() {upload()}, false);
+                }else{
+                  input.attachEvent("onchange", function() {upload()});
+                }
+                form.appendChild(input);
+                //  Помещаем форму в див
+                var div_form = document.getElementById("ie8fotoupload")
+                //  Помещаем форму в оболочку
+                div_form.appendChild(form);
+                // Создаём IFRAME (сразу с атрибутом name) и устанавливаем значения атрибутов
+                frame = document.createElement('iframe');
+                frame.setAttribute('src', '/ajax/file/uploadifyUpload/');
+                frame.setAttribute('name', 'frame_foto');
+                // Создаём DIV обёртку для IFRAME
+                var wrapper = document.createElement('DIV');
+                // Помещаем IFRAME в DIV обёртку
+                wrapper.appendChild(frame);
+                // Делаем обёртку (и её содержимое) невидимой
+                wrapper.style.display = 'none';
+                // Помещаем невидимую DIV обёртку содержащую IFRAME на страницу
+                document.body.appendChild(wrapper);
+                function upload() {
+                    form.submit();
+                    $("#iframe_foto_upload").hide();
+                    setTimeout(function() {
+                      var data = frame.contentWindow.document.body.innerHTML;
+                      console.log(data);
+                      var myObject = eval('(' + data + ')');
                         if (myObject.error) {
                             console.log(myObject.error);
                         } else{
@@ -300,82 +330,12 @@
                             $("#img_foto").attr("src", src);
                             $("#img_foto").show();
                             $("#img_foto_text").hide();
-                            $("#concept_foto_add").show();
+                            //$("#concept_foto_add").show();
                             $("#concept_file_progress").hide();
                             $("#popupper-add-photo").show();
                         };
-                    }
-                });
-                $('#file_upload_input').uploadify({
-                    'swf'           : '/public/Style/Default/Front/uploadify.swf',
-                    'uploader'      : '/ajax/file/uploadifyUpload/',
-                    'buttonText'    : 'Загрузить',
-                    'cancelImage'   : '/public/Style/Default/Front/img/cancel.png',
-                    'multi'         : false,
-                    //'queueID'       : 'queue',
-                    'requeueErrors' : false,
-                    'formData'      : {'session_id':'{/literal}{$index_md5_key}{literal}_1',"other_param" : "foto"},
-                    'onQueueComplete' : function(event,data) { 
-                        //alert('Файлы загружены');
-                        //console.log(data);
-                    },
-                    'onUploadSuccess' : function(event,data) {
-                        //console.log(data);
-                        var myObject = eval('(' + data + ')');
-                        if (myObject.error) {
-                            //console.log(myObject.error);
-                        } else{
-                            $("#file_upload").show();
-                            $("#file_upload_progress").hide();
-                            $("#file_upload_progress_barr").val(0)
-                            if (!myObject.error) {
-                                popupperAddFile[myObject.file_user_name]=myObject.file_user_name;
-                              //console.log(popupperAddFile);
-                              //  Нужно в "Диве" - file_list разместить информацию, о том, что файл загружен...
-                              //  Для начала проверяем сколько уже записей в диве
-                              if($(".popupper-add-filebox-item").length < 3){
-                                var file_div_id = 0
-                                if (!$("#file_div_1").length) {file_div_id=1};
-                                if(file_div_id==0){
-                                  if (!$("#file_div_2").length) {file_div_id=2};
-                                }
-                                if(file_div_id==0){
-                                  if (!$("#file_div_3").length) {file_div_id=3};
-                                }
-                                if(file_div_id!=0){
-                                  var text = '<span id="file_div_' + file_div_id + '" class="popupper-add-filebox-item">';
-                                  text = text + '<input type="hidden" value="' + myObject.file_user_name + '" name="file_' + file_div_id + '_user_name" id="file_' + file_div_id + '_user_name">';
-                                  text = text + '<input type="hidden" value="' + myObject.file_name + '" name="file_' + file_div_id + '_server_name" id="file_' + file_div_id + '_server_name">'
-                                  text = text + myObject.file_user_name + ' <i class="icon add-file-delete-icon" id="delete_file_div_' + file_div_id + '" name="' + myObject.file_user_name + '"></i></span>'
-                                  $("#file_list").append(text);
-                                  var id = '#file_div_' + file_div_id
-                                  var delete_id = '#delete_file_div_' + file_div_id
-                                  $(delete_id).click(function(){
-                                    //  Удалить элемент из массива
-                                    var name = $(this).attr('name');
-                                    delete popupperAddFile[name];
-                                    $(id).remove()
-                                    if($(".popupper-add-filebox-item").length > 2){
-                                      //  Скрываем ссылку загрузить файл
-                                      $("#file_upload_input").hide();
-                                    }else{
-                                      $("#file_upload_input").show();
-                                    }
-                                    return false;
-                                  })
-                                  if($(".popupper-add-filebox-item").length > 2){
-                                    //  Скрываем ссылку загрузить файл
-                                    $("#file_upload_input").hide();
-                                  }
-                                }
-                              }else{
-                                //  Скрываем ссылку загрузить файл
-                                $("#file_upload_input").hide();
-                              }
-                            }
-                        };
-                    }
-                });
+                    }, 5000)
+                }
             }else{
                 $("#file_upload").click(function(){
                     $("#file_upload_input").trigger('click');
