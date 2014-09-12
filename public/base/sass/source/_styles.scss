@@ -160,6 +160,7 @@ $searchHeight: 39px;
     position: absolute;
     top: 100%;
     left: 0;
+    z-index: 100;
     margin-left: -34px;
 
     display: none;
@@ -331,7 +332,7 @@ $postTagHeight: 22px;
     position: relative;
     display: inline-block;
 
-    max-width: 120px;
+    max-width: 100px;
     @extend .ellipsis;
     height: $postTagHeight;
     padding: 0 10px;
@@ -885,7 +886,7 @@ $postTagHeight: 22px;
 }
 .profile-points-num{
     position: relative;
-    margin: 0 16px 16px;
+    margin: 0 rwd-width-val(16px, 224px) 16px;
 }
 .profile-points-num-line{
     position: absolute;
@@ -903,7 +904,7 @@ $postTagHeight: 22px;
 
     display: inline-block;
 
-    padding: 0 15px;
+    padding: 0 rwd-width-val(15px, 192px);
 
     background-color: #FFF;
 

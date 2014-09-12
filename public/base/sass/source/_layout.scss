@@ -76,13 +76,20 @@
 }
 
 // /* Phones landscape */
-// @media only screen and (min-width: $QVGA + 1) and (max-width: $XGAPortrait) {}
+@media only screen and (min-width: $VGA + 1) and (max-width: $XGALandscape) {
+    .profile-points-num-val{
+        font-size: 3em;
+    }
+    .points-tooltip{
+        left: auto;
+        right: 0;
+        margin-left: 0;
+    }
+}
 
 // /* > 640px */
 @media only screen and (max-width: $VGA) {
     .sidebar,
-    .h-points,
-    .h-profile,
     .post-tags,
     .post-date,
     .visualbar,
@@ -98,6 +105,17 @@
         width: 100%;
         float: none;
         padding: 0 2%;
+    }
+    .h-points,
+    .h-profile{
+        @include box-sizing(border-box);
+        margin: 10px auto 10px;
+        width: 50%;
+        float: none;
+    }
+    .h-profile{
+        padding-top: 10px;
+        clear: both;
     }
     .post{
         position: relative;
@@ -258,6 +276,9 @@
         top: 0;
         left: 0;
     }
+    .profile-avatar{
+        text-align: center;
+    }
 }
 
 /* Small phones */
@@ -280,5 +301,20 @@
     }
     .prifile-tab .tabs .tab{
         font-size: 10px;
+    }
+    .h-points,
+    .h-profile{
+        @include box-sizing(border-box);
+        width: 100%;
+        padding-left: 2%;
+        padding-right: 2px;
+    }
+    .profile-logout{
+        margin-left: 0;
+    }
+    .profile-tooltip{
+        &:before{
+            left: 20px;
+        }
     }
 }
