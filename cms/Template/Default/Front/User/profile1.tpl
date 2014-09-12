@@ -23,7 +23,7 @@
                     <span class="profile-points-num-val">{$user_info.points}</span>
                 </div>
                 {*<div class="points-tooltip profile-points-tooltip points-tooltip-top">
-                    Вы сейчас на 1 месте в в рейтинге пользователей
+                    Вы сейчас на 1 месте в рейтинге пользователей
                 </div>*}
             </div>
             <div class="profile-info table">

@@ -78,7 +78,7 @@
                         <div class="points-clolor-line" style="width: {$index_points_procent}%"></div>
                     </div>
                     <div class="points-tooltip h-points-points-tooltip points-tooltip-bottom">
-                        Вы сейчас на {$index_user_raiting_position} месте в в рейтинге пользователей
+                        Вы сейчас на {$index_user_raiting_position} месте в рейтинге пользователей
                     </div>
                 </div>
             </div>
@@ -99,25 +99,25 @@
             <h2 class="popupper-add-title">Добавить идею</h2>
             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
-                    <input type="text" name="concept_name" id="addname" class="popupper-add-field count_count" autocomplete="off" tabindex="1" placeholder="Введите название" max_count="70">
+                    <input type="text" name="concept_name" id="addname" class="popupper-add-field count_count" autocomplete="off" tabindex="1" placeholder="о чем ваша идея?" max_count="70">
                     <div class="popupper-form-word_counter" id="count_addname">70</div>
                 </div>
             </div>
-            <div class="popupper-form-row">
+<!--             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
                     <input type="text" name="concept_problem" id="addname1" class="popupper-add-field count_count" autocomplete="off" tabindex="2" placeholder="Опишите проблему" max_count="70">
                     <div class="popupper-form-word_counter" id="count_addname1">70</div>
                 </div>
-            </div>
+            </div> -->
             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
-                    <input type="text" name="concept_decision" id="addname2" class="popupper-add-field count_count" autocomplete="off" tabindex="3" placeholder="Опишите решение" max_count="70">
-                    <div class="popupper-form-word_counter" id="count_addname2">70</div>
+                    <input type="text" name="concept_decision" id="addname2" class="popupper-add-field count_count" autocomplete="off" tabindex="3" placeholder="что вы предлагаете сделать?" max_count="140">
+                    <div class="popupper-form-word_counter" id="count_addname2">140</div>
                 </div>
             </div>
             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
-                    <input type="text" name="concept_result" id="addresult" class="popupper-add-field count_count" autocomplete="off" tabindex="4" placeholder="Опишите результат" max_count="70">
+                    <input type="text" name="concept_result" id="addresult" class="popupper-add-field count_count" autocomplete="off" tabindex="4" placeholder="какого результата вы ждёте?" max_count="70">
                     <div class="popupper-form-word_counter" id="count_addresult">70</div>
                 </div>
             </div>
