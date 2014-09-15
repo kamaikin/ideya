@@ -27,6 +27,7 @@
 			$this->_view['tags'] = $text;
 			$this->_view['mainTitle']='Все теги';
 			$this->_view['includeFileName']='Tags/index.tpl';
+			$this->_getRightSidebar();
 		}
 
 		protected function OneAction(){

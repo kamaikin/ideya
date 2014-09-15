@@ -59,7 +59,12 @@ INSERT INTO `acl_resourse` (`id`, `resourse`, `group`) VALUES
 (51,  'admin_concept_tags_index', 'admin'),
 (52,  'admin_concept_tags_delete_index',  'admin'),
 (53,  'Front_logout_index_index', 'user'),
-(54,  'admin_mailTemplate_add_index', 'admin');
+(54,  'admin_mailTemplate_add_index', 'admin'),
+(55,  'Front_tags_index_index', 'user'),
+(56,  'ajax_concept_deletecomment_index', 'moderator'),
+(57,  'ajax_concept_editcomment_index', 'user'),
+(58,  'ajax_file_uploadifyUpload_index',  'user'),
+(59,  'admin_concept_concept_edit_index', 'admin');
 
 DROP TABLE IF EXISTS `concept`;
 CREATE TABLE `concept` (
@@ -89,7 +94,7 @@ CREATE TABLE `concept` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `concept` (`id`, `user_id`, `anonimus`, `name`, `problem`, `solution`, `result`, `foto`, `date`, `comment_count`, `moderating`, `moderating_data`, `moderating_id`, `file_1_name`, `file_1`, `file_2_name`, `file_2`, `file_3_name`, `file_3`, `points`, `post_like`, `implemented`) VALUES
-(1, 1,  'n',  'Название идеи',  'Проблема', 'решение',  'результат',  '', 1406535239, 2,  'y',  1407140145, 1,  '', '', '', '', '', '', 17, 1,  'n'),
+(1, 1,  'n',  'Название идеи',  'Проблема', 'решение',  'результат',  '6128efe24df823a088e8ec168bac480d.jpg', 1406535239, 2,  'y',  1407140145, 1,  '', '', '', '', '', '', 17, 1,  'n'),
 (3, 1,  'y',  'Название 233333',  'Название 12345', 'Решение решение решение',  'Результат, результат, результат',  '', 1406537607, 2,  'y',  1407140137, 1,  '', '', '', '', '', '', 0,  0,  'y'),
 (4, 1,  'n',  'gggg', 'hhhhhhhhhhh',  'jjjjjjjjj',  'kkkkkkkkkkkkk',  '58618108b1ab678426458a45df3bd37c.jpg', 1406724001, 1,  'y',  1407140127, 1,  '', '', '', '', '', '', 5,  10, 'n'),
 (5, 1,  'n',  'Проверка идеи',  'Проверка идеи',  'Проверка идеи',  'Проверка идеи',  '16e79c395dcd7a53d1482c8d843c7bdb.jpg', 1406791189, 4,  'y',  1407140660, 1,  'Это файл PDF', 'fc2061e4fdc468fae0f462e786a44171.pdf', '', '', '', '', 0,  1,  'n'),
@@ -98,18 +103,21 @@ INSERT INTO `concept` (`id`, `user_id`, `anonimus`, `name`, `problem`, `solution
 (8, 159,  'y',  '222 222',  '222222222',  '2222222222', '2222222222222',  'c3e18c4f49e61793659e1e06cfd9803f.jpg', 1409134715, 4,  'y',  1409140111, 162,  'FGCS_medtronic_ideas_tz_v1.pdf', 'bd57efcada70d57bd2021db9d1a0de61.pdf', '', '', '', '', 0,  1,  'n'),
 (9, 159,  'n',  '3333333333333',  '333333333333', '3333333333333',  '3333333333', 'd9ccb2491393f97bd281b5d0c043aa86.jpg', 1409135278, 0,  'y',  1409140112, 162,  '', '', '', '', '', '', 0,  0,  'n'),
 (10,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135500, 0,  'y',  1409140113, 162,  '', '', '', '', '', '', 0,  0,  'n'),
-(11,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135545, 0,  'y',  1409140114, 162,  '', '', '', '', '', '', 0,  0,  'n'),
-(12,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135603, 0,  'y',  1409140116, 162,  '', '', '', '', '', '', 0,  0,  'n'),
-(13,  159,  'y',  '55555555555',  '55555555555',  '555555555',  '55555555555555', '6128efe24df823a088e8ec168bac480d.jpg', 1409136028, 2,  'y',  1409140117, 162,  '13-sbornik-22-luchshix-form-vxoda.zip',  'dd8e49d091a808e987af9d4228350882.zip', '', '', '', '', 8,  0,  'n'),
+(11,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135545, 0,  'y',  1409140114, 162,  '', '', '', '', '', '', 10, 1,  'n'),
+(12,  159,  'y',  '4444444444', '44444444444',  '44444444444',  '4444444444444444444',  'b6fd1dad7edb3751e344d8b4b11fab22.jpg', 1409135603, 0,  'y',  1409140116, 162,  '', '', '', '', '', '', 10, 1,  'n'),
+(13,  159,  'y',  '55555555555',  '55555555555',  '555555555',  '55555555555555', '6128efe24df823a088e8ec168bac480d.jpg', 1409136028, 2,  'y',  1409140117, 162,  '13-sbornik-22-luchshix-form-vxoda.zip',  'dd8e49d091a808e987af9d4228350882.zip', '', '', '', '', 18, 1,  'n'),
 (14,  162,  'n',  'Идея от админа', 'Идея от админа', 'Идея от админа', 'Идея от админа', '3f83f1ff1f8e4b98ee851ac51b7e405e.png', 1409138692, 4,  'y',  1409140119, 162,  '', '', '', '', '', '', 24, 3,  'n'),
-(15,  159,  'y',  'бллблблблбл',  'овтадупрдыг',  'кдшагпсыыеавфг6а и все офигенно',  'все офигенно', '90da583b3c73537d249b217576042fb8.jpg', 1409321332, 0,  'n',  0,  0,  '', '', '', '', '', '', 18, 1,  'n'),
-(16,  160,  'y',  'бубубуббу',  'ббуббубубубубубу', 'прпрпрпрпрп',  'л]лялялялялялялял',  '3d657455c3577807fc7926b9177b8f67.jpg', 1409321776, 3,  'n',  0,  0,  '', '', '', '', '', '', 9,  1,  'n'),
-(17,  160,  'y',  'бабабаба', 'попопопоп',  'дудудудудуд',  'лялялялялял',  '', 1409321942, 1,  'n',  0,  0,  'undefined',  'undefined',  '', '', '', '', 20, 2,  'n'),
+(15,  159,  'y',  'бллблблблбл',  'овтадупрдыг',  'кдшагпсыыеавфг6а и все офигенно',  'все офигенно', '90da583b3c73537d249b217576042fb8.jpg', 1409321332, 0,  'n',  0,  0,  '', '', '', '', '', '', 18, 2,  'n'),
+(16,  160,  'y',  'бубубуббу',  'ббуббубубубубубу', 'прпрпрпрпрп',  'л]лялялялялялялял',  '3d657455c3577807fc7926b9177b8f67.jpg', 1409321776, 3,  'n',  0,  0,  '', '', '', '', '', '', 9,  2,  'n'),
+(17,  160,  'y',  'бабабаба', 'попопопоп',  'дудудудудуд',  'лялялялялял',  '', 1409321942, 1,  'n',  0,  0,  'undefined',  'undefined',  '', '', '', '', 30, 3,  'n'),
 (18,  159,  'y',  'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '', 1409511122, 1,  'n',  0,  0,  '', '', '', '', '', '', 0,  1,  'n'),
 (19,  159,  'y',  'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '828f6447518262e30da3075a112caf82.jpg', 1409512110, 7,  'n',  0,  0,  'undefined',  'undefined',  '', '', '', '', 8,  1,  'n'),
 (20,  159,  'y',  'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '', '', '', '', 1409512211, 2,  'n',  0,  0,  '', '', '', '', '', '', 19, 1,  'n'),
 (21,  160,  'y',  'ddddddddddd',  'fffffffffffffffff',  'ssssssssssssssssss', 'ddddddddddddddddddddddd',  '', 1409514662, 3,  'n',  0,  0,  '', '', '', '', '', '', 23, 0,  'n'),
-(22,  162,  'n',  'eeeeeeeeeee',  'eeeeeeeeeeeeeeeee',  'eeeeeeeeeeeeeeeeeee',  'eeeeeeeeeeeeeeeeeeeeeeeeeeee', '', 1409917404, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n');
+(22,  162,  'n',  'eeeeeeeeeee',  'eeeeeeeeeeeeeeeee',  'eeeeeeeeeeeeeeeeeee',  'eeeeeeeeeeeeeeeeeeeeeeeeeeee', '', 1409917404, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n'),
+(23,  162,  'n',  '1111111111111',  '222222222222222',  '33333333333333', '44444444444444444444444',  '', 1409919963, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n'),
+(24,  162,  'n',  'ааааааааааа',  'ааааааааааааа',  'ааааааааааааааа',  'аааааааааааааааааа', '', 1409920199, 2,  'n',  0,  0,  '', '', '', '', '', '', 39, 2,  'n'),
+(27,  1,  'n',  'test test test test test11111111111111', '', 'test test test test test test test test test', 'test test test test test test test test test', '6128efe24df823a088e8ec168bac480d.jpg', 1410507502, 0,  'n',  0,  0,  '22-sbornik-22-luchshix-form-vxoda.zip',  'ad4ad39b26ed505994f8ae472d6c6813.zip', '', '', '', '', 8,  0,  'n');
 
 DROP TABLE IF EXISTS `concept_comment`;
 CREATE TABLE `concept_comment` (
@@ -166,7 +174,9 @@ INSERT INTO `concept_comment` (`id`, `concept_id`, `user_id`, `user_avatar`, `ti
 (44,  21, 162,  '', '', 'ппппппппппппппппппппппппппппппппппппппппп',  1409742909, 0,  'n',  0,  0),
 (45,  20, 162,  '', '', 'gggggggggggggggggggggggggggggggggggggggggggggggggg\r\nhhhhhhhhhhhhhhhhhhhhhhhhh',  1409744174, 0,  'y',  1409829577, 162),
 (46,  21, 162,  '', '', 'hhhhhhhhhhhhhhhhhhhhhhhhhhhh\r\nhhhhhhhhhhhhhhhhhhhhhhhhh\r\nhhhhhhhhhhhhhhhhhhhh',  1409816441, 0,  'n',  0,  0),
-(52,  14, 162,  '', '', '14 50',  1409827865, 0,  'n',  0,  0);
+(52,  14, 162,  '', '', '14 50',  1409827865, 0,  'n',  0,  0),
+(54,  24, 161,  '', '', '<div style=\"color: F00;\">Модератор удалил комментарий с причиной: gggggggggggggggg</div>', 1410157469, 0,  'n',  0,  0),
+(55,  24, 1,  '', '', 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',  1410263546, 0,  'n',  0,  0);
 
 DROP TABLE IF EXISTS `concept_events`;
 CREATE TABLE `concept_events` (
@@ -182,7 +192,8 @@ INSERT INTO `concept_events` (`id`, `key`, `name`, `Credits`) VALUES
 (2, 'add_image',  'Добавление изображения в идею',  3),
 (3, 'ad_file',  'Добавление файла в идею',  5),
 (4, 'comments', 'Комментарий',  2),
-(5, 'idea_supported_sponsor', 'идею поддержал спонсор', 15);
+(5, 'idea_supported_sponsor', 'идею поддержал спонсор', 15),
+(6, 'ocenka_drugimi_polsovatelyami',  'Оценка идеи другими пользователями', 10);
 
 DROP TABLE IF EXISTS `concept_licke`;
 CREATE TABLE `concept_licke` (
@@ -209,7 +220,15 @@ INSERT INTO `concept_licke` (`id`, `user_id`, `concept_id`, `datetime`) VALUES
 (13,  159,  19, 1409512764),
 (14,  159,  14, 1409512816),
 (15,  159,  16, 1409513080),
-(16,  160,  20, 1409513337);
+(16,  160,  20, 1409513337),
+(17,  162,  16, 1410156040),
+(18,  162,  15, 1410156070),
+(19,  162,  17, 1410156699),
+(20,  162,  13, 1410156761),
+(21,  162,  12, 1410156805),
+(22,  162,  11, 1410156850),
+(23,  161,  24, 1410157475),
+(24,  1,  24, 1410263604);
 
 DROP TABLE IF EXISTS `concept_sponsor`;
 CREATE TABLE `concept_sponsor` (
@@ -227,7 +246,8 @@ INSERT INTO `concept_sponsor` (`id`, `user_id`, `concept_id`, `datetime`) VALUES
 (5, 160,  17, 1409321983),
 (6, 160,  14, 1409322147),
 (7, 160,  20, 1409513338),
-(8, 162,  21, 1409816463);
+(8, 162,  21, 1409816463),
+(9, 1,  24, 1410263615);
 
 DROP TABLE IF EXISTS `events_log`;
 CREATE TABLE `events_log` (
@@ -326,6 +346,7 @@ INSERT INTO `tags_to_concept` (`id`, `tags_id`, `concept_id`) VALUES
 (19,  9,  16),
 (20,  10, 16),
 (21,  11, 18),
+(26,  1,  27),
 (24,  14, 21),
 (25,  15, 21);
 
@@ -339,7 +360,21 @@ CREATE TABLE `temp` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `temp` (`id`, `key`, `value`, `datetime`) VALUES
-(1, 'tags_cloud', '<li class=\"tags-widget-item\"><a href=\"/tags/1111111111.html\" class=\"tags-widget-link\">1111111111</a></li><li class=\"tags-widget-item\"><a href=\"/tags/123.html\" class=\"tags-widget-link\">123</a></li><li class=\"tags-widget-item\"><a href=\"/tags/222222222222.html\" class=\"tags-widget-link\">222222222222</a></li><li class=\"tags-widget-item\"><a href=\"/tags/456.html\" class=\"tags-widget-link\">456</a></li><li class=\"tags-widget-item\"><a href=\"/tags/fffffffffffffffffff.html\" class=\"tags-widget-link\">fffffffffffffffffff</a></li><li class=\"tags-widget-item\"><a href=\"/tags/admin.html\" class=\"tags-widget-link\">Админ</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ideya_ot_admina.html\" class=\"tags-widget-link\">Идея от админа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ieshedldgplgeashea.html\" class=\"tags-widget-link\">иещедлдгплгеашеа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test.html\" class=\"tags-widget-link\">проверка</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test1.html\" class=\"tags-widget-link\">Проверка1</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ivloiidmiimo.html\" class=\"tags-widget-link\">ывлоиыдмиымо</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_eshe_teg.html\" class=\"tags-widget-link\">Это еще тег</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_teg.html\" class=\"tags-widget-link\">Это тег</a></li>',  1409920711);
+(1, 'tags_cloud', '<li class=\"tags-widget-item\"><a href=\"/tags/1111111111.html\" class=\"tags-widget-link\">1111111111</a></li><li class=\"tags-widget-item\"><a href=\"/tags/123.html\" class=\"tags-widget-link\">123</a></li><li class=\"tags-widget-item\"><a href=\"/tags/222222222222.html\" class=\"tags-widget-link\">222222222222</a></li><li class=\"tags-widget-item\"><a href=\"/tags/456.html\" class=\"tags-widget-link\">456</a></li><li class=\"tags-widget-item\"><a href=\"/tags/fffffffffffffffffff.html\" class=\"tags-widget-link\">fffffffffffffffffff</a></li><li class=\"tags-widget-item\"><a href=\"/tags/admin.html\" class=\"tags-widget-link\">Админ</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ideya_ot_admina.html\" class=\"tags-widget-link\">Идея от админа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ieshedldgplgeashea.html\" class=\"tags-widget-link\">иещедлдгплгеашеа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test.html\" class=\"tags-widget-link\">проверка</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test1.html\" class=\"tags-widget-link\">Проверка1</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ivloiidmiimo.html\" class=\"tags-widget-link\">ывлоиыдмиымо</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_eshe_teg.html\" class=\"tags-widget-link\">Это еще тег</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_teg.html\" class=\"tags-widget-link\">Это тег</a></li>',  1410765479);
+
+DROP TABLE IF EXISTS `users_config`;
+CREATE TABLE `users_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `comment` int(11) NOT NULL DEFAULT '0',
+  `points` int(11) NOT NULL DEFAULT '0',
+  `sponsors` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `users_config` (`id`, `user_id`, `comment`, `points`, `sponsors`) VALUES
+(1, 0,  0,  1,  0),
+(2, 1,  1,  0,  1);
 
 DROP TABLE IF EXISTS `users_events`;
 CREATE TABLE `users_events` (
@@ -359,8 +394,7 @@ INSERT INTO `users_events` (`id`, `key`, `name`, `Credits`) VALUES
 (6, 'уvaluation_others_ideas',  'Оценка чужих идей',  1),
 (7, 'comments', 'Комментарий',  2),
 (8, 'idea_supported_sponsor', 'идею поддержал спонсор', 15),
-(9, 'become_sponsor_ideas', 'стал спонсором идеи',  5),
-(10,  'уцкук',  'уцкуцк', 3);
+(9, 'become_sponsor_ideas', 'стал спонсором идеи',  5);
 
 DROP TABLE IF EXISTS `users_login`;
 CREATE TABLE `users_login` (
@@ -397,11 +431,11 @@ CREATE TABLE `user_data` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_data` (`id`, `user_id`, `nick_name`, `name`, `surname`, `patronymic`, `avatar`, `email`, `register_date`, `last_visit_date`, `user_role`, `points`) VALUES
-(1, 1,  'Владимир', 'Владимир', 'Камайкин', 'Анатольевич',  'a02d0017e5e9fcd2707c9f4427d0b9c9.jpg', 'kamaikin@gmail.com', 1405598414, 1409053525, 'admin',  56),
-(159, 159,  'userdfgdftg',  'userdfgdftg',  'userovichdfgdfgdf',  '', 'aecc5d403c9a57e4c611ea05e2c18088.jpg', 'user@user.rudfgdfg', 0,  1409563025, 'user', 227),
-(160, 160,  'sponsor',  'sponsor',  'sponsor',  '', '', 'sponsor@sponsor.ru', 0,  1409513250, 'sponsor',  120),
-(161, 161,  'moderator',  'moderator',  'moderator',  '', '981a13f0820b03ebc97522eb2fffcd31.jpg', 'moderator@moderator.ru', 0,  1409322184, 'moderator',  0),
-(162, 162,  'admin',  'admin',  'admin',  '', '', 'admin@admin.ru', 0,  1409906441, 'admin',  81);
+(1, 1,  'Владимир', 'Владимир', 'Камайкин', 'Анатольевич',  'a02d0017e5e9fcd2707c9f4427d0b9c9.jpg', 'kamaikin@gmail.com', 1405598414, 1410502911, 'admin',  74),
+(159, 159,  'userdfgdftg',  'userdfgdftg',  'userovichdfgdfgdf',  '', 'aecc5d403c9a57e4c611ea05e2c18088.jpg', 'user@user.rudfgdfg', 0,  1410424093, 'user', 267),
+(160, 160,  'sponsor',  'sponsor',  'sponsor',  '', '', 'sponsor@sponsor.ru', 0,  1409513250, 'sponsor',  140),
+(161, 161,  'moderator',  'moderator',  'moderator',  '', '981a13f0820b03ebc97522eb2fffcd31.jpg', 'moderator@moderator.ru', 0,  1410242635, 'moderator',  3),
+(162, 162,  'admin',  'admin',  'admin',  '', '', 'admin@admin.ru', 0,  1410761878, 'admin',  162);
 
 DROP TABLE IF EXISTS `user_profile_views`;
 CREATE TABLE `user_profile_views` (
@@ -414,10 +448,76 @@ CREATE TABLE `user_profile_views` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_profile_views` (`id`, `profile_id`, `user_id`, `time`) VALUES
-(1, 162,  162,  1409917115),
-(2, 162,  162,  1409917126),
-(3, 1,  1,  1409917360),
-(4, 1,  1,  1409917405),
-(5, 162,  162,  1409917412);
+(26,  1,  1,  1410245154),
+(25,  1,  1,  1410245148),
+(24,  1,  1,  1410245140),
+(23,  1,  1,  1410245083),
+(22,  1,  1,  1410245079),
+(21,  1,  1,  1410244996),
+(20,  1,  1,  1410244987),
+(19,  1,  1,  1410244980),
+(18,  1,  1,  1410244772),
+(17,  1,  1,  1410244034),
+(27,  1,  1,  1410245164),
+(28,  1,  1,  1410245173),
+(29,  1,  1,  1410245175),
+(30,  1,  1,  1410245178),
+(31,  1,  159,  1410245402),
+(32,  1,  159,  1410245415),
+(33,  1,  159,  1410245440),
+(34,  1,  159,  1410245442),
+(35,  1,  159,  1410245445),
+(36,  1,  159,  1410245447),
+(37,  1,  159,  1410245451),
+(38,  1,  159,  1410245459),
+(39,  1,  1,  1410247959),
+(40,  1,  1,  1410247966),
+(41,  1,  1,  1410247975),
+(42,  1,  1,  1410250487),
+(43,  1,  1,  1410250596),
+(44,  1,  1,  1410250636),
+(45,  1,  1,  1410250746),
+(46,  1,  1,  1410250754),
+(47,  1,  1,  1410251477),
+(48,  1,  1,  1410251652),
+(49,  1,  1,  1410252700),
+(50,  1,  1,  1410257969),
+(51,  1,  1,  1410257974),
+(52,  1,  1,  1410258002),
+(53,  1,  1,  1410258840),
+(54,  1,  1,  1410258940),
+(55,  1,  1,  1410258949),
+(56,  1,  1,  1410258949),
+(57,  1,  1,  1410258999),
+(58,  1,  1,  1410259033),
+(59,  1,  1,  1410259080),
+(60,  1,  1,  1410259083),
+(61,  1,  1,  1410259083),
+(62,  1,  1,  1410259115),
+(63,  1,  1,  1410259152),
+(64,  1,  1,  1410259183),
+(65,  1,  1,  1410259223),
+(66,  1,  1,  1410259231),
+(67,  1,  1,  1410259232),
+(68,  1,  1,  1410259235),
+(69,  1,  1,  1410259236),
+(70,  1,  1,  1410264658),
+(71,  1,  1,  1410266334),
+(72,  1,  1,  1410267983),
+(73,  1,  1,  1410267989),
+(74,  1,  1,  1410268059),
+(75,  1,  1,  1410268256),
+(76,  1,  1,  1410268375),
+(77,  1,  1,  1410268425),
+(78,  1,  1,  1410268681),
+(79,  1,  1,  1410268927),
+(80,  1,  162,  1410269265),
+(81,  1,  162,  1410269278),
+(82,  1,  162,  1410269318),
+(83,  1,  162,  1410269353),
+(84,  1,  162,  1410269464),
+(85,  1,  162,  1410269543),
+(86,  1,  1,  1410348789),
+(87,  1,  1,  1410502959);
 
--- 2014-09-05 11:48:14
+-- 2014-09-15 07:27:17
