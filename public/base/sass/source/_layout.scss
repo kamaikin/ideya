@@ -196,9 +196,14 @@
     }
     .search-btn,
     .search-field{
-        height: 44px;
+        height: 49px;
     }
-    .search-field-box{}
+    .search-btn{
+        width: 55px;
+    }
+    .search-field-box{
+        margin-left: 55px;
+    }
     .search-field{
         border-width: 2px;
     }

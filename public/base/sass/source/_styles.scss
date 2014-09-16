@@ -1628,23 +1628,35 @@ $profileFormWidth: 83px;
 .popupper-add-anonim-trigger,
 .trigger{
     position: relative;
+    @include box-sizing(border-box);
     margin-left: 25px;
+    width: 78px;
     height: 28px;
     border-radius: 28px;
     line-height: 28px;
     background-color: #f2f2f2;
     color: #1abc9c;
-    padding: 0 34px 0 16px;
+    padding: 0 25px 0 10px;
     font-weight: 700;
+    font-size: 15px;
     text-transform: uppercase;
     cursor: pointer;
     &.off{
         color: #afaeae;
+        font-size: 13px;
         .popupper-add-anonim-trigger-pic,
         .trigger-pic{
             background-color: #d2d2d2;
         }
+        .popupper-add-anonim-trigger-text,
+        .trigger-text{
+            margin-left: 0;
+        }
     }
+}
+.popupper-add-anonim-trigger-text,
+.trigger-text{
+    margin-left: 5px;
 }
 .popupper-add-anonim-trigger-pic,
 .trigger-pic{
