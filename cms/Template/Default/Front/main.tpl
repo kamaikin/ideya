@@ -171,6 +171,9 @@
             </div>
         </form>
     </div><!-- /Popupper-add -->
+    <div class="popupper popupper-success">
+        Ваша идея успешно опубликована!
+    </div>
     {literal}
     <script type="text/javascript">
         var popupperAddFile = new Object()
