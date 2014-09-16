@@ -73,7 +73,7 @@
             </ul>
         	{foreach from=$user_concept item="value"}
             <article class="post{if $value.date > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail left">
+                <div class="post-thumbnail post-thumbnail-has-author left">
                 {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
                 </div>
                 <div class="post-info right">
@@ -112,7 +112,7 @@
         {*Мои комментарии*}
         {foreach from=$user_comment item="value"}
         <article class="post{if $value.date > $notificare_time} notificare-post{/if}">
-            <div class="post-thumbnail left">
+            <div class="post-thumbnail post-thumbnail-has-author left">
             {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
             </div>
             <div class="post-content">
