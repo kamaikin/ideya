@@ -108,7 +108,7 @@
             </article>
             {/foreach}
         </div>
-        <div class="tab-content tab-content-js">
+        <div class="tab-content posts-lists tab-content-js">
         {*Мои комментарии*}
         {foreach from=$user_comment item="value"}
         <article class="post{if $value.date > $notificare_time} notificare-post{/if}">

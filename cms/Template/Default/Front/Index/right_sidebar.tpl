@@ -42,7 +42,7 @@
         {/foreach}
         </ul>
         <div class="more-ideas tac">
-            <a href="/" class="more-idea-link">Еще идеи</a>
+            <a href="/" class="more-idea-link">Весь рейтинг</a>
         </div>
     </div><!--end hall_of_fame-widget-->
     <div class="widget tags-widget">
