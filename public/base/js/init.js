@@ -4,15 +4,8 @@ function hasClass(elem, className) {
     return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
 }
 
-if (head.browser.ie && head.browser.version < 8) {
-    location.replace(sourcePath+"ie7/ie7.html");
-}
-
 if (head.browser.ie && head.browser.version < 9) {
-    head.js(
-        "http://html5shiv.googlecode.com/svn/trunk/html5.js",
-        sourcePath+"js/respond.min.js"
-    );
+    location.replace(sourcePath+"ie7/ie7.html");
 }
 
 head.js(
