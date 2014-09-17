@@ -27,7 +27,7 @@
 			$user_info=\Tango::session()->get('userInfo');
 			$user_id=$user_info['id'];
 			$array=array();
-			$array['moderating']='y';
+			$array['implemented']='y';
 			$array['moderating_data']=time();
 			$array['moderating_id']=$user_id;
 			\Tango::sql()->update('concept', $array, 'id='.$id);

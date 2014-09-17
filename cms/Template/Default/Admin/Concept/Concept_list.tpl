@@ -12,7 +12,7 @@
 		<th colspan="3">Действия</th>
 	</tr>
 	{foreach from=$data item="Value"}
-	<tr {if $Value.moderating == 'n'}style="background-color: #F00;"{/if}>
+	<tr {if $Value.implemented == 'y'}style="background-color: #0F0;"{/if}>
 		<td>{$Value.id}</td>
 		<td>{$Value.name}</td>
 		<td>{$Value.nick_name}</td>
@@ -24,7 +24,7 @@
 			<a href="/admin/concept/concept_edit/?id={$Value.id}"><i class="fa fa-pencil" title="Редактировать"></i></a>
 		</td>
 		<td><a href="/admin/concept/concept_delete/?id={$Value.id}"><i class="fa fa-trash" title="Удалить"></i></a></td>
-		<td>{if $Value.moderating == 'n'}<a href="/admin/concept/concept_moderating/?id={$Value.id}&page={$smarty.get.url}"><i class="fa fa-check-circle" title="Разрешить"></i></a>{/if}</td>
+		<td>{if $Value.implemented == 'n'}<a href="/admin/concept/concept_moderating/?id={$Value.id}&page={$smarty.get.url}"><i class="fa fa-check-circle" title="отметить идею как реализованную"></i></a>{/if}</td>
 	</tr>
 	{/foreach}
 </table>
