@@ -24,6 +24,7 @@
 					c.anonimus as anonimus,
 					ud.nick_name as nick_name,
 					c.moderating as moderating,
+					c.implemented as implemented,
 					c.`date` as `date`
 					FROM concept AS c 
 					JOIN user_data AS ud ON ud.user_id=c.user_id 
