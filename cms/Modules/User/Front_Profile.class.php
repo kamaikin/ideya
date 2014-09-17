@@ -104,6 +104,7 @@
 				//	Я спонсирую
 				$query="SELECT c.foto as foto, 
 					c.points as points, 
+					c.user_id as user_id, 
 					c.post_like as post_like, 
 					c.comment_count as comment_count, 
 					c.name as name, c.date as `date`,
