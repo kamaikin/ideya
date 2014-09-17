@@ -88,7 +88,7 @@
             {include file='Index/right_sidebar.tpl'}
         </div><!--end content-->
         <footer role="contentinfo" class="footer tac">
-            <a href="/" class="dib design-logo">powered by <img src="/public/base/images/design_logo.png" alt=""></a>
+            <div class="dib design-logo">powered by <img src="/public/base/images/design_logo.png" alt=""></div>
         </footer><!--end footer-->
     </div><!--end main block-->
     <div class="popupper popupper-add popupper-js">

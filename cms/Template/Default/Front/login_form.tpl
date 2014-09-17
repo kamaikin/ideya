@@ -51,7 +51,7 @@
             </form>
         </div><!--end content-->
         <footer role="contentinfo" class="main-footer tac">
-            <a href="/" class="dib main-design-logo">powered by <img src="/public/base/images/main_design_logo.png" alt=""></a>
+            <div class="dib main-design-logo">powered by <img src="/public/base/images/main_design_logo.png" alt=""></div>
         </footer><!--end footer-->
     </div><!--end main block-->
 </body>

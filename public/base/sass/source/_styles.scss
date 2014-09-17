@@ -975,11 +975,12 @@ $profileFormWidth: 83px;
             height: 64px;
             cursor: pointer;
             text-align: center;
-            @include adjust-font-size-to(14px);
+            @include adjust-font-size-to(13px);
             font-weight: 700;
             color: #b4b4b4;
             text-align: center;
             text-transform: uppercase;
+            word-spacing: nowrap;
             .money{
                 @include align-icon(-2);
             }
@@ -1706,18 +1707,27 @@ $profileFormWidth: 83px;
 
 
 // /* ---------->>> OTHER STYLES <<<-----------*/
+
+
 $notificareSize: 17px;
 
-.notificare{
+.prifile-tab-box{
     position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.notificare{
+    position: absolute;
     top: -10px;
-    left: -3px;
+    left: 100%;
 
     display: inline-block;
     vertical-align: top;
 
     width: $notificareSize;
     height: $notificareSize;
+    margin-left: -3px;
 
     background-color: #f39c12;
     border-radius: 50%;
@@ -1810,3 +1820,4 @@ $notificareSize: 17px;
     white-space: nowrap;
     text-align: center;
 }
+

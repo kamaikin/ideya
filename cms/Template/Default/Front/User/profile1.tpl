@@ -61,8 +61,8 @@
     <!--tabs-->
     <div class="tabs-section tabs-section-js prifile-tab">
         <ul class="tabs tabs-js">
-            <li class="tab tab-current">Идеи{if $count_user_concept>0}<span class="notificare">{$count_user_concept}</span>{/if}</li>
-            <li class="tab"><i class="icon comment"></i> Комментарии{if $count_user_comment>0}<span class="notificare">{$count_user_comment}</span>{/if}</li>
+            <li class="tab tab-current"><div class="prifile-tab-box">Идеи{if $count_user_concept>0}<span class="notificare">{$count_user_concept}</span>{/if}</div></li>
+            <li class="tab"><div class="prifile-tab-box"><i class="icon comment"></i> Комментарии{if $count_user_comment>0}<span class="notificare">{$count_user_comment}</span>{/if}</div></li>
         </ul>
         <div class="tab-content posts-lists tab-content-js tab-content-visible">
         	{*Мои идеи*}
