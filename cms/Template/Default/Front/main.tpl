@@ -29,9 +29,9 @@
                     <span class="lists-link listts-link-js"><i class="icon lists-icon"></i></span>
                     <ul class="mobile-menu-list mobile-menu-list-js">
                         <li class="mobile-menu-item"><a href="/user/profile/" class="mobile-menu-link">Мой профиль</a></li>
-                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link"><i class="icon plus-menu-icon"></i>Предложить идею</a></li>
-                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link">Рейтинг идей</a></li>
-                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link">теги</a></li>
+                        <li class="mobile-menu-item"><span class="mobile-menu-link popup-link popup-link-js" data-popup="add"><i class="icon plus-menu-icon"></i>Предложить идею</span></li>
+                        <li class="mobile-menu-item"><a href="/" class="mobile-menu-link">Рейтинг идей</a></li>
+                        <li class="mobile-menu-item"><a href="/tags/" class="mobile-menu-link">теги</a></li>
                     </ul>
                 </div>
                 <a href="/" class="logo left"><img src="/public/base/images/logo.png" alt=""></a>
