@@ -184,7 +184,7 @@
 	                    <div class="post-author-pic">
 	                        <img src="{if $value.user_avatar==''}/public/img/nophoto.jpg{else}/i/50/{$value.user_avatar}{/if}" alt="" class="post-author-ava">
 	                    </div>
-	                    <a href="#" class="post-author-link">{$value.user_name} {$value.user_surname}</a>
+	                    <a href="/user/profile/{$value.user_id}.html" class="post-author-link">{$value.user_name} {$value.user_surname}</a>
 	                </div>
                 </div>
                 <div class="post-info right">
