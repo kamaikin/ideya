@@ -38,6 +38,10 @@
 				}else{
 					$array['anonimus']='n';
 				}
+				if(isset($_POST['foto'])){$array['foto']='';}
+				if(isset($_POST['file1'])){$array['file_1_name']=''; $array['file_1']='';}
+				if(isset($_POST['file2'])){$array['file_2_name']=''; $array['file_2']='';}
+				if(isset($_POST['file3'])){$array['file_3_name']=''; $array['file_3']='';}
 				\Tango::sql()->update('concept', $array, 'id='.$id);
 				header("Location: /admin/concept/page01.html");
 			}else{
