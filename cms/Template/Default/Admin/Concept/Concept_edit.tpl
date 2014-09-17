@@ -17,6 +17,11 @@
 		<td><input type="text" name="result" value="{$data.result}" class="admin-field" style="width: 700px"></td>
 	</tr>
 	<tr>
+		<td>Анонимно</td>
+		<td><input type="checkbox" name="anonimus" value="1" {if $data.anonimus=='n'}checked
+{/if} class="admin-field" style="width: 700px"></td>
+	</tr>
+	<tr>
 		<td colspan="3" class="tar"><input type="submit" value="Сохранить" class="admin-btn"></td>
 	</tr>
 </table>

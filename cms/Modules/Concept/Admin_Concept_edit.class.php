@@ -33,6 +33,11 @@
 				$array['problem']=$_POST['problem'];
 				$array['solution']=$_POST['solution'];
 				$array['result']=$_POST['result'];
+				if(isset($_POST['anonimus'])){
+					$array['anonimus']='y';
+				}else{
+					$array['anonimus']='n';
+				}
 				\Tango::sql()->update('concept', $array, 'id='.$id);
 				header("Location: /admin/concept/page01.html");
 			}else{
