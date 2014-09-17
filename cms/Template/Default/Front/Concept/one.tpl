@@ -84,6 +84,9 @@
             {/if}{/if}
             {if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
             <div class="dib post-comment-bl-delete-box">
+                <a href="#" class="post-comment-bl-delete-box-link" kid="{$value.id}">
+                    Удалить <i class="icon wastebasket-icon"></i>
+                </a>
                 <form action="#" class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
                     <h2 class="post-comment-bl-delete-cloud-title">Причина удаления</h2>
                     <textarea name="deleteArea" id="deleteArea_{$value.id}" class="post-comment-bl-delete-cloud-area" placeholder="Напишите причину удаления"></textarea>
