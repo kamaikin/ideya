@@ -126,6 +126,7 @@
 		 *	$numberRecords - Количество записей на странице
 		 */
 		protected function _getPaginator($url, $page, $count, $numberRecords){
+			$count = $count -1;
 			$text = '';
 			if($page>1){
 				$pref_page = $page -1;
