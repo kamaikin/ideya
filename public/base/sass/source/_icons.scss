@@ -237,7 +237,8 @@
         }
     }
 }
-.popupper-close-icon{
+.popupper-close-icon,
+.lb-close:before{
     @include icons(delete_white);
 }
 .popupper-add-picbox-title:before{

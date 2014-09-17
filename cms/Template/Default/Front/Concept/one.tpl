@@ -9,7 +9,7 @@
         <a href="#" class="post-likebox" id="add_licke"><i class="heart_white_big-icon"></i></a>
     {/if}
     <div class="post-thumbnail post-thumbnail-has-author left{if $Concept_data.anonimus == 'n'} post-thumbnail-admin{/if}">
-        {if $Concept_data.foto==''}<img src="/public/img/nophoto.jpg" alt="" class="post-thumbnail-img" id="img_image">{else}<img src="/i/126/{$Concept_data.foto}" alt="" class="post-thumbnail-img" id="img_image">{/if}
+        {if $Concept_data.foto==''}<img src="/public/img/nophoto.jpg" alt="" class="post-thumbnail-img" id="img_image">{else}<a href="/i/126/{$Concept_data.foto}" data-lightbox="{$Concept_data.foto}"><img src="/i/126/{$Concept_data.foto}" alt="{$Concept_data.foto}" class="post-thumbnail-img" id="img_image"></a>{/if}
         {if $Concept_data.user_id==$index_user_id}
         <div class="post-thumbnail-change tac">
             <div class="fileload dib">

@@ -99,7 +99,7 @@
         	{foreach from=$user_concept item="value"}
             <article class="post{if $value.date > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail post-thumbnail-has-author left">
-                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
                 </div>
                 <div class="post-info right">
                     <div class="post-rating pink">{$value.points}</div>
@@ -138,7 +138,7 @@
         	{foreach from=$my_lacke_concept item="value"}
             <article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail post-thumbnail-has-author left">
-                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
                 </div>
                 <div class="post-info right">
                     <div class="post-rating pink">{$value.points}</div>
@@ -179,7 +179,7 @@
         {foreach from=$ya_sponsor_concept item="value"}
         	<article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail post-thumbnail-has-author left">
-	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
 	                <div class="post-author tac">
 	                    <div class="post-author-pic">
 	                        <img src="{if $value.user_avatar==''}/public/img/nophoto.jpg{else}/i/50/{$value.user_avatar}{/if}" alt="" class="post-author-ava">
@@ -214,7 +214,7 @@
         	{foreach from=$my_sponsor_concept item="value"}
         	<article class="post{if $value.date > $notificare_time} notificare-post{/if}">
                 <div class="post-thumbnail post-thumbnail-has-author left">
-	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
 	                <div class="post-author tac">
 	                    <div class="post-author-pic">
 	                        <img src="{if $value.user_avatar==''}/public/img/nophoto.jpg{else}/i/50/{$value.user_avatar}{/if}" alt="" class="post-author-ava">
@@ -259,7 +259,7 @@
         {foreach from=$user_comment item="value"}
         <article class="post{if $value.date > $notificare_time} notificare-post{/if}">
             <div class="post-thumbnail post-thumbnail-has-author left">
-            {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+            {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
             </div>
             <div class="post-content">
                 <div class="post-title">

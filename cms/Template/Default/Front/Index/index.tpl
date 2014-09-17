@@ -9,7 +9,7 @@
         {foreach from=$data item="value"}
         <article class="post">
             <div class="post-thumbnail left">
-                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
             </div>
             <div class="post-info right">
                 <div class="post-rating pink">{$value.points}</div>
@@ -47,7 +47,7 @@
         {foreach from=$data item="value"}
         <article class="post">
             <div class="post-thumbnail left">
-                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<img src="/i/126/{$value.foto}" alt="" class="post-thumbnail-img" />{/if}
+                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
             </div>
             <div class="post-content">
                 <div class="post-title">

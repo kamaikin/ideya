@@ -13,6 +13,7 @@ head.js(
     sourcePath+"js/jquery.actual.min.js",
     sourcePath+"js/tip.js",
     sourcePath+"js/modal.min.js",
+    sourcePath+"js/lightbox.min.js",
     sourcePath+"js/scripts.js",
     function() {
         $('.tip-js').tooltip({
