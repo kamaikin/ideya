@@ -45,9 +45,23 @@
                 <div class="aut-form-button">
                     <button class="aut-btn">Вход</button>
                 </div>
-                {*<div class="aut-form-footer tac">
+                <div class="aut-form-footer tac">
                     <a href="#" class="aut-form-link">Забыли пароль?</a>
-                </div>*}
+                </div>
+            </form>
+            <form role="form" action="#" class="aut-form animated fadeInDown" method="POST">
+                <div class="tac main-logo"><img src="/public/base/images/main_logo2.png" alt="logo"></div>
+                <div class="aut-form-title">Восстановить пароль</div>
+                <div class="aut-form-row-box first">
+                    <div class="aut-form-row">
+                        <label for="aut_email" class="aut-form-label aut-form-label-email"></label>
+                        <input type="email" name="login1" id="aut_email1" class="aut-field" autocomplete="off" tabindex="1" placeholder="Введите Ваш email">
+                        {if $login_error_id==1}<div class="validation-tooltip">{$login_error}</div>{/if}
+                    </div>
+                </div>
+                <div class="aut-form-button">
+                    <button class="aut-btn">Восстановить</button>
+                </div>
             </form>
         </div><!--end content-->
         <footer role="contentinfo" class="main-footer tac">
