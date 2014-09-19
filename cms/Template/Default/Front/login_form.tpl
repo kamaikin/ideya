@@ -16,6 +16,7 @@
     <link rel="icon" href="/public/base/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/public/base/favicon.png" type="image/x-icon">
     <!-- Scripts -->
+    <script src="/public/base/js/jquery.min.js"></script>
     <script data-headjs-load="/public/base/js/init.js" src="/public/base/js/head.min.js"></script>
 </head>
 <body>
@@ -24,7 +25,7 @@
             <h1 class="main-title">Место, где воплощаются идеи</h1>
         </header>
         <div role="main" class="content">
-            <form role="form" action="/login/check/{if $smarty.get.url}?url={$smarty.get.url}{/if}" class="aut-form animated fadeInDown" method="POST">
+            <form role="form" action="/login/check/{if $smarty.get.url}?url={$smarty.get.url}{/if}" class="aut-form animated fadeInDown" method="POST" id="form-1">
             {if $request_uri}<input type="hidden" name="request_uri" value="{$request_uri}" />{/if}
                 <div class="tac main-logo"><img src="/public/base/images/main_logo2.png" alt="logo"></div>
                 <div class="aut-form-title">Добро пожаловать!</div>
@@ -46,10 +47,10 @@
                     <button class="aut-btn">Вход</button>
                 </div>
                 <div class="aut-form-footer tac">
-                    <a href="#" class="aut-form-link">Забыли пароль?</a>
+                    <a href="#" class="aut-form-link" id="aut-form-link-1">Забыли пароль?</a>
                 </div>
             </form>
-            <form role="form" action="#" class="aut-form animated fadeInDown" method="POST">
+            <form role="form" action="/login/check_pass/" class="aut-form animated fadeInDown" method="POST" style="display: none;"  id="form-2">
                 <div class="tac main-logo"><img src="/public/base/images/main_logo2.png" alt="logo"></div>
                 <div class="aut-form-title">Восстановить пароль</div>
                 <div class="aut-form-row-box first">
@@ -63,7 +64,7 @@
                     <button class="aut-btn">Восстановить</button>
                 </div>
                 <div class="aut-form-footer tac">
-                    <a href="#" class="aut-form-link">Вернутся</a>
+                    <a href="#" class="aut-form-link" id="aut-form-link-2">Вернутся</a>
                 </div>
             </form>
         </div><!--end content-->
@@ -71,5 +72,21 @@
             <div class="dib main-design-logo">powered by <img src="/public/base/images/main_design_logo.png" alt=""></div>
         </footer><!--end footer-->
     </div><!--end main block-->
+    {literal}
+    <script type="text/javascript">
+        $(function() {
+            $("#aut-form-link-1").click(function(){
+                $("#form-2").show();
+                $("#form-1").hide();
+                return false;
+            })
+            $("#aut-form-link-2").click(function(){
+                $("#form-1").show();
+                $("#form-2").hide();
+                return false;
+            })
+        })
+    </script>
+    {/literal}
 </body>
 </html>
