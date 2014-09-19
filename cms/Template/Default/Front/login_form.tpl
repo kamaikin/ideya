@@ -62,6 +62,9 @@
                 <div class="aut-form-button">
                     <button class="aut-btn">Восстановить</button>
                 </div>
+                <div class="aut-form-footer tac">
+                    <a href="#" class="aut-form-link">Вернутся</a>
+                </div>
             </form>
         </div><!--end content-->
         <footer role="contentinfo" class="main-footer tac">
