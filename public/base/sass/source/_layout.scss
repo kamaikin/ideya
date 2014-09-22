@@ -94,8 +94,7 @@
     .post-date,
     .visualbar,
     .post-sponsors,
-    .post-sponsorbox,
-    .post-likebox{
+    .post-sponsorbox{
         display: none;
     }
     .mobile-menu{
@@ -122,9 +121,6 @@
 
         padding: 0 0 55px 0;
         margin-bottom: 17px;
-    }
-    .post-content{
-        margin-right: 0;
     }
     .post-info{
         position: absolute;
@@ -279,6 +275,10 @@
     }
     .profile-avatar{
         text-align: center;
+    }
+    .post-likebox{
+        bottom: auto;
+        top: 0;
     }
 }
 

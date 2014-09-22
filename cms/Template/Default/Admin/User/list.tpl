@@ -26,7 +26,7 @@
     {/foreach}
 </table>
 <div class="tar admin-text-footer">
-    <label for="admin_number_of_output">Кол-ва вывода:  </label>
+    <label for="admin_number_of_output">Кол-во вывода:  </label>
     <select name="admin_number_of_output" id="admin_number_of_output" class="field">
         <option value="25" selected>25</option>
         <option value="50">50</option>

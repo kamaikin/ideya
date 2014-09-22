@@ -28,3 +28,12 @@
 	</tr>
 	{/foreach}
 </table>
+<div class="tar admin-text-footer">
+    <label for="admin_number_of_output_ideas">Кол-во вывода:  </label>
+    <select name="admin_number_of_output_ideas" id="admin_number_of_output_ideas" class="field">
+        <option value="25" selected>25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="500">500</option>
+    </select>
+</div>

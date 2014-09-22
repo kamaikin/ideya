@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/public/Style/Default/admin/css/index.css">
+  <link rel="stylesheet" href="/public/Style/Default/Admin/css/index.css">
   <title>{$IndexTitle}</title>
 </head>
 <body>

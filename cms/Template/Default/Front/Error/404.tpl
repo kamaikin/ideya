@@ -1,6 +1,6 @@
-<article class="article clearfix">
-  <div class="col_100">
-    <h2>Ошибка 404 (страница не существует)</h2>
-  </div>
-  <div class="clearfix"></div>
-</article>
+<section role="section" class="main-section left">
+    <h1 class="page-title">Страница не найдена</h1>
+    <p>
+        Попробуйте воспользоваться <label for="search" class="link">поиском</label> или <a href="/tags/">тегами</a>
+    </p>
+</section><!--end main-section-->
