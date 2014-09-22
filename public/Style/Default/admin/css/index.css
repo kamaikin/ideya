@@ -747,3 +747,6 @@ body {
 .admin-mail-template td{
   padding: 5px;
 }
+.admin-text-footer{
+  margin-top: 20px;
+}
