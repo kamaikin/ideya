@@ -677,6 +677,9 @@ body {
   width: 100%;
   font-size: 14px;
 }
+.admin-table tr:hover{
+  background-color: #e7e7e7;
+}
 .admin-table td,
 .admin-table th{
   padding: 10px;
