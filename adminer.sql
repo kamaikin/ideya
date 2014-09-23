@@ -64,7 +64,10 @@ INSERT INTO `acl_resourse` (`id`, `resourse`, `group`) VALUES
 (56,  'ajax_concept_deletecomment_index', 'moderator'),
 (57,  'ajax_concept_editcomment_index', 'user'),
 (58,  'ajax_file_uploadifyUpload_index',  'user'),
-(59,  'admin_concept_concept_edit_index', 'admin');
+(59,  'admin_concept_concept_edit_index', 'admin'),
+(60,  'admin_user_edit_index',  'admin'),
+(61,  'Front_login_check_repass', 'admin'),
+(62,  'Front_login_check_pass_index', 'guest');
 
 DROP TABLE IF EXISTS `concept`;
 CREATE TABLE `concept` (
@@ -109,9 +112,9 @@ INSERT INTO `concept` (`id`, `user_id`, `anonimus`, `name`, `problem`, `solution
 (14,  162,  'n',  'Идея от админа', 'Идея от админа', 'Идея от админа', 'Идея от админа', '3f83f1ff1f8e4b98ee851ac51b7e405e.png', 1409138692, 4,  'y',  1409140119, 162,  '', '', '', '', '', '', 24, 3,  'n'),
 (15,  159,  'y',  'бллблблблбл',  'овтадупрдыг',  'кдшагпсыыеавфг6а и все офигенно',  'все офигенно', '90da583b3c73537d249b217576042fb8.jpg', 1409321332, 0,  'n',  0,  0,  '', '', '', '', '', '', 18, 2,  'n'),
 (16,  160,  'y',  'бубубуббу',  'ббуббубубубубубу', 'прпрпрпрпрп',  'л]лялялялялялялял',  '3d657455c3577807fc7926b9177b8f67.jpg', 1409321776, 3,  'n',  0,  0,  '', '', '', '', '', '', 9,  2,  'n'),
-(17,  160,  'y',  'бабабаба', 'попопопоп',  'дудудудудуд',  'лялялялялял',  '', 1409321942, 1,  'n',  0,  0,  'undefined',  'undefined',  '', '', '', '', 30, 3,  'n'),
-(18,  159,  'y',  'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '', 1409511122, 1,  'n',  0,  0,  '', '', '', '', '', '', 0,  1,  'n'),
-(19,  159,  'y',  'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '828f6447518262e30da3075a112caf82.jpg', 1409512110, 7,  'n',  0,  0,  'undefined',  'undefined',  '', '', '', '', 8,  1,  'n'),
+(17,  160,  'y',  'бабабаба', 'попопопоп',  'дудудудудуд',  'лялялялялял',  '', 1409321942, 1,  'y',  1410953186, 1,  'undefined',  'undefined',  '', '', '', '', 30, 3,  'n'),
+(18,  159,  'y',  'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '', 1409511122, 1,  'y',  1410953341, 1,  '', '', '', '', '', '', 0,  1,  'y'),
+(19,  159,  'n',  'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', '828f6447518262e30da3075a112caf82.jpg', 1409512110, 7,  'y',  1410953345, 1,  'undefined',  'undefined',  '', '', '', '', 8,  1,  'y'),
 (20,  159,  'y',  'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', '', '', '', '', 1409512211, 2,  'n',  0,  0,  '', '', '', '', '', '', 19, 1,  'n'),
 (21,  160,  'y',  'ddddddddddd',  'fffffffffffffffff',  'ssssssssssssssssss', 'ddddddddddddddddddddddd',  '', 1409514662, 3,  'n',  0,  0,  '', '', '', '', '', '', 23, 0,  'n'),
 (22,  162,  'n',  'eeeeeeeeeee',  'eeeeeeeeeeeeeeeee',  'eeeeeeeeeeeeeeeeeee',  'eeeeeeeeeeeeeeeeeeeeeeeeeeee', '', 1409917404, 0,  'n',  0,  0,  '', '', '', '', '', '', 0,  0,  'n'),
@@ -360,7 +363,7 @@ CREATE TABLE `temp` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `temp` (`id`, `key`, `value`, `datetime`) VALUES
-(1, 'tags_cloud', '<li class=\"tags-widget-item\"><a href=\"/tags/1111111111.html\" class=\"tags-widget-link\">1111111111</a></li><li class=\"tags-widget-item\"><a href=\"/tags/123.html\" class=\"tags-widget-link\">123</a></li><li class=\"tags-widget-item\"><a href=\"/tags/222222222222.html\" class=\"tags-widget-link\">222222222222</a></li><li class=\"tags-widget-item\"><a href=\"/tags/456.html\" class=\"tags-widget-link\">456</a></li><li class=\"tags-widget-item\"><a href=\"/tags/fffffffffffffffffff.html\" class=\"tags-widget-link\">fffffffffffffffffff</a></li><li class=\"tags-widget-item\"><a href=\"/tags/admin.html\" class=\"tags-widget-link\">Админ</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ideya_ot_admina.html\" class=\"tags-widget-link\">Идея от админа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ieshedldgplgeashea.html\" class=\"tags-widget-link\">иещедлдгплгеашеа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test.html\" class=\"tags-widget-link\">проверка</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test1.html\" class=\"tags-widget-link\">Проверка1</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ivloiidmiimo.html\" class=\"tags-widget-link\">ывлоиыдмиымо</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_eshe_teg.html\" class=\"tags-widget-link\">Это еще тег</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_teg.html\" class=\"tags-widget-link\">Это тег</a></li>',  1410765479);
+(1, 'tags_cloud', '<li class=\"tags-widget-item\"><a href=\"/tags/1111111111.html\" class=\"tags-widget-link\">1111111111</a></li><li class=\"tags-widget-item\"><a href=\"/tags/123.html\" class=\"tags-widget-link\">123</a></li><li class=\"tags-widget-item\"><a href=\"/tags/222222222222.html\" class=\"tags-widget-link\">222222222222</a></li><li class=\"tags-widget-item\"><a href=\"/tags/456.html\" class=\"tags-widget-link\">456</a></li><li class=\"tags-widget-item\"><a href=\"/tags/fffffffffffffffffff.html\" class=\"tags-widget-link\">fffffffffffffffffff</a></li><li class=\"tags-widget-item\"><a href=\"/tags/admin.html\" class=\"tags-widget-link\">Админ</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ideya_ot_admina.html\" class=\"tags-widget-link\">Идея от админа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ieshedldgplgeashea.html\" class=\"tags-widget-link\">иещедлдгплгеашеа</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test.html\" class=\"tags-widget-link\">проверка</a></li><li class=\"tags-widget-item\"><a href=\"/tags/test1.html\" class=\"tags-widget-link\">Проверка1</a></li><li class=\"tags-widget-item\"><a href=\"/tags/ivloiidmiimo.html\" class=\"tags-widget-link\">ывлоиыдмиымо</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_eshe_teg.html\" class=\"tags-widget-link\">Это еще тег</a></li><li class=\"tags-widget-item\"><a href=\"/tags/eto_teg.html\" class=\"tags-widget-link\">Это тег</a></li>',  1410960774);
 
 DROP TABLE IF EXISTS `users_config`;
 CREATE TABLE `users_config` (
@@ -407,7 +410,7 @@ CREATE TABLE `users_login` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `users_login` (`id`, `login`, `pass`, `salt`, `email`) VALUES
-(1, 'd41d8cd98f00b204e9800998ecf8427e', '374c96e83b90fbaf0c3463a01e3cdc2f', 'd41d8cd98f00b204e9800998ecf8427e', 'bdccaf1191202b461254443c6b81c598'),
+(1, '6e42243c7cab0bbcd6fcef3bf98437e1', '374c96e83b90fbaf0c3463a01e3cdc2f', 'd41d8cd98f00b204e9800998ecf8427e', 'bdccaf1191202b461254443c6b81c598'),
 (159, 'd8e0011aa8128d72f451df47d5558307', '1a627edf3460102ab98bbcdbbc78d28d', 'd51d32e83ffaf34bb1d6a4d7afdc9ab9', 'f63ff929612149b756c1881bcb31d257'),
 (160, '08391c959fc8bd0b672c596c4d6bcdcd', '9682ffaf8b0f2972c2972c967f8d6fac', 'accdb5ad67b1449cf0c5f2b2dd0571f9', '9b9af189785c4abe9129485580b31f78'),
 (161, '0408f3c997f309c03b08bf3a4bc7b730', '35755226e3c0a511494d93f2b0527ba1', 'e594e3a3299a0f38b3915e39603aaa26', '91f31f485b0ca5b571077968285c3c49'),
@@ -431,11 +434,11 @@ CREATE TABLE `user_data` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_data` (`id`, `user_id`, `nick_name`, `name`, `surname`, `patronymic`, `avatar`, `email`, `register_date`, `last_visit_date`, `user_role`, `points`) VALUES
-(1, 1,  'Владимир', 'Владимир', 'Камайкин', 'Анатольевич',  'a02d0017e5e9fcd2707c9f4427d0b9c9.jpg', 'kamaikin@gmail.com', 1405598414, 1410502911, 'admin',  74),
+(1, 1,  'Камайкин1',  'Владимир', 'Камайкин1',  'Анатольевич',  'a02d0017e5e9fcd2707c9f4427d0b9c9.jpg', 'kamaikin@gmail.com', 1405598414, 1410948387, 'admin',  74),
 (159, 159,  'userdfgdftg',  'userdfgdftg',  'userovichdfgdfgdf',  '', 'aecc5d403c9a57e4c611ea05e2c18088.jpg', 'user@user.rudfgdfg', 0,  1410424093, 'user', 267),
-(160, 160,  'sponsor',  'sponsor',  'sponsor',  '', '', 'sponsor@sponsor.ru', 0,  1409513250, 'sponsor',  140),
-(161, 161,  'moderator',  'moderator',  'moderator',  '', '981a13f0820b03ebc97522eb2fffcd31.jpg', 'moderator@moderator.ru', 0,  1410242635, 'moderator',  3),
-(162, 162,  'admin',  'admin',  'admin',  '', '', 'admin@admin.ru', 0,  1410761878, 'admin',  162);
+(160, 160,  'sponsor',  'sponsor',  'sponsor',  '', '', 'sponsor@sponsor.ru', 0,  1410943213, 'sponsor',  140),
+(161, 161,  'moderator',  'moderator',  'moderator',  '', '981a13f0820b03ebc97522eb2fffcd31.jpg', 'moderator@moderator.ru', 0,  1410942060, 'moderator',  3),
+(162, 162,  'admin',  'admin',  'admin',  '', '', 'admin@admin.ru', 0,  1410934703, 'admin',  162);
 
 DROP TABLE IF EXISTS `user_profile_views`;
 CREATE TABLE `user_profile_views` (
@@ -518,6 +521,12 @@ INSERT INTO `user_profile_views` (`id`, `profile_id`, `user_id`, `time`) VALUES
 (84,  1,  162,  1410269464),
 (85,  1,  162,  1410269543),
 (86,  1,  1,  1410348789),
-(87,  1,  1,  1410502959);
+(87,  1,  1,  1410502959),
+(88,  161,  161,  1410943131),
+(89,  1,  1,  1410943160),
+(90,  160,  160,  1410943216),
+(91,  160,  160,  1410943442),
+(92,  160,  160,  1410943526),
+(93,  160,  160,  1410948362);
 
--- 2014-09-15 07:27:17
+-- 2014-09-22 12:00:56

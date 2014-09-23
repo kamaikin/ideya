@@ -1,0 +1,60 @@
+if (!-f $request_filename){
+	set $rule_0 1$rule_0;
+}
+if ($uri !~ "(.*)/$"){
+	set $rule_0 2$rule_0;
+}
+if ($uri !~ ".[^./]+$"){
+	set $rule_0 3$rule_0;
+}
+if ($rule_0 = "321"){
+	rewrite ^/(.*[^/])$ /$1/ permanent;
+}
+#ignored: condition 0
+if ($rule_1 = "1"){
+	rewrite ^/index.php$ / permanent;
+}
+	rewrite ^/admin(/?)+$ /index.php?modules=index&controller=index&action=index&admin_flag=admin;
+	rewrite ^/admin/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=index&action=index&admin_flag=admin;
+	rewrite ^/admin/([A-Za-z_]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=index&action=one&url=$2&admin_flag=admin;
+	rewrite ^/admin/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=index&admin_flag=admin;
+	rewrite ^/admin/([A-Za-z_]+)/([A-Za-z_0-9]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=$2&action=one&url=$3&admin_flag=admin;
+	rewrite ^/admin/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&admin_flag=admin;
+	rewrite ^/admin/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&admin_flag=admin;
+	rewrite ^/admin/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&param2=$5&admin_flag=admin;
+	rewrite ^/ajax(/?)+$ /index.php?modules=index&controller=index&action=index&admin_flag=ajax;
+	rewrite ^/ajax/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=index&action=index&admin_flag=ajax;
+	rewrite ^/ajax/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&admin_flag=ajax;
+	rewrite ^/ajax/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&admin_flag=ajax;
+	rewrite ^/ajax/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&admin_flag=ajax;
+	rewrite ^/ajax/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&param2=$5&admin_flag=ajax;
+	rewrite ^/(/?)+$ /index.php?modules=index&controller=index&action=index;
+	rewrite ^/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=text&controller=index&action=one&url=$1;
+	rewrite ^/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=index&action=index;
+	rewrite ^/([A-Za-z_]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=index&action=one&url=$2;
+	rewrite ^/([A-Za-z_]+)/([A-Za-z_0-9]+)(/?)+$ /index.php?modules=$1&controller=$2;
+	rewrite ^/([A-Za-z_]+)/([A-Za-z_0-9]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=index&action=one&katalog=$2&url=$3;
+	rewrite ^/([A-Za-z_]+)/([A-Za-z_0-9]+)/([A-Za-z_0-9]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3;
+	rewrite ^/sitemap.xml(/?)+$ /index.php?modules=xml&controller=sitemap;
+	rewrite ^/rss.xml(/?)+$ /index.php?modules=xml&controller=rss;
+if (-f $document_root/public/foto_cache/w_$1/$2/$3/$2$3$4.$5){
+	set $rule_25 1$rule_25;
+}
+if ($rule_25 = "1"){
+	rewrite ^/i/([a-z0-9]+)/([a-z0-9_]{2})([a-z0-9_]{2})([A-Za-z0-9_]+).(jpg|png|gif) /public/foto_cache/w_$1/$2/$3/$2$3$4.$5 last;
+}
+	rewrite ^/i/([a-z0-9]+)/([a-z0-9_]+).(jpg|png|gif)(/?)+$ /index.php?modules=file&controller=imageViever&size=$1&name=$2&ext=$3&admin_flag=ajax last;
+if (-f $document_root/public/foto_cache/h_$1/$2/$3/$2$3$4.$5){
+	set $rule_27 1$rule_27;
+}
+if ($rule_27 = "1"){
+	rewrite ^/ih/([a-z0-9]+)/([a-z0-9_]{2})([a-z0-9_]{2})([A-Za-z0-9_]+).(jpg|png|gif) /public/foto_cache/h_$1/$2/$3/$2$3$4.$5 last;
+}
+	rewrite ^/ih/([a-z0-9]+)/([a-z0-9_]+).(jpg|png|gif)(/?)+$ /index.php?modules=file&controller=imageViever&size=$1&name=$2&ext=$3&admin_flag=ajax&data=h last;
+if (-f $document_root/public/file_cache/$1/$2/$1$2$3.$4){
+	set $rule_29 1$rule_29;
+}
+if ($rule_29 = "1"){
+	rewrite ^/d/([a-z0-9_]{2})([a-z0-9_]{2})([A-Za-z0-9_]+).(ppt|doc|docx|pdf|xls|xlsx|zip) /public/file_cache/$1/$2/$1$2$3.$4 last;
+}
+	rewrite ^/d/([a-z0-9_]+).(ppt|doc|docx|pdf|xls|xlsx|zip)(/?)+$ /index.php?modules=file&controller=fileDowloader&name=$1&ext=$2&admin_flag=ajax last;

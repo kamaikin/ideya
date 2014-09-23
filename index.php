@@ -1,7 +1,7 @@
 <?php
 	if(!defined("DOCUMENT_ROOT")){define("DOCUMENT_ROOT", __DIR__);}
-	if(!defined("DEBUG")){define("DEBUG", TRUE);}
-	if(!defined("DEV_MODE")){define("DEV_MODE", TRUE);}
+	if(!defined("DEBUG")){define("DEBUG", FALSE);}
+	if(!defined("DEV_MODE")){define("DEV_MODE", FALSE);}
 	if (DEBUG) {
 		$start_memory=memory_get_usage();
 		$start = microtime(true);
