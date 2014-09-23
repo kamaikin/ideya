@@ -217,13 +217,20 @@
         }
     }
 }
-.post-comment-bl-edit-box-link{
+.post-comment-bl-edit-box-link,
+.post-edit-box-link{
     .penci-icon{
         @include icons(pencil_grey);
     }
     &:hover{
         .penci-icon{
             @include icons-sprite(pencil_green);
+        }
+    }
+    &:active,
+    &.active{
+        .penci-icon{
+            @include icons-sprite(pencil_white);
         }
     }
 }

@@ -64,6 +64,11 @@
             {/foreach}
         </ul>
         {/if}
+        <div class="">
+            <a href="#" class="post-edit-box-link">
+                Редактировать <i class="icon penci-icon"></i>
+            </a>
+        </div>
     </div>
 </article>
 <div class="post-comments">

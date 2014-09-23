@@ -1166,7 +1166,10 @@ $profileFormWidth: 83px;
     }
 }
 .post-comment-bl-delete-box-link,
-.post-comment-bl-edit-box-link{
+.post-comment-bl-edit-box-link,
+.post-edit-box-link{
+    position: relative;
+
     display: inline-block;
     padding: 4px 22px 4px 9px;
 
@@ -1197,13 +1200,15 @@ $profileFormWidth: 83px;
         background-color: #e56c69;
     }
 }
-.post-comment-bl-edit-box-link{
+.post-comment-bl-edit-box-link,
+.post-edit-box-link{
     &:hover{
         color: #4cd9c0;
     }
     &:active,
     &.active{
         background-color: #4cd9c0;
+        color: #fff;
     }
 }
 .post-comment-bl-delete-cloud{
