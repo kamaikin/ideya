@@ -43,8 +43,17 @@
                         {if $login_error_id==2}<div class="validation-tooltip">{$login_error}</div>{/if}
                     </div>
                 </div>
+                {if $smarty.get.url}
+                <div class="aut-form-row-box">
+                    <div class="aut-form-row {if $login_error_id==2}error{else}{/if}">
+                        <label for="aut_password" class="aut-form-label aut-form-label-pass"></label>
+                        <input type="password" name="pass1" id="aut_password1" class="aut-field" autocomplete="off" tabindex="2" placeholder="Повторите Ваш пароль">
+                        {if $login_error_id==2}<div class="validation-tooltip">{$login_error}</div>{/if}
+                    </div>
+                </div>
+                {/if}
                 <div class="aut-form-button">
-                    <button class="aut-btn">Вход</button>
+                    <button class="aut-btn" id='vxod'>Вход</button>
                 </div>
                 <div class="aut-form-footer tac">
                     <a href="#" class="aut-form-link" id="aut-form-link-1">Забыли пароль?</a>
@@ -57,14 +66,14 @@
                     <div class="aut-form-row">
                         <label for="aut_email" class="aut-form-label aut-form-label-email"></label>
                         <input type="email" name="login1" id="aut_email1" class="aut-field" autocomplete="off" tabindex="1" placeholder="Введите Ваш email">
-                        {if $login_error_id==1}<div class="validation-tooltip">{$login_error}</div>{/if}
+                        <div class="validation-tooltip" id="error-pass1"></div>
                     </div>
                 </div>
                 <div class="aut-form-button">
                     <button class="aut-btn">Восстановить</button>
                 </div>
                 <div class="aut-form-footer tac">
-                    <a href="#" class="aut-form-link" id="aut-form-link-2">Вернутся</a>
+                    <a href="#" class="aut-form-link" id="aut-form-link-2">Вернуться</a>
                 </div>
             </form>
         </div><!--end content-->
@@ -88,5 +97,21 @@
         })
     </script>
     {/literal}
+    {if $smarty.get.url}
+    {literal}
+    <script type="text/javascript">
+        $(function() {
+            $("#error-pass1").hide();
+            $("#form-1").send(function(){
+                if($("#aut_password1").val()!=$("#aut_password").val()){
+                    $("#error-pass1").show();
+                    $("#error-pass1").html("Пароли не совпадают");
+                    return false;
+                }
+            })
+        })
+    </script>
+    {/literal}
+    {/if}
 </body>
 </html>
