@@ -89,7 +89,7 @@
 						if ($SQL1[0]['count']==1) {
 							if ($SQL[0]['user_id']!=$user_id) {
 								//	Поставить пользователю который добавил идею в рейтинг
-								$query="SELECT Credits FROM users_events WHERE `key`='comments'";
+								$query="SELECT Credits FROM users_events WHERE `key`='commenting_ideas_other_users'";
 								$SQL1=\Tango::sql()->select($query);
 								$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$user_id;
 								\Tango::sql()->update($query);
