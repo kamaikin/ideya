@@ -64,11 +64,13 @@
             {/foreach}
         </ul>
         {/if}
+        {if $Concept_data.user_id==$index_user_id}{if $timemetka < $Concept_data.date}
         <div class="">
-            <a href="#" class="post-edit-box-link">
+            <a href="#" class="post-edit-box-link popup-link-js"  data-popup="add">
                 Редактировать <i class="icon penci-icon"></i>
             </a>
         </div>
+        {/if}{/if}
     </div>
 </article>
 <div class="post-comments">
@@ -232,7 +234,7 @@
             })
             // ***
             var points = Number($(".post-rating").text());
-            points = points +10;
+            points = points +2;
             $(".post-rating").text(points);
             //  Добавляем в счетчик
             var like = Number($("#post_like").text());
