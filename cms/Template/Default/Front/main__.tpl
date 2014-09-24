@@ -29,9 +29,9 @@
                     <span class="lists-link listts-link-js"><i class="icon lists-icon"></i></span>
                     <ul class="mobile-menu-list mobile-menu-list-js">
                         <li class="mobile-menu-item"><a href="/user/profile/" class="mobile-menu-link">Мой профиль</a></li>
-                        <li class="mobile-menu-item"><span class="mobile-menu-link popup-link popup-link-js" data-popup="add"><i class="icon plus-menu-icon"></i>Предложить идею</span></li>
-                        <li class="mobile-menu-item"><a href="/" class="mobile-menu-link">Рейтинг идей</a></li>
-                        <li class="mobile-menu-item"><a href="/tags/" class="mobile-menu-link">теги</a></li>
+                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link"><i class="icon plus-menu-icon"></i>Предложить идею</a></li>
+                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link">Рейтинг идей</a></li>
+                        <li class="mobile-menu-item"><a href="#" class="mobile-menu-link">теги</a></li>
                     </ul>
                 </div>
                 <a href="/" class="logo left"><img src="/public/base/images/logo.png" alt=""></a>
@@ -78,7 +78,7 @@
                         <div class="points-clolor-line" style="width: {$index_points_procent}%"></div>
                     </div>
                     <div class="points-tooltip h-points-points-tooltip points-tooltip-bottom">
-                        Вы сейчас на {$index_user_raiting_position} месте в рейтинге пользователей
+                        Вы сейчас на {$index_user_raiting_position} месте в в рейтинге пользователей
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
             {include file='Index/right_sidebar.tpl'}
         </div><!--end content-->
         <footer role="contentinfo" class="footer tac">
-            <div class="dib design-logo">powered by <img src="/public/base/images/design_logo.png" alt=""></div>
+            <a href="/" class="dib design-logo">powered by <img src="/public/base/images/design_logo.png" alt=""></a>
         </footer><!--end footer-->
     </div><!--end main block-->
     <div class="popupper popupper-add popupper-js">
@@ -99,29 +99,29 @@
             <h2 class="popupper-add-title">Добавить идею</h2>
             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
-                    <input type="text" name="concept_name" id="addname" class="popupper-add-field count_count" autocomplete="off" tabindex="1" placeholder="о чем ваша идея?" max_count="70">
+                    <input type="text" name="concept_name" id="addname" class="popupper-add-field count_count" autocomplete="off" tabindex="1" placeholder="Введите название" max_count="70">
                     <div class="popupper-form-word_counter" id="count_addname">70</div>
                 </div>
             </div>
-<!--             <div class="popupper-form-row">
+            <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
                     <input type="text" name="concept_problem" id="addname1" class="popupper-add-field count_count" autocomplete="off" tabindex="2" placeholder="Опишите проблему" max_count="70">
                     <div class="popupper-form-word_counter" id="count_addname1">70</div>
                 </div>
-            </div> -->
+            </div>
             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
-                    <input type="text" name="concept_decision" id="addname2" class="popupper-add-field count_count" autocomplete="off" tabindex="3" placeholder="что вы предлагаете сделать?" max_count="140">
-                    <div class="popupper-form-word_counter" id="count_addname2">140</div>
+                    <input type="text" name="concept_decision" id="addname2" class="popupper-add-field count_count" autocomplete="off" tabindex="3" placeholder="Опишите решение" max_count="70">
+                    <div class="popupper-form-word_counter" id="count_addname2">70</div>
                 </div>
             </div>
             <div class="popupper-form-row">
                 <div class="popupper-form-fieldbox">
-                    <input type="text" name="concept_result" id="addresult" class="popupper-add-field count_count" autocomplete="off" tabindex="4" placeholder="какого результата вы ждёте?" max_count="70">
+                    <input type="text" name="concept_result" id="addresult" class="popupper-add-field count_count" autocomplete="off" tabindex="4" placeholder="Опишите результат" max_count="70">
                     <div class="popupper-form-word_counter" id="count_addresult">70</div>
                 </div>
             </div>
-            <div class="popupper-add-picbox tac" id="dropzone">
+            <div class="popupper-add-picbox tac">
                 <p id="img_foto_text">
                     <span class="popupper-add-picbox-title">можно добавить фото</span>
                 </p>
@@ -171,9 +171,6 @@
             </div>
         </form>
     </div><!-- /Popupper-add -->
-    <div class="popupper popupper-success">
-        Ваша идея успешно опубликована!
-    </div>
     {literal}
     <script type="text/javascript">
         var popupperAddFile = new Object()
@@ -183,74 +180,6 @@
             var popupperAddTagNum = []
             //var popupperAddFile = new Object()
             //var popupperAddFileNum = []
-            /*$("#drag_and_drop").bind( // #drop-block блок куда мы будем перетаскивать наши файлы
-                'dragenter',
-                function(e) {
-                    // Действия при входе курсора с файлами  в блок.
-                    console.log('11111');
-                }) .bind(
-                'dragover',
-                function(e) {
-                    // Действия при перемещении курсора с файлами над блоком.
-                    console.log('222222');
-                }).bind(
-                'dragleave',
-                function(e) {
-                    // Действия при выходе курсора с файлами за пределы блока.
-                    console.log('3333');
-                }).bind(
-                'drop',
-                function(e) { // Действия при «вбросе» файлов в блок.
-                    console.log(e);
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (e.originalEvent.dataTransfer.files.length) {
-                        
-                        // Отменяем реакцию браузера по-умолчанию на перетаскивание файлов.
-                        e.preventDefault();
-                        e.stopPropagation();
-                        alert("!");
-                        // e.originalEvent.dataTransfer.files — массив файлов переданных в браузер.
-                        // e.originalEvent.dataTransfer.files[i].size — размер отдельного файла в байтах.
-                        // e.originalEvent.dataTransfer.files[i].name — имя отдельного файла.
-                        // Что какбэ намекает :-)
-                                
-                        //upload(e.originalEvent.dataTransfer.files); // Функция загрузки файлов.
-                    }
-                });*/
-            var dropzone = document.getElementById("dropzone");
-            dropzone.ondragover = function() {
-                //this.className = 'dropzone dragover';
-                //console.log('Отпустите мышку');
-                return false;
-               };
-            dropzone.ondrop = function(e) {
-                //this.className = 'dropzone';
-                //this.innerHTML = 'Перетащите файлы сюда';
-                e.preventDefault();
-                //console.log(e.dataTransfer.files)
-                files = e.dataTransfer.files
-                $("#concept_foto_add").hide();
-                $("#concept_file_progress").show();
-                var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
-                var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
-                FileUploader({
-                    session_id: '{/literal}{$index_md5_key}{literal}',
-                    md5: rand_1,
-                    message_error: 'Ошибка при загрузке файла',
-                    uploadid: '123456789',
-                    uploadscript: '/ajax/file/upload/',
-                    progres_barr_id: 'concept_file_progress_barr',
-                    param1: 'foto',
-                    portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
-                }, files[0]);
-                return false;
-               };
-
-
-
-
-
             $(".count_count").keypress(function(){
                 var id = $(this).attr('id');
                 var max_count = $(this).attr('max_count');

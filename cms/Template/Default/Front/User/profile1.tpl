@@ -86,7 +86,7 @@
                 <div class="post-content">
                     <div class="post-title">
                         <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
-                        {if $value.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+                        {if $value.sponsors}<i class="icon money_orange-icon"></i>{/if}
                     </div>
                     <ul class="post-tags">
                         {*<li class="post-tag"><a href="#" class="post-tag-link">зима</a></li>
@@ -118,7 +118,7 @@
             <div class="post-content">
                 <div class="post-title">
                     <a href="/concept/{$value.id}.html#comment{$value.cid}" class="post-title-link">{$value.name}</a>
-                    {if $value.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+                    {if $value.sponsors}<i class="icon money_orange-icon"></i>{/if}
                 </div>
                 <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
                 {if $value.sponsors}

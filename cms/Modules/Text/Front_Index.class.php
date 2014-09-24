@@ -60,6 +60,7 @@
 				$query.=" WHERE 1=1 ORDER BY c.`date` DESC LIMIT ".$start.", ".$numberRecords;
 				$query_count.=" WHERE 1=1";
 			}
+			//print_r($query);
 			$SQL = \Tango::sql()->select($query);
 			$this->_view['data']=$SQL;
 			foreach($this->_view['data'] as $key=>$value){

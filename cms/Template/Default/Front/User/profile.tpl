@@ -150,7 +150,7 @@
                 <div class="post-content">
                     <div class="post-title">
                         <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
-                        {if $value.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+                        {if $value.sponsors}<i class="icon money_orange-icon"></i>{/if}
                     </div>
                     <ul class="post-tags">
                         {*<li class="post-tag"><a href="#" class="post-tag-link">зима</a></li>
@@ -178,7 +178,7 @@
         <div class="tab-content posts-lists tab-content-js">
         {foreach from=$ya_sponsor_concept item="value"}
         	<article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail post-thumbnail-has-author left">
+                <div class="post-thumbnail {if $value.anonimus == 'n'} post-thumbnail-has-author{/if} left">
 	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
 	                <div class="post-author tac">
 	                    <div class="post-author-pic">
@@ -213,7 +213,7 @@
         {*Меня спонсируют*}
         	{foreach from=$my_sponsor_concept item="value"}
         	<article class="post{if $value.date > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail post-thumbnail-has-author left">
+                <div class="post-thumbnail {if $value.anonimus == 'n'} post-thumbnail-has-author{/if} left">
 	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
 	                <div class="post-author tac">
 	                    <div class="post-author-pic">
@@ -232,7 +232,7 @@
                 <div class="post-content">
                     <div class="post-title">
                         <a href="/concept/{$value.id}.html" class="post-title-link">{$value.name}</a>
-                        {if $value.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+                        {if $value.sponsors}<i class="icon money_orange-icon"></i>{/if}
                     </div>
                     <ul class="post-tags">
                         {*<li class="post-tag"><a href="#" class="post-tag-link">зима</a></li>
@@ -264,7 +264,7 @@
             <div class="post-content">
                 <div class="post-title">
                     <a href="/concept/{$value.id}.html#comment{$value.cid}" class="post-title-link">{$value.name}</a>
-                    {if $value.sponsors}<a href="#" class="icon money_orange-icon"></a>{/if}
+                    {if $value.sponsors}<i class="icon money_orange-icon"></i>{/if}
                 </div>
                 <div class="post-date">Дата публикации: {$value.date|date_format:"%d.%m.%y"}</div>
                 {if $value.sponsors}

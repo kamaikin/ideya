@@ -23,7 +23,7 @@
 		<td>
 			<a href="/admin/concept/concept_edit/?id={$Value.id}"><i class="fa fa-pencil" title="Редактировать"></i></a>
 		</td>
-		<td><a href="/admin/concept/concept_delete/?id={$Value.id}"><i class="fa fa-trash" title="Удалить"></i></a></td>
+		<td><a href="/admin/concept/concept_delete/?id={$Value.id}" class="js-delete"><i class="fa fa-trash" title="Удалить"></i></a></td>
 		<td>{if $Value.implemented == 'n'}<a href="/admin/concept/concept_moderating/?id={$Value.id}&page={$smarty.get.url}"><i class="fa fa-check-circle" title="отметить идею как реализованную"></i></a>{/if}</td>
 	</tr>
 	{/foreach}
@@ -37,3 +37,16 @@
         <option value="500">500</option>
     </select>
 </div>
+{literal}
+<script type="text/javascript">
+    $(function() {
+        $(".js-delete").click(function(){
+            if (confirm("Вы точно хотите удалить?")) {
+				return true;
+			} else {
+				return false;
+			}
+        })
+    })
+</script>
+{/literal}

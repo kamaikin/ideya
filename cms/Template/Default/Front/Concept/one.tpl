@@ -90,6 +90,7 @@
             </div>
             {/if}{/if}
             {if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
+            {if $value.user_id!=$index_user_id}
             <div class="dib post-comment-bl-delete-box">
                 <a href="#" class="post-comment-bl-delete-box-link" kid="{$value.id}">
                     Удалить <i class="icon wastebasket-icon"></i>
@@ -102,6 +103,7 @@
                     </div>
                 </form>
             </div>
+            {/if}
             {/if}
         </div>
         <div class="post-comment-bl-ava left">
