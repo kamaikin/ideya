@@ -121,7 +121,7 @@
                     <div class="popupper-form-word_counter" id="count_addresult">70</div>
                 </div>
             </div>
-            <div class="popupper-add-picbox tac">
+            <div class="popupper-add-picbox tac" id="dropzone">
                 <p id="img_foto_text">
                     <span class="popupper-add-picbox-title">можно добавить фото</span>
                 </p>
@@ -183,6 +183,74 @@
             var popupperAddTagNum = []
             //var popupperAddFile = new Object()
             //var popupperAddFileNum = []
+            /*$("#drag_and_drop").bind( // #drop-block блок куда мы будем перетаскивать наши файлы
+                'dragenter',
+                function(e) {
+                    // Действия при входе курсора с файлами  в блок.
+                    console.log('11111');
+                }) .bind(
+                'dragover',
+                function(e) {
+                    // Действия при перемещении курсора с файлами над блоком.
+                    console.log('222222');
+                }).bind(
+                'dragleave',
+                function(e) {
+                    // Действия при выходе курсора с файлами за пределы блока.
+                    console.log('3333');
+                }).bind(
+                'drop',
+                function(e) { // Действия при «вбросе» файлов в блок.
+                    console.log(e);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.originalEvent.dataTransfer.files.length) {
+                        
+                        // Отменяем реакцию браузера по-умолчанию на перетаскивание файлов.
+                        e.preventDefault();
+                        e.stopPropagation();
+                        alert("!");
+                        // e.originalEvent.dataTransfer.files — массив файлов переданных в браузер.
+                        // e.originalEvent.dataTransfer.files[i].size — размер отдельного файла в байтах.
+                        // e.originalEvent.dataTransfer.files[i].name — имя отдельного файла.
+                        // Что какбэ намекает :-)
+                                
+                        //upload(e.originalEvent.dataTransfer.files); // Функция загрузки файлов.
+                    }
+                });*/
+            var dropzone = document.getElementById("dropzone");
+            dropzone.ondragover = function() {
+                //this.className = 'dropzone dragover';
+                //console.log('Отпустите мышку');
+                return false;
+               };
+            dropzone.ondrop = function(e) {
+                //this.className = 'dropzone';
+                //this.innerHTML = 'Перетащите файлы сюда';
+                e.preventDefault();
+                //console.log(e.dataTransfer.files)
+                files = e.dataTransfer.files
+                $("#concept_foto_add").hide();
+                $("#concept_file_progress").show();
+                var rand = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
+                var rand_1 = '{/literal}{$index_md5_key}{literal}_' + rand
+                FileUploader({
+                    session_id: '{/literal}{$index_md5_key}{literal}',
+                    md5: rand_1,
+                    message_error: 'Ошибка при загрузке файла',
+                    uploadid: '123456789',
+                    uploadscript: '/ajax/file/upload/',
+                    progres_barr_id: 'concept_file_progress_barr',
+                    param1: 'foto',
+                    portion: 1024*20  //  Размер кусочка для загрузки... 20 килобайт (1024*1024*2 - 2 мегобайта)
+                }, files[0]);
+                return false;
+               };
+
+
+
+
+
             $(".count_count").keypress(function(){
                 var id = $(this).attr('id');
                 var max_count = $(this).attr('max_count');

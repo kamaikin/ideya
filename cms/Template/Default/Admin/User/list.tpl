@@ -21,7 +21,7 @@
         <td>{$Value.last_visit_date|date_format:"%d-%m-%y %T"}</td>
         <td>{$Value.user_role}</td>
         <td><a href="/admin/user/edit/?id={$Value.user_id}"><i class="fa fa-pencil" title="Редактировать"></i></a></td>
-        <td><a href="/admin/user/delete/?id={$Value.user_id}"><i class="fa fa-trash" title="Удалить"></i></a></td>
+        <td><a href="/admin/user/delete/?id={$Value.user_id}" class="js-delete"><i class="fa fa-trash" title="Удалить"></i></a></td>
     </tr>
     {/foreach}
 </table>
@@ -34,3 +34,16 @@
         <option value="500">500</option>
     </select>
 </div>
+{literal}
+<script type="text/javascript">
+    $(function() {
+        $(".js-delete").click(function(){
+            if (confirm("Вы точно хотите удалить?")) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    })
+</script>
+{/literal}

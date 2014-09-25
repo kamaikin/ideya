@@ -1,3 +1,3 @@
 <section role="section" class="main-section left">
-{$tags}
+{$tags1}
 </section>

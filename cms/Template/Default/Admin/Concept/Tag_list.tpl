@@ -10,7 +10,20 @@
 	<tr {if $Value.moderating == 'n'}style="background-color: #F00;"{/if}>
 		<td>{$tags[$key]}</td>
 		<td>{$Value}</td>
-		<td><a href="/admin/concept/tags_delete/?id={$key}"><i class="fa fa-trash" title="Удалить"></i></a></td>
+		<td><a href="/admin/concept/tags_delete/?id={$key}" class="js-delete"><i class="fa fa-trash" title="Удалить"></i></a></td>
 	</tr>
 	{/foreach}
 </table>
+{literal}
+<script type="text/javascript">
+    $(function() {
+        $(".js-delete").click(function(){
+            if (confirm("Вы точно хотите удалить?")) {
+				return true;
+			} else {
+				return false;
+			}
+        })
+    })
+</script>
+{/literal}

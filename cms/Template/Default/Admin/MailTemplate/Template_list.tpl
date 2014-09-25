@@ -20,8 +20,21 @@
             <a href="/admin/mailTemplate/edit/?id={$Value.id}"><i class="fa fa-pencil" title="Редактировать"></i></a>
         </td>
         <td>
-            <a href="/admin/mailTemplate/delete/?id={$Value.id}"><i class="fa fa-trash" title="Удалить"></i></a>
+            <a href="/admin/mailTemplate/delete/?id={$Value.id}" class="js-delete"><i class="fa fa-trash" title="Удалить"></i></a>
         </td>
     </tr>
     {/foreach}
 </table>
+{literal}
+<script type="text/javascript">
+    $(function() {
+        $(".js-delete").click(function(){
+            if (confirm("Вы точно хотите удалить?")) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    })
+</script>
+{/literal}

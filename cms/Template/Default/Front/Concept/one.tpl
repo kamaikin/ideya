@@ -64,11 +64,13 @@
             {/foreach}
         </ul>
         {/if}
+        {if $Concept_data.user_id==$index_user_id}{*if $timemetka < $Concept_data.date*}
         <div class="">
-            <a href="#" class="post-edit-box-link">
+            <a href="/concept/edit/?id={$Concept_data.id}" class="post-edit-box-link popup-link-js">
                 Редактировать <i class="icon penci-icon"></i>
             </a>
         </div>
+        {*/if*}{/if}
     </div>
 </article>
 <div class="post-comments">
@@ -88,8 +90,9 @@
             </div>
             {/if}{/if}
             {if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
+            {if $value.user_id!=$index_user_id}
             <div class="dib post-comment-bl-delete-box">
-                <a href="#" class="post-comment-bl-delete-box-link" kid="{$value.id}">
+                <a href="#" class="post-comment-bl-delete-box-link post-comment-bl-edit-box-link-data" kid="{$value.id}">
                     Удалить <i class="icon wastebasket-icon"></i>
                 </a>
                 <form action="#" class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
@@ -100,6 +103,7 @@
                     </div>
                 </form>
             </div>
+            {/if}
             {/if}
         </div>
         <div class="post-comment-bl-ava left">
@@ -178,7 +182,7 @@
             return false;
         })
         $(".edit_textarea").hide();
-        $(".post-comment-bl-edit-box-link").click(function(){
+        $(".post-comment-bl-edit-box-link-data").click(function(){
             var id = $(this).attr("kid");
             var t_id = "#textarea_" + id;
             var d_id = "#div_" + id;
@@ -232,7 +236,7 @@
             })
             // ***
             var points = Number($(".post-rating").text());
-            points = points +10;
+            points = points +2;
             $(".post-rating").text(points);
             //  Добавляем в счетчик
             var like = Number($("#post_like").text());

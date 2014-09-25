@@ -21,10 +21,11 @@
 			ORDER  BY title";
 			$SQL = \Tango::sql()->select($query);
 			$text='';
+
 			foreach ($SQL as $key => $value) {
 				$text.='<li class="tags-widget-item"><a href="/tags/'.$value['alias'].'.html" class="tags-widget-link">'.$value['title'].'</a></li>';
 			}
-			$this->_view['tags'] = $text;
+			$this->_view['tags1'] = $text;
 			$this->_view['mainTitle']='Все теги';
 			$this->_view['includeFileName']='Tags/index.tpl';
 			$this->_getRightSidebar();

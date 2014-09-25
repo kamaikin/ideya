@@ -89,9 +89,9 @@
 						if ($SQL1[0]['count']==1) {
 							if ($SQL[0]['user_id']!=$user_id) {
 								//	Поставить пользователю который добавил идею в рейтинг
-								$query="SELECT Credits FROM users_events WHERE `key`='comments'";
+								$query="SELECT Credits FROM users_events WHERE `key`='commenting_ideas_other_users'";
 								$SQL1=\Tango::sql()->select($query);
-								$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$user_id;
+								$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$SQL[0]['user_id'];
 								\Tango::sql()->update($query);
 								//	Добавить рейтинг идее
 								$query="SELECT Credits FROM concept_events WHERE `key`='comments'";
@@ -99,6 +99,11 @@
 								$query="UPDATE concept SET points = points + ".$SQL1[0]['Credits']." WHERE id = ".$id;
 								\Tango::sql()->update($query);
 								$SQL[0]['points']=$SQL[0]['points']+$SQL1[0]['Credits'];
+								//	Добавить тому кто прокомментировал
+								$query="SELECT Credits FROM users_events WHERE `key`='comments'";
+								$SQL1=\Tango::sql()->select($query);
+								$query="UPDATE user_data SET points = points + ".$SQL1[0]['Credits']." WHERE user_id = ".$user_id;
+								\Tango::sql()->update($query);
 							}
 						}
 						//	Смотрим на до ли отправлять автору письмо...

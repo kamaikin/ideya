@@ -7,12 +7,13 @@
 		}
 
 		protected function IndexAction(){
-			//print_r($_GET);
+			//print_r($_GET); exit;
 			if(isset($_GET['size'])){$size=(int)$_GET['size'];}else{$size=0;}
 			if (isset($_GET['name'])) {
 				if (isset($_GET['ext'])) {
 					if (in_array($_GET['ext'], $this->fileTypesImage)) {
 						$file_name = $_GET['name'].'.'.$_GET['ext'];
+						//print_r($file_name); exit;
 						//	Проверяем есть ли в хранилище нужный файл
 						if(\Tango::fileStorage()->testing($file_name)){
 							//	Файл надо возвращать пользователю.

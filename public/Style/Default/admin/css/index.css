@@ -753,3 +753,15 @@ body {
 .admin-text-footer{
   margin-top: 20px;
 }
+.admin-text-header{
+  margin-bottom: 20px;
+}
+.admin-field-date{
+  width: 100px;
+}
+.admin-text-title{
+  margin-right: 15px;
+}
+.admin-text-icon{
+  color: #4cd9c0;
+}
