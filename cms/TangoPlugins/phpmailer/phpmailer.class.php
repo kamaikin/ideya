@@ -13,15 +13,16 @@ class Tango_phpmailer extends PHPMailer{
         	}
         	$this->Mailer = "smtp";
       	}
-      	if(!$this->From){
+        $this->CharSet = 'utf-8';
+      	//if(!$this->From){
         	$this->From = \Tango::config()->get('Phpmailer.from_email');
-      	}
-      	if(!$this->FromName){
+      	//}
+      	//if(!$this->FromName){
         	$this->FromName = \Tango::config()->get('Phpmailer.from_name');
-      	}
-      	if(!$this->Sender){
+      	//}
+      	//if(!$this->Sender){
         	$this->Sender = \Tango::config()->get('Phpmailer.from_email');
-      	}
+      	//}
       	$this->Priority = $this->priority;
 	}
 }

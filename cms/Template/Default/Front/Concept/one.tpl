@@ -66,7 +66,7 @@
         {/if}
         {if $Concept_data.user_id==$index_user_id}{*if $timemetka < $Concept_data.date*}
         <div class="">
-            <a href="/concept/edit/?id={$Concept_data.id}" class="post-edit-box-link popup-link-js">
+            <a href="#" class="post-edit-box-link">
                 Редактировать <i class="icon penci-icon"></i>
             </a>
         </div>
