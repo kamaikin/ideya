@@ -1,0 +1,60 @@
+/* ---------->>> FORMS <<<-----------*/
+
+/*field style*/
+.field{
+    @include box-sizing(border-box);
+    width: 100%;
+    max-width: 100%;
+    height: $fieldHeight;
+    padding: 0 15px;
+
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+
+    color: #000;
+    font: 300 13px $baseFontFamily;
+
+    &:focus{
+        border-color: #4cd9c0;
+        color: #000;
+    }
+    @each $prefixPlaceholder in $prefixPlaceholders {
+        @include placeholder($prefixPlaceholder, $fieldPlaceholderColor);
+    }
+}
+
+/*end field style*/
+
+/*buttons style*/
+
+.btn{
+    height: 37px;
+    padding: 0 45px;
+    border: none;
+
+    background-color: #4cd9c0;
+
+    color: #fff;
+    @include adjust-font-size-to(14px);
+    font-weight: 700;
+
+    &:hover{
+        background-color: #58f3d7;
+    }
+    &:active{
+        background-color: #1abc9c;
+    }
+}
+a.btn,
+span.btn{
+    display: inline-block;
+    vertical-align: top;
+
+    line-height: 37px;
+    text-align: center;
+    &,
+    &:hover{
+        text-decoration: none;
+    }
+}
+/*end buttons style*/

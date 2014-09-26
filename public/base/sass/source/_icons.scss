@@ -1,0 +1,297 @@
+/* ---------->>> ICONS <<<-----------*/
+
+//icons
+
+@each $icon in $icons {
+    .#{$icon}-icon{
+        @include icons(#{$icon});
+    }
+}
+
+//blocks
+
+// @each $block in $blocks {
+//     .#{$block}{
+//         @include icons(#{$block});
+//     }
+// }
+
+//icons pseudo
+
+// @each $before in $befores {
+//     .#{$before}:before{
+//         @include icons(#{$before});
+//     }
+// }
+
+// @each $after in $afters {
+//     .#{$after}:after{
+//         @include icons(#{$after});
+//     }
+// }
+
+//buttons
+
+// @each $button in $buttons {
+//     .#{$button}{
+//         @include icons(#{$button});
+//         &:hover{
+//             @include icons-sprite(#{$button}_hover);
+//         }
+//     }
+// }
+
+.search_white-icon{
+    @include icons(search_white);
+}
+
+.add{
+    &:before{
+        @include icons(plus_white);
+        margin-top: -(image-height("images/icons/plus_white.png")/2);
+    }
+}
+
+.aut-form-row{
+    .aut-form-label-email{
+        @include icons(mail_grey);
+    }
+    .aut-form-label-pass{
+        @include icons(lock_grey);
+    }
+    &.error{
+        .aut-form-label-email{
+            @include icons-sprite(mail_red);
+        }
+        .aut-form-label-pass{
+            @include icons-sprite(lock_red);
+        }
+    }
+    &.valid{
+        .aut-form-label-email{
+            @include icons-sprite(mail_green);
+        }
+        .aut-form-label-pass{
+            @include icons-sprite(lock_green);
+        }
+    }
+}
+
+.lists{
+    @include icons(lists_grey);
+    &:hover,
+    &.active{
+        @include icons-sprite(lists_green);
+    }
+}
+.lists-link{
+    .lists-icon{
+        @include icons(lists_grey);
+    }
+    &:hover{
+        .lists-icon{
+            @include icons-sprite(lists_green);
+        }
+    }
+}
+.blocks{
+    @include icons(blocks_grey);
+    &:hover,
+    &.active{
+        @include icons-sprite(blocks_green);
+    }
+}
+
+.post-date:before{
+    @include icons(time_grey);
+}
+.post-sponsor:before{
+    @include icons(money_orange);
+}
+
+.post-like:before,
+.like-icon{
+    @include icons(heart_grey);
+}
+.post-comment:before,
+.comment-icon{
+    @include icons(comment_grey);
+}
+.post-rating:before{
+    @include icons(rating_white);
+}
+.hall_of_fame-item{
+    &.first{
+        &:before{
+            @include icons(place_gold);
+        }
+    }
+    &.second{
+        &:before{
+            @include icons(place_silver);
+        }
+    }
+    &.third{
+        &:before{
+            @include icons(place_bronze);
+        }
+    }
+}
+.post{
+    &.first:before{
+        @include icons(place_gold_big);
+    }
+    &.second:before{
+        @include icons(place_silver_big);
+    }
+    &.third:before{
+        @include icons(place_bronze_big);
+    }
+}
+.fileload-icon{
+    @include icons(photo_grey);
+}
+.delete-pic-icon{
+    @include icons(delete_grey_11x11);
+}
+.prifile-tab{
+    .tab{
+        .like{
+            @include icons(heart_grey);
+        }
+        .money{
+            @include icons(money_grey);
+        }
+        .comment{
+            @include icons(comment_grey);
+        }
+        .sponsor{
+            @include icons(sponsor_grey);
+        }
+        &:hover{
+            .like{
+                @include icons-sprite(heart_green);
+            }
+            .money{
+                @include icons-sprite(money_green);
+            }
+            .comment{
+                @include icons-sprite(comment_green);
+            }
+            .sponsor{
+                @include icons-sprite(sponsor_green);
+            }
+        }
+        &.tab-current{
+            .like{
+                @include icons-sprite(heart_white);
+            }
+            .money{
+                @include icons-sprite(money_white);
+            }
+            .comment{
+                @include icons-sprite(comment_white);
+            }
+            .sponsor{
+                @include icons-sprite(sponsor_white);
+            }
+        }
+    }
+}
+.post-comment-bl-delete:before{
+    @include icons(wastebasket_white);
+}
+.post-comment-bl-delete-box-link{
+    .wastebasket-icon{
+        @include icons(wastebasket_grey);
+    }
+    &:hover{
+        .wastebasket-icon{
+            @include icons-sprite(wastebasket_red);
+        }
+    }
+    &:active,
+    &.active{
+        .wastebasket-icon{
+            @include icons-sprite(wastebasket_white);
+        }
+    }
+}
+.post-comment-bl-edit-box-link,
+.post-edit-box-link{
+    .penci-icon{
+        @include icons(pencil_grey);
+    }
+    &:hover{
+        .penci-icon{
+            @include icons-sprite(pencil_green);
+        }
+    }
+    &:active,
+    &.active{
+        .penci-icon{
+            @include icons-sprite(pencil_white);
+        }
+    }
+}
+.post-sponsorbox{
+    &:before{
+        @include icons(sponsor_orange);
+    }
+    &:hover{
+        &:before{
+            @include icons-sprite(sponsor_lightorange);
+        }
+    }
+}
+.popupper-close-icon,
+.lb-close:before{
+    @include icons(delete_white);
+}
+.popupper-add-picbox-title:before{
+    @include icons(photo_grey);
+}
+.popupper-add-btn{
+    .download-icon{
+        @include icons(download_grey);
+    }
+    &:hover{
+        .download-icon{
+            @include icons-sprite(download_lightgrey);
+        }
+    }
+    &:active{
+        .download-icon{
+            @include icons-sprite(download_grey);
+        }
+    }
+}
+.delete-tag-icon{
+    @include icons(delete_green_10x11);
+}
+.add-tag-icon{
+    @include icons(plus_white_10x10);
+}
+.add-file-delete-icon{
+    @include icons(delete_red);
+}
+.popupper-add-filebox-add-link{
+    .addfile-icon{
+        @include icons(clip_green);
+    }
+    &:active{
+        .addfile-icon{
+            @include icons-sprite(clip_white);
+        }
+    }
+}
+.mobile-menu-link{
+    .plus-menu-icon{
+        @include icons(plus_grey);
+    }
+    &:hover{
+        .plus-menu-icon{
+            @include icons-sprite(plus_white);
+        }
+    }
+}

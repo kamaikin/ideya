@@ -1,0 +1,222 @@
+/* ---------->>> STANDARD STYLE <<<-----------*/
+
+a,
+.link{
+    color: $baseLinkColor;
+    text-decoration: none;
+    // &:visited{
+    //     color: $base-link-color;
+    //     text-decoration: underline;
+    // }
+    &:hover{
+        text-decoration: underline;
+    }
+    &:active{
+        text-decoration: none;
+    }
+}
+
+/* ---------->>> GLOBAL <<<-----------*/
+
+html {
+    >body{
+        .container-wrap{
+            height: auto;
+            min-height: 100%;
+        }
+    }
+}
+
+body{
+    background-color: #fafafa;
+
+    color: $baseFontColor;
+    font: $baseFontSize+unquote('/')+1 $baseFontFamily;
+}
+
+.container{
+    @include centerBlock(false, $Max, $Min);
+}
+
+.grid{
+    @include grids(12, 30, $standard); // vaues: $numberOfColumns: 12, $gutterWidth: 20, $fullWidth: 960;
+}
+
+.container-wrap{
+    position: relative;
+}
+
+.footer,
+.main-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @include box-sizing(border-box);
+    width: 100%;
+}
+
+.loading{
+    background: #fff url(../images/required/loading.gif) no-repeat center;
+}
+
+.design-logo,
+.main-design-logo{
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.messageTip-wrapper{
+    position: relative;
+
+    display: inline-block;
+    vertical-align: top;
+    &:hover{
+        .messageTip{
+            display: block;
+        }
+    }
+}
+
+//message style
+$message-bg: #ecf0f1;
+$message-padding: 10px 17px;
+$message-textColor: #4e4d4d;
+$message-lineHeight: 1;
+
+//message type style
+$arrow-width: 7px;
+$arrow-height: 8px;
+$message-indent: 10px;
+
+.messageTip{
+    position: absolute;
+    z-index: 1000;
+
+    display: none;
+    padding: $message-padding;
+    border-radius: 5px;
+
+    background-color: $message-bg;
+
+    @include adjust-font-size-to(13px);
+    font-weight: 700;
+    color: $message-textColor;
+    line-height: $message-lineHeight;
+    white-space: nowrap;
+
+    &:before{
+        border-style: solid;
+        content: '';
+        position: absolute;
+    }
+    &.messageTip-right,
+    &.messageTip-left{
+        &:before{
+            margin-top: -$arrow-width;
+            top: 50%;
+        }
+    }
+    &.messageTip-top,
+    &.messageTip-bottom{
+        &:before{
+            margin-left: -$arrow-width;
+            left: 50%;
+        }
+    }
+    &.messageTip-right{
+        margin-left: $message-indent;
+        left: 100%;
+        &:before{
+            border: {
+                width: $arrow-width $arrow-height $arrow-width 0;
+                color: transparent $message-bg transparent transparent;
+            }
+            right: 100%;
+        }
+    }
+    &.messageTip-left{
+        margin-right: $message-indent;
+        right: 100%;
+        &:before{
+            border: {
+                width: $arrow-width 0 $arrow-width $arrow-height;
+                color: transparent transparent transparent $message-bg;
+            }
+            left: 100%;
+        }
+    }
+    &.messageTip-top{
+        bottom: 100%;
+        margin-bottom: $message-indent;
+        &:before{
+            border: {
+                width: $arrow-height $arrow-width 0 $arrow-width;
+                color: $message-bg transparent transparent transparent;
+            }
+            top: 100%;
+        }
+    }
+    &.messageTip-bottom{
+        margin-top: $message-indent;
+        top: 100%;
+        &:before{
+            border: {
+                width: 0 $arrow-width $arrow-height $arrow-width;
+                color: transparent transparent $message-bg transparent;
+            }
+            bottom: 100%;
+        }
+    }
+    &.messageTip-fix{
+        position: fixed;
+        &:before{
+            border: none;
+            content: '';
+            position: absolute;
+        }
+    }
+}
+/*tabs*/
+.tabs{
+    .tab{
+        cursor: pointer;
+    }
+}
+.tab-content{
+    display: none;
+    &.tab-content-visible{
+        display: block;
+    }
+}
+/*end tabs*/
+
+.popup-link{
+   cursor: pointer;
+}
+.popup-overlay{
+   background: rgba(0,0,0,.5);
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 999;
+   -webkit-transform: translateZ(0);
+}
+
+.search-btn,
+.add,
+.post-title-link,
+.tags-widget-link,
+.prifile-tab .tabs .tab,
+.profile-change-avatar,
+.post-likebox,
+.btn,
+.popupper-add-btn,
+.popupper-close{
+    @include transition(all .3s ease);
+}

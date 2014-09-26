@@ -1,0 +1,255 @@
+// Mixins
+
+@mixin legacy-pie-clearfix {
+    &:after {
+        content: "\0020";
+        height: 0;
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+        width: 100%;
+    }
+}
+@mixin pie-clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+@mixin reset-box-model {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+@mixin no-bullets{
+    list-style: none;
+    li {
+        margin-left: 0;
+    }
+}
+// **Sprite
+@mixin icons($name) {
+    @include icons-sprite($name);
+    height: icons-sprite-height($name);
+    width: icons-sprite-width($name);
+}
+// ** Responsive Web Design *width*--
+@mixin rwd-width($el-width, $parent-width: $standard) {
+    width: $el-width * 100% / $parent-width;
+}
+@function rwd-width-val($el-width, $parent-width: $standard){
+    @return $el-width * 100% / $parent-width;
+}
+// ** Responsive Web Design *font-size*
+@mixin adjust-font-size-to($to-size, $lines: lines-for-font-size($to-size), $from-size: $base-font-size) {
+    @if not $relative-font-sizing and $from-size != $base-font-size {
+        @warn "$relative-font-sizing is false but a relative font size was passed to adjust-font-size-to";
+    }
+    font-size: $font-unit * $to-size / $from-size;
+}
+@function adjust-font-size-to-val($to-size, $lines: lines-for-font-size($to-size), $from-size: $base-font-size){
+    @if not $relative-font-sizing and $from-size != $base-font-size {
+        @warn "$relative-font-sizing is false but a relative font size was passed to adjust-font-size-to";
+    }
+    @return $font-unit * $to-size / $from-size;
+}
+// ** Animation
+@mixin animation($name, $value) {
+    @include experimental(animation, $name $value, -moz, -webkit, -o, -ms, not -khtml);
+}
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+// ** Forms
+@mixin field-focus{
+    border: 1px solid #aaa;
+    box-shadow:  0 0 3px rgba(0,0,0,.2);
+}
+// ** Validation
+@mixin validation($color, $bg, $border: $color){
+    border-color: $border;
+    background-color: $bg;
+    color: $color;
+}
+// ** Placeholder
+@mixin placeholder($name, $color){
+    &#{$name}{
+        color: $color;
+        opacity: 1;
+    }
+    @if $name == ".text-placeholder"{
+        &#{$name}:focus{
+            opacity: 0;
+        }
+    }
+    @else{
+        &:focus#{$name}{
+            opacity: 0;
+        }
+    }
+}
+// ** Pseudo
+@mixin pseudo-style($top: false, $right: false, $bottom: false, $left: false){
+    content: '';
+    position: absolute;
+    @if $top{
+        top: $top;
+    }
+    @if $right{
+        right: $right;
+    }
+    @if $bottom{
+        bottom: $bottom;
+    }
+    @if $left{
+        left: $left;
+    }
+}
+// ** Align icons
+@mixin align-icon($top){
+    position: relative;
+    top: #{$top}px;
+}
+// ** Arrows
+@mixin arrowBorder($side, $height, $color){
+    $mirrorSide: opposite-position($side);
+    border:{
+        #{$side}:{
+            width: $height;
+            color: $color;
+        }
+        #{$mirrorSide}:{
+            width: 0;
+        }
+    }
+}
+@mixin arrow($side, $width, $height, $color, $once: true, $pos: true){
+    $top: "top";
+    $bottom: "bottom";
+    $left: "left";
+
+    @if $once{
+        @include pseudo-style;
+    }
+
+    @if $pos{
+        $secPos: null;
+        @if $side == $top or $side == $bottom { $secPos: $left}
+        @else{ $secPos: $top }
+
+        #{$side}: 100%;
+        #{$secPos}: 50%;
+        margin-#{$secPos}: -$width;
+    }
+    @else{
+        @content;
+    }
+
+    border: $width solid transparent;
+    @include arrowBorder($side, $height, $color);
+}
+// ** Grids
+// Add just the horizontal grid to an element's background
+@mixin column-grid-background($myoffset, $total: $grid-background-total-columns, $column: $grid-background-column-width, $gutter: $grid-background-gutter-width, $offset: $grid-background-offset, $column-color: $grid-background-column-color, $gutter-color: $grid-background-gutter-color, $force-fluid: $grid-background-force-fluid) {
+  @if $show-grid-backgrounds and $show-column-grid-backgrounds {
+    @include background-image(get-column-gradient($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid));
+    background-position: $myoffset 0;
+  }
+}
+@function columnWidth($numberOfColumns, $gutterWidth, $fullWidth){
+    $contentWidth: $fullWidth - $gutterWidth; // Content width;
+    $numberOfGutter: $numberOfColumns - 1; // Number of gutter;
+    $columnWidth: ($contentWidth - ($numberOfGutter*$gutterWidth))/$numberOfColumns; // Column width;
+    @return $columnWidth;
+}
+@mixin grids($numberOfColumns: 12, $gutterWidth: 20, $fullWidth: 960){
+    // Default
+    $title: "Grid System";
+    $desc: "Column Grid";
+    $grid-background-column-color: rgba(251, 188, 188, .5);
+    // Function
+    $myoffset: ($gutterWidth/2)+px;
+    $ColumnWwidth: columnWidth($numberOfColumns, $gutterWidth, $fullWidth);
+    $name: $fullWidth + " " + $title + ": " + $numberOfColumns + ", " + $desc + " " + $numberOfColumns + "x" + $ColumnWwidth + "x" + $gutterWidth;
+    // Settings
+    $grid-background-total-columns: $numberOfColumns;
+    $grid-background-column-width: $ColumnWwidth;
+    $grid-background-gutter-width: $gutterWidth;
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -($grid/2);
+
+    width: $grid;
+    height: 100%;
+
+    @include column-grid-background($myoffset);
+
+    &:before{
+        content: '#{$name}';
+
+        position: fixed;
+        top: 5px;
+        left: 5px;
+
+        font: italic 10px/normal Arial, Helvetica, sans-serif;
+        color: #444;
+    }
+}
+// ** Bulletproof font face
+@mixin fontFace($name, $fontFiles, $svgFontName: $fontFiles, $folder: $fontFiles){
+    @font-face {
+        font-family: $name;
+        src: url('../fonts/#{$folder}/#{$fontFiles}.eot?#iefix') format('embedded-opentype'), // IE6-IE9
+             url('../fonts/#{$folder}/#{$fontFiles}.woff') format('woff'), // Modern Browsers
+             url('../fonts/#{$folder}/#{$fontFiles}.ttf') format('truetype'), // Safari, Android, iOS
+             url('../fonts/#{$folder}/#{$fontFiles}.svg##{$svgFontName}') format('svg'); // Legacy iOS
+    }
+}
+@mixin rgbaBox($red, $green, $blue, $opacity, $color){
+    background-color: $color;
+    background-color: rgba($red, $green, $blue, $opacity);
+}
+@mixin absCenter($zIndex: false) {
+    position: absolute;
+    @if ($zIndex){
+        z-index: $zIndex;
+    }
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+@mixin centerBlock($Static, $Max: false, $Min: false){
+    @if ($Static){
+        width: $Static;
+    }
+    @if($Max){
+        max-width: $Max;
+    }
+    @if($Min){
+        min-width: $Min;
+    }
+    margin: auto;
+}
+@mixin strongGradient($size, $beginColor, $endColor, $separator){
+    background-color: $beginColor;
+    @include background-image(linear-gradient($size, $beginColor, $beginColor $separator, $endColor $separator, $endColor));
+}

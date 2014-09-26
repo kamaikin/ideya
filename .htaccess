@@ -1,0 +1,68 @@
+AddDefaultCharset UTF-8
+
+DirectoryIndex index index.html
+DirectorySlash off
+Options -Indexes -MultiViews
+
+RewriteEngine On
+RewriteBase /
+# http://site.ru -> http://www.site.ru
+#RewriteCond %{HTTP_HOST} ^blog.test
+#RewriteRule (.*) http://www.blog.test/$1 [R=301,L]
+# http://www.site.ru -> http://www.site.ru/
+# http://www.site.ru/catalog -> http://www.site.ru/catalog/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteCond %{REQUEST_URI} !\.[^./]+$
+RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+# http://www.site.ru/index.php -> http://www.site.ru/
+RewriteCond %{THE_REQUEST} \ /index\.php\ HTTP/
+RewriteRule ^index\.php$ / [R=301,L]
+# http://www.site.ru/catalog/index.php -> http://www.site.ru/catalog/
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} (.*)index\.php$
+#RewriteRule ^(.*)index\.php$ $1 [R=301,L]
+
+
+RewriteRule ^admin(/?)+$ /index.php?modules=index&controller=index&action=index&admin_flag=admin [QSA]
+RewriteRule ^admin/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=index&action=index&admin_flag=admin [QSA]
+RewriteRule ^admin/([A-Za-z_]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=index&action=one&url=$2&admin_flag=admin [QSA]
+RewriteRule ^admin/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=index&admin_flag=admin [QSA]
+RewriteRule ^admin/([A-Za-z_]+)/([A-Za-z_0-9]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=$2&action=one&url=$3&admin_flag=admin [QSA]
+RewriteRule ^admin/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&admin_flag=admin [QSA]
+RewriteRule ^admin/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&admin_flag=admin [QSA]
+RewriteRule ^admin/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&param2=$5&admin_flag=admin [QSA]
+
+RewriteRule ^ajax(/?)+$ /index.php?modules=index&controller=index&action=index&admin_flag=ajax [QSA]
+RewriteRule ^ajax/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=index&action=index&admin_flag=ajax [QSA]
+RewriteRule ^ajax/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&admin_flag=ajax [QSA]
+RewriteRule ^ajax/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&admin_flag=ajax [QSA]
+RewriteRule ^ajax/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&admin_flag=ajax [QSA]
+RewriteRule ^ajax/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)/([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3&param1=$4&param2=$5&admin_flag=ajax [QSA]
+
+
+RewriteRule ^(/?)+$ /index.php?modules=index&controller=index&action=index [QSA]
+RewriteRule ^([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=text&controller=index&action=one&url=$1 [QSA]
+RewriteRule ^([A-Za-z_]+)(/?)+$ /index.php?modules=$1&controller=index&action=index [QSA]
+RewriteRule ^([A-Za-z_]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=index&action=one&url=$2 [QSA]
+RewriteRule ^([A-Za-z_]+)/([A-Za-z_0-9]+)(/?)+$ /index.php?modules=$1&controller=$2 [QSA]
+RewriteRule ^([A-Za-z_]+)/([A-Za-z_0-9]+)/([A-Za-z_0-9]+).html(/?)+$ /index.php?modules=$1&controller=index&action=one&katalog=$2&url=$3 [QSA]
+RewriteRule ^([A-Za-z_]+)/([A-Za-z_0-9]+)/([A-Za-z_0-9]+)(/?)+$ /index.php?modules=$1&controller=$2&action=$3 [QSA]
+
+
+RewriteRule ^sitemap.xml(/?)+$ /index.php?modules=xml&controller=sitemap [QSA]
+RewriteRule ^rss.xml(/?)+$ /index.php?modules=xml&controller=rss [QSA]
+
+
+RewriteCond %{DOCUMENT_ROOT}/public/foto_cache/w_$1/$2/$3/$2$3$4.$5 -f
+RewriteRule ^i/([a-z0-9]+)/([a-z0-9_]{2})([a-z0-9_]{2})([A-Za-z0-9_]+)\.(jpg|png|gif) public/foto_cache/w_$1/$2/$3/$2$3$4.$5 [L]
+RewriteRule ^i/([a-z0-9]+)/([a-z0-9_]+).(jpg|png|gif)(/?)+$ index.php?modules=file&controller=imageViever&size=$1&name=$2&ext=$3&admin_flag=ajax [L]
+
+RewriteCond %{DOCUMENT_ROOT}/public/foto_cache/h_$1/$2/$3/$2$3$4.$5 -f
+RewriteRule ^ih/([a-z0-9]+)/([a-z0-9_]{2})([a-z0-9_]{2})([A-Za-z0-9_]+)\.(jpg|png|gif) public/foto_cache/h_$1/$2/$3/$2$3$4.$5 [L]
+RewriteRule ^ih/([a-z0-9]+)/([a-z0-9_]+).(jpg|png|gif)(/?)+$ index.php?modules=file&controller=imageViever&size=$1&name=$2&ext=$3&admin_flag=ajax&data=h [L]
+
+RewriteCond %{DOCUMENT_ROOT}/public/file_cache/$1/$2/$1$2$3.$4 -f
+RewriteRule ^d/([a-z0-9_]{2})([a-z0-9_]{2})([A-Za-z0-9_]+)\.(ppt|doc|docx|pdf|xls|xlsx|zip) public/file_cache/$1/$2/$1$2$3.$4 [L]
+RewriteRule ^d/([a-z0-9_]+).(ppt|doc|docx|pdf|xls|xlsx|zip)(/?)+$ index.php?modules=file&controller=fileDowloader&name=$1&ext=$2&admin_flag=ajax [L]
