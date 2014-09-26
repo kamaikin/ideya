@@ -1,3 +1,0 @@
-TangoPHP
-========
-## Installation
