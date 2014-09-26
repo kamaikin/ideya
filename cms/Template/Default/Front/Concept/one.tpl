@@ -66,7 +66,7 @@
         {/if}
         {if $Concept_data.user_id==$index_user_id}{*if $timemetka < $Concept_data.date*}
         <div class="">
-            <a href="/concept/edit/?id={$Concept_data.id}" class="post-edit-box-link popup-link-js"  data-popup="add">
+            <a href="/concept/edit/?id={$Concept_data.id}" class="post-edit-box-link popup-link-js">
                 Редактировать <i class="icon penci-icon"></i>
             </a>
         </div>
@@ -84,7 +84,7 @@
                 </a>
             </div>
             <div class="dib post-comment-bl-delete-box" date="{$value.date}">
-                <a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete-box-link" kid="{$value.id}">
+                <a href="/concept/deletecomment?id={$value.id}&rid={$Concept_data.id}" class="post-comment-bl-delete-box-link delete-author">
                     Удалить <i class="icon wastebasket-icon"></i>
                 </a>
             </div>
@@ -92,7 +92,7 @@
             {if $index_user_role == 'moderator' ||  $index_user_role == 'admin'}
             {if $value.user_id!=$index_user_id}
             <div class="dib post-comment-bl-delete-box">
-                <a href="#" class="post-comment-bl-delete-box-link" kid="{$value.id}">
+                <a href="#" class="post-comment-bl-delete-box-link post-comment-bl-edit-box-link-data" kid="{$value.id}">
                     Удалить <i class="icon wastebasket-icon"></i>
                 </a>
                 <form action="#" class="post-comment-bl-delete-cloud" id="delete_comment_info_{$value.id}">
@@ -148,6 +148,9 @@
 <script type="text/javascript">
     {literal}
     $(function() {
+        $(".delete-author").click(function(){
+            location.href=$(this).attr("href");
+        })
         $(".post-comment-bl-retweet").click(function(){
             var data = $(this).attr('data');
             console.log(data)
@@ -182,26 +185,28 @@
             return false;
         })
         $(".edit_textarea").hide();
-        $(".post-comment-bl-edit-box-link").click(function(){
-            var id = $(this).attr("kid");
-            var t_id = "#textarea_" + id;
-            var d_id = "#div_" + id;
-            $(t_id).show();
-            $(t_id).focus();
-            $(d_id).hide();
-            $(t_id).blur(function(){
-                $(t_id).hide();
-                $(d_id).show();
-                var text = $(t_id).val();
-                var url = '/ajax/concept/editcomment?id=' + id + '&rid={/literal}{$Concept_data.id}{literal}';
-                var post = 'text=' + text;
-                //var post = '{ name: "' + text + '", time: "2pm" }'
-                $.get(url, post, function(data){
-                    //console.log(data);
+        $(".post-comment-bl-edit-box-link-data").click(function(){
+            if ($(this).attr("kid")) {
+                var id = $(this).attr("kid");
+                var t_id = "#textarea_" + id;
+                var d_id = "#div_" + id;
+                $(t_id).show();
+                $(t_id).focus();
+                $(d_id).hide();
+                $(t_id).blur(function(){
+                    $(t_id).hide();
+                    $(d_id).show();
+                    var text = $(t_id).val();
+                    var url = '/ajax/concept/editcomment?id=' + id + '&rid={/literal}{$Concept_data.id}{literal}';
+                    var post = 'text=' + text;
+                    //var post = '{ name: "' + text + '", time: "2pm" }'
+                    $.get(url, post, function(data){
+                        //console.log(data);
+                    })
+                    $(d_id).html(text);
                 })
-                $(d_id).html(text);
-            })
-            return false;
+                return false;
+            }
         })
         function sec() {
             var UNIX_TIMESTAMP = Math.round(new Date().getTime() / 1000);

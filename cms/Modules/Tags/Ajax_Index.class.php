@@ -1,5 +1,5 @@
 <?php
-	class TagsFrontIndex extends BaseController{
+	class TagsAjaxIndex extends BaseController{
 		public function __construct(){
 			parent::__construct();
 		}
@@ -8,27 +8,17 @@
 			//	Выводим все теги, что есть в базе.
 			//	Смотрим, есть ли в базе данных актуальный набор
 			//	Собираем заново 
-			$query="SELECT * 
-				FROM   (SELECT tags.name  AS title, 
-			       tags.url  AS alias, 
-			       COUNT(tags_to_concept.id) AS cnt 
-				FROM   tags 
-			       INNER JOIN tags_to_concept
-			         ON ( tags_to_concept.tags_id = tags.id ) 
-			GROUP  BY tags.id 
-			ORDER  BY cnt DESC 
-			LIMIT  200) AS subq
-			ORDER  BY title";
-			$SQL = \Tango::sql()->select($query);
-			$text='';
-
-			foreach ($SQL as $key => $value) {
-				$text.='<li class="tags-widget-item"><a href="/tags/'.$value['alias'].'.html" class="tags-widget-link">'.$value['title'].'</a></li>';
+			if(isset($_GET['q'])){
+				$value=substr(\Tango::sql()->quote($_GET['q']), 1, -1);
+				$query="SELECT name FROM tags WHERE name LIKE '%".$value."%'";
+				$SQL = \Tango::sql()->select($query);
+				$data=array('q'=>$value);
+				foreach ($SQL as $key => $value) {
+					$data['data'][]=$value['name'];
+				}
+				echo json_encode($data);
 			}
-			$this->_view['tags1'] = $text;
-			$this->_view['mainTitle']='Все теги';
-			$this->_view['includeFileName']='Tags/index.tpl';
-			$this->_getRightSidebar();
+			exit;
 		}
 
 		protected function OneAction(){
