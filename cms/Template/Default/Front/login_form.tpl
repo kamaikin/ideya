@@ -66,7 +66,6 @@
                     <div class="aut-form-row">
                         <label for="aut_email" class="aut-form-label aut-form-label-email"></label>
                         <input type="email" name="login1" id="aut_email1" class="aut-field" autocomplete="off" tabindex="1" placeholder="Введите Ваш email">
-                        <div class="validation-tooltip" id="error-pass1"></div>
                     </div>
                 </div>
                 <div class="aut-form-button">
