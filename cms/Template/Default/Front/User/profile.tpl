@@ -178,7 +178,7 @@
         <div class="tab-content posts-lists tab-content-js">
         {foreach from=$ya_sponsor_concept item="value"}
         	<article class="post{if $value.datetime > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail {if $value.anonimus == 'n'} post-thumbnail-has-author{/if} left">
+                <div class="post-thumbnail post-thumbnail-has-author left">
 	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
 	                <div class="post-author tac">
 	                    <div class="post-author-pic">
@@ -213,7 +213,7 @@
         {*Меня спонсируют*}
         	{foreach from=$my_sponsor_concept item="value"}
         	<article class="post{if $value.date > $notificare_time} notificare-post{/if}">
-                <div class="post-thumbnail {if $value.anonimus == 'n'} post-thumbnail-has-author{/if} left">
+                <div class="post-thumbnail post-thumbnail-has-author left">
 	                {if $value.foto==''}<img src="/public/img/nophoto.jpg"  alt="" class="post-thumbnail-img" />{else}<a href="/i/126/{$value.foto}" data-lightbox="{$value.foto}"><img src="/i/126/{$value.foto}" alt="{$value.foto}" class="post-thumbnail-img" /></a>{/if}
 	                <div class="post-author tac">
 	                    <div class="post-author-pic">

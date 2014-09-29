@@ -1,5 +1,5 @@
 {include file="User/sub_menu.tpl"}
-<h1 class="admin-title">Добавить пользователя</h1>
+<h1 class="admin-title">Редактирование пользователя</h1>
 {if $error}<h2 style="color: #F00;">{$error}</h2>{/if}
 <form enctype="multipart/form-data" action="{if $smarty.get.id}/admin/user/edit/?id={$smarty.get.id}{else}/admin/user/new/{/if}" method="post">
 <table class="admin-add-user">

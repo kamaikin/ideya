@@ -24,17 +24,14 @@
         <td><a href="/admin/user/delete/?id={$Value.user_id}" class="js-delete"><i class="fa fa-trash" title="Удалить"></i></a></td>
     </tr>
     {/foreach}
-    <tr>
-        <td colspan="9" align="center">{$paginator}</td>
-    </tr>
 </table>
 <div class="tar admin-text-footer">
     <label for="admin_number_of_output">Кол-во вывода:  </label>
     <select name="admin_number_of_output" id="admin_number_of_output" class="field">
-        <option value="25" {if $smarty.session.user_count=='25'}selected{/if}>25</option>
-        <option value="50" {if $smarty.session.user_count=='50'}selected{/if}>50</option>
-        <option value="100" {if $smarty.session.user_count=='100'}selected{/if}>100</option>
-        <option value="500" {if $smarty.session.user_count=='500'}selected{/if}>500</option>
+        <option value="25" selected>25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="500">500</option>
     </select>
 </div>
 {literal}
@@ -46,11 +43,6 @@
             } else {
                 return false;
             }
-        })
-        $("#admin_number_of_output").change(function(){
-            url = location.href + '?count=' + $("#admin_number_of_output").val();
-            location.href = url;
-            return false;
         })
     })
 </script>

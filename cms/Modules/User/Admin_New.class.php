@@ -37,7 +37,7 @@
 					$address = $surname.' '.$name.' '.$patronymic;
 					$this->_sendEmail('invitation', array('url'=>md5($value[1])), $email, $address);
 					//	Получаем текст письма
-					/*$query="SELECT * FROM mail_templates WHERE name=?";
+					$query="SELECT * FROM mail_templates WHERE name=?";
 					$Tmail=\Tango::sql()->select($query, array('invitation'));
 					$query="SELECT * FROM mail_template_values WHERE template_id=?";
 					$SQL=\Tango::sql()->select($query, array($Tmail[0]['id']));
@@ -65,7 +65,7 @@
 					\Tango::plugins('phpmailer')->AddAddress($email, $surname.' '.$name.' '.$patronymic);
 					\Tango::plugins('phpmailer')->Send();
 					\Tango::plugins('phpmailer')->ClearAddresses();
-					\Tango::plugins('phpmailer')->ClearAttachments();*/
+					\Tango::plugins('phpmailer')->ClearAttachments();
 					header("Location: /admin/user/page01.html");
 				}else{
 					$this->_view['error']='Такой пользователь уже есть в базе данных';

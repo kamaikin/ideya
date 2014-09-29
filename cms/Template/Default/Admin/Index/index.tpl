@@ -1,3 +1,11 @@
+<div class="tar admin-text-header">
+    <span class="admin-text-title">Период:</span>
+    <label for="date-before" class="admin-text-icon"><i class="fa fa-calendar"></i></label>
+    <input type="text" name="date-before" id="date-before" class="admin-field admin-field-date" autocomplete="off" tabindex="1">
+    <span class="date-separator">-</span>
+    <label for="date-after" class="admin-text-icon"><i class="fa fa-calendar"></i></label>
+    <input type="text" name="date-after" id="date-after" class="admin-field admin-field-date" autocomplete="off" tabindex="2">
+</div>
 <table class="admin-table admin-table-progress">
 	<tr>
 		<th></th>
